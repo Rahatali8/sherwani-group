@@ -5,6 +5,8 @@ import About from "@/components/sections/About";
 import Timeline from "@/components/sections/Timeline";
 import Diversification from "@/components/sections/Diversification";
 import Projects from "@/components/sections/Projects";
+import Awards from "@/components/sections/Awards";
+import Clientele from "@/components/sections/Clientele";
 
 export default function Home() {
   return (
@@ -16,10 +18,12 @@ export default function Home() {
         <Timeline />
         <Diversification />
         <Projects />
-        {/* Phase 7+ sections mount here: Awards, Clientele, Contact, Footer. */}
+        <Awards />
+        <Clientele />
+        {/* Phase 8+ sections mount here: Contact, Footer. */}
         <div className="flex h-screen items-center justify-center bg-bg">
           <p className="font-display text-4xl tracking-wider text-muted/30">
-            AWARDS — PHASE 7
+            CONTACT — PHASE 8
           </p>
         </div>
       </main>

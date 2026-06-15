@@ -171,6 +171,41 @@ export const projects = {
   ],
 };
 
+export const awards = {
+  overline: "Awards",
+  heading: "The Sherwani Prides",
+  stats: [
+    { value: 40, suffix: "+", label: "Years of Trust" },
+    { value: 10, suffix: "+", label: "Companies" },
+    { value: 44, suffix: "+", label: "Clients" },
+  ],
+  list: [
+    { title: "Best Sales Award", org: "Dewan Farooq Motors", value: 5 },
+    { title: "Best Sales Award", org: "Pak Suzuki Motors", value: 3 },
+    { title: "Best Service Award", org: "Dewan Farooq Motors", value: 7 },
+    { title: "Best Service Award", org: "Pak Suzuki Motors", value: 5 },
+    { title: "Best Spare Parts Award", org: "Dewan Farooq Motors", value: 7 },
+    { title: "Best Spare Parts Award", org: "Pak Suzuki Motors", value: 4 },
+    {
+      title: "Best in Spare Parts Sales",
+      org: "Indus Motor Company",
+      value: 3,
+      note: "2014 · 2015 · 2016",
+    },
+  ] as {
+    title: string;
+    org: string;
+    value: number;
+    note?: string;
+  }[],
+};
+
+export const clients = {
+  overline: "Trusted By",
+  heading: "Our Clientele",
+  count: 44,
+};
+
 export const navLinks = [
   { label: "Home", href: "#home" },
   { label: "About", href: "#about" },
