@@ -9,6 +9,18 @@ export const site = {
   founded: 1984,
 };
 
+export const hero = {
+  titleLines: ["SHERWANI", "GROUP"] as const,
+  subheading: "Driven by Vision, Defined by Excellence",
+  bottomTagline: "40 Years of Trust • Automobiles · Real Estate · Engineering",
+  videos: [
+    "/videos/hero-1.mp4",
+    "/videos/hero-2.mp4",
+    "/videos/hero-3.mp4",
+    "/videos/hero-4.mp4",
+  ],
+};
+
 export const navLinks = [
   { label: "Home", href: "#home" },
   { label: "About", href: "#about" },
