@@ -1,12 +1,8 @@
 "use client";
 
-import { useRef, useState } from "react";
-import { FiPlay } from "react-icons/fi";
-import { gsap, ScrollTrigger, useGSAP, prefersReducedMotion } from "@/lib/gsap";
+import { useEffect, useRef, useState } from "react";
+import { gsap, useGSAP, prefersReducedMotion } from "@/lib/gsap";
 import { hero } from "@/data/content";
-
-const total = hero.videos.length;
-const nextIndex = (i: number) => (i + 1) % total;
 
 /** Background video layer; gold-tinted gradient shows through if file missing. */
 function BgVideo({ src }: { src: string }) {
@@ -26,12 +22,18 @@ function BgVideo({ src }: { src: string }) {
 
 export default function Hero() {
   const rootRef = useRef<HTMLElement>(null);
-  const tileRef = useRef<HTMLButtonElement>(null);
-  const headingRef = useRef<HTMLHeadingElement>(null);
+  const headingRef = useRef<HTMLDivElement>(null);
   const bgWrapRef = useRef<HTMLDivElement>(null);
 
+  // Start deterministic for SSR, then pick a random clip on the client (avoids
+  // hydration mismatch). One of the 4 hero videos auto-plays on load.
   const [current, setCurrent] = useState(0);
-  const [busy, setBusy] = useState(false);
+  useEffect(() => {
+    // Intentional client-only randomization (deterministic 0 on the server keeps
+    // hydration stable, then we pick a random clip after mount).
+    // eslint-disable-next-line react-hooks/set-state-in-effect
+    setCurrent(Math.floor(Math.random() * hero.videos.length));
+  }, []);
 
   // On-load reveals + scroll parallax (scoped, mobile-aware via matchMedia).
   useGSAP(
@@ -90,62 +92,13 @@ export default function Hero() {
     { scope: rootRef },
   );
 
-  // Center preview tile -> expand to full screen, then swap background.
-  const handleExpand = () => {
-    if (busy || !tileRef.current) return;
-    setBusy(true);
-
-    const isMobile = window.innerWidth < 768;
-
-    if (isMobile) {
-      // Simplified crossfade on mobile.
-      gsap.to(tileRef.current, {
-        opacity: 0,
-        duration: 0.45,
-        ease: "power2.out",
-        onComplete: () => {
-          setCurrent((c) => nextIndex(c));
-          gsap.set(tileRef.current, { clearProps: "all" });
-          gsap.fromTo(
-            tileRef.current,
-            { opacity: 0 },
-            { opacity: 1, duration: 0.45, ease: "power2.out" },
-          );
-          setBusy(false);
-          ScrollTrigger.refresh();
-        },
-      });
-      return;
-    }
-
-    // Desktop: expand the tile to fill the viewport (clip + scale), then swap.
-    const tl = gsap.timeline({
-      onComplete: () => {
-        setCurrent((c) => nextIndex(c));
-        // Reset tile back to its small centered state (now shows new "next").
-        gsap.set(tileRef.current, { clearProps: "all" });
-        setBusy(false);
-        ScrollTrigger.refresh();
-      },
-    });
-
-    tl.to(tileRef.current, {
-      width: "100vw",
-      height: "100vh",
-      borderRadius: 0,
-      borderColor: "rgba(201,162,39,0)",
-      duration: 1.05,
-      ease: "expo.inOut",
-    });
-  };
-
   return (
     <section
       ref={rootRef}
       id="hero"
       className="relative h-screen w-full overflow-hidden"
     >
-      {/* Background video */}
+      {/* Background video (random clip, auto-plays) */}
       <div
         ref={bgWrapRef}
         className="placeholder-gradient absolute inset-0 will-change-transform"
@@ -161,31 +114,6 @@ export default function Hero() {
         data-hero-frame
         className="pointer-events-none absolute inset-5 z-10 rounded-2xl border border-gold/25 md:inset-8"
       />
-
-      {/* Center preview tile (the zentry trick) */}
-      <button
-        ref={tileRef}
-        onClick={handleExpand}
-        aria-label="Play next showcase video"
-        className="placeholder-gradient group absolute left-1/2 top-1/2 z-20 h-[30vh] w-[62vw] -translate-x-1/2 -translate-y-1/2 overflow-hidden rounded-2xl border-2 border-gold/60 shadow-2xl shadow-black/50 sm:w-[42vw] md:h-[34vh] md:w-[30vw]"
-        style={{ willChange: "width,height" }}
-      >
-        <video
-          key={hero.videos[nextIndex(current)]}
-          className="absolute inset-0 h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"
-          src={hero.videos[nextIndex(current)]}
-          autoPlay
-          muted
-          loop
-          playsInline
-          preload="metadata"
-        />
-        <span className="absolute inset-0 grid place-items-center">
-          <span className="grid h-14 w-14 place-items-center rounded-full bg-black/40 text-gold backdrop-blur-sm transition-transform duration-300 group-hover:scale-110">
-            <FiPlay className="ml-0.5 text-2xl" />
-          </span>
-        </span>
-      </button>
 
       {/* Heading — zentry-style split to opposite corners */}
       <div
