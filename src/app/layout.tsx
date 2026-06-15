@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Anton, Inter } from "next/font/google";
 import "./globals.css";
 import SmoothScrollProvider from "@/components/providers/SmoothScrollProvider";
+import Preloader from "@/components/providers/Preloader";
 
 const inter = Inter({
   variable: "--font-inter",
@@ -33,7 +34,10 @@ export default function RootLayout({
       className={`${inter.variable} ${anton.variable} antialiased`}
     >
       <body className="bg-bg text-text font-body">
-        <SmoothScrollProvider>{children}</SmoothScrollProvider>
+        <SmoothScrollProvider>
+          <Preloader />
+          {children}
+        </SmoothScrollProvider>
       </body>
     </html>
   );
