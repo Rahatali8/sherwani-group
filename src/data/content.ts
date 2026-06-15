@@ -149,24 +149,29 @@ export const projects = {
       name: "Bloom Gardens",
       location: "Karachi",
       desc: "Ultra-luxury 4 & 5 room apartments designed for elevated, modern living.",
+      image: "/images/projects/Bloom-Gardens.jpg",
     },
     {
       slug: "royal-suites",
       name: "Sherwani Royal Suites",
       location: "Karachi",
       desc: "Shops, showrooms and 4–5 room apartments complete with a gym and clubhouse.",
+      // No image supplied yet — falls back to gradient placeholder.
+      image: "/images/projects/royal-suites.jpg",
     },
     {
       slug: "hub-valley",
       name: "Hub Valley Residency",
       location: "Hub, Balochistan",
       desc: "Contemporary comfort and modern living in the heart of Balochistan.",
+      image: "/images/projects/Hub-Valley-Residency.jpg",
     },
     {
       slug: "address-one",
       name: "Address One",
       location: "Karachi",
       desc: "A landmark high-rise of 3 & 4 room luxury apartments on easy installments.",
+      image: "/images/projects/Address-One.jpg",
     },
   ],
 };

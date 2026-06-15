@@ -85,10 +85,9 @@ export default function Projects() {
                 className="absolute inset-x-0 -top-[10%] h-[120%] w-full"
               >
                 <PlaceholderImage
-                  src={`/images/projects/${p.slug}.jpg`}
+                  src={p.image}
                   alt={p.name}
                   sizes="(max-width: 768px) 100vw, 60vw"
-                  label={`${p.slug}.jpg`}
                   className="h-full w-full transition-transform duration-700 group-hover:scale-105"
                 />
               </div>
