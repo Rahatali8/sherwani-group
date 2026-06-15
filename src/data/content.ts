@@ -38,6 +38,53 @@ export const about = {
   featureImage: "/images/about-feature.jpg",
 };
 
+export const timeline = {
+  overline: "Our Journey",
+  heading: "Four Decades of Growth",
+  milestones: [
+    {
+      year: "1984",
+      title: "Sherwani Motors Founded",
+      desc: "The journey begins with quality vehicle trading — the foundation of everything that followed.",
+    },
+    {
+      year: "1994",
+      title: "Suzuki 3S Dealership",
+      desc: "Becomes a Suzuki 3S dealer — sales, service and spare parts under one roof.",
+    },
+    {
+      year: "2001",
+      title: "New Dealerships",
+      desc: "Expands with Hyundai, Mitsubishi & KIA dealerships.",
+    },
+    {
+      year: "2008",
+      title: "Entry into Real Estate",
+      desc: "Launches Sherwani Builders & Developers, entering the property market.",
+    },
+    {
+      year: "2009",
+      title: "“Elite” Dealership Award",
+      desc: "Hyundai Sherwani Motors named the only Elite dealer in Karachi across the Asia Pacific region.",
+    },
+    {
+      year: "2011",
+      title: "Own Brand “Hamza”",
+      desc: "Launches its own brand, debuting with a 14-seater van.",
+    },
+    {
+      year: "2013",
+      title: "Toyota & Daihatsu 3S",
+      desc: "Acquires the Toyota & Daihatsu 3S dealership from Indus Motor Company.",
+    },
+    {
+      year: "2024",
+      title: "Continued Expansion",
+      desc: "Growth across Toyota Highway Motors, engineering and e-commerce ventures.",
+    },
+  ],
+};
+
 export const navLinks = [
   { label: "Home", href: "#home" },
   { label: "About", href: "#about" },

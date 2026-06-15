@@ -2,6 +2,7 @@
 import Navbar from "@/components/layout/Navbar";
 import Hero from "@/components/sections/Hero";
 import About from "@/components/sections/About";
+import Timeline from "@/components/sections/Timeline";
 
 export default function Home() {
   return (
@@ -10,11 +11,12 @@ export default function Home() {
       <main id="home" className="bg-bg">
         <Hero />
         <About />
-        {/* Phase 4+ sections mount here: Timeline, Diversification,
-            Projects, Awards, Clientele, Contact, Footer. */}
-        <div className="flex h-screen items-center justify-center bg-surface">
+        <Timeline />
+        {/* Phase 5+ sections mount here: Diversification, Projects,
+            Awards, Clientele, Contact, Footer. */}
+        <div className="flex h-screen items-center justify-center bg-bg">
           <p className="font-display text-4xl tracking-wider text-muted/30">
-            TIMELINE — PHASE 4
+            DIVERSIFICATION — PHASE 5
           </p>
         </div>
       </main>
