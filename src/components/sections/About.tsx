@@ -1,7 +1,7 @@
 "use client";
 
 import { useRef } from "react";
-import { gsap, useGSAP } from "@/lib/gsap";
+import { gsap, useGSAP, prefersReducedMotion } from "@/lib/gsap";
 import { about } from "@/data/content";
 import AnimatedTitle from "@/components/ui/AnimatedTitle";
 import { PlaceholderImage } from "@/components/ui/Media";
@@ -14,6 +14,7 @@ export default function About() {
 
   useGSAP(
     () => {
+      if (prefersReducedMotion()) return;
       // Vision / Mission + intro fade-up stagger on enter.
       gsap.from("[data-about-fade]", {
         opacity: 0,

@@ -2,7 +2,7 @@
 
 import { useRef, useState } from "react";
 import { FiPhone, FiMail, FiClock, FiMapPin } from "react-icons/fi";
-import { gsap, useGSAP } from "@/lib/gsap";
+import { gsap, useGSAP, prefersReducedMotion } from "@/lib/gsap";
 import { contact, site } from "@/data/content";
 import AnimatedTitle from "@/components/ui/AnimatedTitle";
 
@@ -22,6 +22,7 @@ export default function Contact() {
 
   useGSAP(
     () => {
+      if (prefersReducedMotion()) return;
       gsap.from("[data-contact-reveal]", {
         opacity: 0,
         y: 40,
@@ -109,6 +110,7 @@ export default function Contact() {
               <input
                 className={fieldClass}
                 placeholder="Your name"
+                aria-label="Your name"
                 value={form.name}
                 onChange={update("name")}
                 required
@@ -117,6 +119,7 @@ export default function Contact() {
                 type="email"
                 className={fieldClass}
                 placeholder="Email address"
+                aria-label="Email address"
                 value={form.email}
                 onChange={update("email")}
                 required
@@ -125,12 +128,14 @@ export default function Contact() {
             <input
               className={fieldClass}
               placeholder="Subject"
+              aria-label="Subject"
               value={form.subject}
               onChange={update("subject")}
             />
             <textarea
               className={`${fieldClass} min-h-40 resize-y`}
               placeholder="Your message"
+              aria-label="Your message"
               value={form.message}
               onChange={update("message")}
               required

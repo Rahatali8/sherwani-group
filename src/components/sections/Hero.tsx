@@ -2,7 +2,7 @@
 
 import { useRef, useState } from "react";
 import { FiPlay } from "react-icons/fi";
-import { gsap, ScrollTrigger, useGSAP } from "@/lib/gsap";
+import { gsap, ScrollTrigger, useGSAP, prefersReducedMotion } from "@/lib/gsap";
 import { hero } from "@/data/content";
 
 const total = hero.videos.length;
@@ -36,6 +36,7 @@ export default function Hero() {
   // On-load reveals + scroll parallax (scoped, mobile-aware via matchMedia).
   useGSAP(
     () => {
+      if (prefersReducedMotion()) return;
       // Heading words: mask reveal from below, staggered.
       gsap.from(headingRef.current?.querySelectorAll("[data-word]") ?? [], {
         yPercent: 120,

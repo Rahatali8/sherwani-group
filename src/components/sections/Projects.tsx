@@ -3,7 +3,7 @@
 import { useRef } from "react";
 import clsx from "clsx";
 import { FiMapPin } from "react-icons/fi";
-import { gsap, useGSAP } from "@/lib/gsap";
+import { gsap, useGSAP, prefersReducedMotion } from "@/lib/gsap";
 import { projects } from "@/data/content";
 import AnimatedTitle from "@/components/ui/AnimatedTitle";
 import { PlaceholderImage } from "@/components/ui/Media";
@@ -21,6 +21,7 @@ export default function Projects() {
 
   useGSAP(
     () => {
+      if (prefersReducedMotion()) return;
       const cards = gsap.utils.toArray<HTMLElement>("[data-project]");
 
       // Titles / cards reveal with stagger as they enter.

@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import Image from "next/image";
 import clsx from "clsx";
 
@@ -23,15 +23,35 @@ type VideoProps = {
 };
 
 export function PlaceholderVideo({ src, className, label }: VideoProps) {
+  const videoRef = useRef<HTMLVideoElement>(null);
+
+  // Only play while on-screen (perf); respect reduced motion.
+  useEffect(() => {
+    const el = videoRef.current;
+    if (!el) return;
+    const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    if (reduce) return;
+
+    const io = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) el.play().catch(() => {});
+        else el.pause();
+      },
+      { threshold: 0.2 },
+    );
+    io.observe(el);
+    return () => io.disconnect();
+  }, []);
+
   return (
     <div className={clsx("relative overflow-hidden placeholder-gradient", className)}>
       <video
+        ref={videoRef}
         className="absolute inset-0 h-full w-full object-cover"
         src={src}
         muted
         loop
         playsInline
-        autoPlay
         preload="metadata"
       />
       {label && (

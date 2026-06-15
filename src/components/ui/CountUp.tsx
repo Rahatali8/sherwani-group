@@ -2,7 +2,7 @@
 
 import { useRef } from "react";
 import clsx from "clsx";
-import { gsap, useGSAP } from "@/lib/gsap";
+import { gsap, useGSAP, prefersReducedMotion } from "@/lib/gsap";
 
 /** Counts from 0 to `end` when it scrolls into view. */
 export default function CountUp({
@@ -20,6 +20,10 @@ export default function CountUp({
 
   useGSAP(
     () => {
+      if (prefersReducedMotion()) {
+        if (ref.current) ref.current.textContent = `${end}${suffix}`;
+        return;
+      }
       const obj = { v: 0 };
       gsap.to(obj, {
         v: end,

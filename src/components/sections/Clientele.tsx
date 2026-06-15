@@ -1,7 +1,7 @@
 "use client";
 
 import { useRef } from "react";
-import { gsap, useGSAP } from "@/lib/gsap";
+import { gsap, useGSAP, prefersReducedMotion } from "@/lib/gsap";
 import { clients } from "@/data/content";
 import AnimatedTitle from "@/components/ui/AnimatedTitle";
 import { PlaceholderImage } from "@/components/ui/Media";
@@ -34,6 +34,7 @@ function MarqueeRow({
 
   useGSAP(
     () => {
+      if (prefersReducedMotion()) return;
       // Content is rendered twice; animate one full width then loop seamlessly.
       gsap.set(trackRef.current, { xPercent: reverse ? -50 : 0 });
       tweenRef.current = gsap.to(trackRef.current, {

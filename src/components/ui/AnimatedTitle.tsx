@@ -1,8 +1,8 @@
 "use client";
 
-import { useRef, createElement } from "react";
+import { useRef } from "react";
 import clsx from "clsx";
-import { gsap, useGSAP } from "@/lib/gsap";
+import { gsap, useGSAP, prefersReducedMotion } from "@/lib/gsap";
 
 /**
  * Word-by-word mask reveal on scroll-into-view.
@@ -11,7 +11,7 @@ import { gsap, useGSAP } from "@/lib/gsap";
  */
 export default function AnimatedTitle({
   text,
-  as = "h2",
+  as: Tag = "h2",
   className,
   delay = 0,
 }: {
@@ -20,11 +20,12 @@ export default function AnimatedTitle({
   className?: string;
   delay?: number;
 }) {
-  const ref = useRef<HTMLElement>(null);
+  const ref = useRef<HTMLHeadingElement>(null);
   const words = text.split(" ");
 
   useGSAP(
     () => {
+      if (prefersReducedMotion()) return;
       gsap.from(ref.current?.querySelectorAll("[data-word]") ?? [], {
         yPercent: 115,
         duration: 1,
@@ -40,15 +41,15 @@ export default function AnimatedTitle({
     { scope: ref },
   );
 
-  return createElement(
-    as,
-    { ref, className: clsx("font-display leading-[0.95]", className) },
-    words.map((w, i) => (
-      <span key={i} className="mr-[0.22em] inline-block overflow-hidden">
-        <span data-word className="inline-block">
-          {w}
+  return (
+    <Tag ref={ref} className={clsx("font-display leading-[0.95]", className)}>
+      {words.map((w, i) => (
+        <span key={i} className="mr-[0.22em] inline-block overflow-hidden">
+          <span data-word className="inline-block">
+            {w}
+          </span>
         </span>
-      </span>
-    )),
+      ))}
+    </Tag>
   );
 }

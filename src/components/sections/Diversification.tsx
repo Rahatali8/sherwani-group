@@ -2,7 +2,7 @@
 
 import { useRef } from "react";
 import clsx from "clsx";
-import { gsap, useGSAP } from "@/lib/gsap";
+import { gsap, useGSAP, prefersReducedMotion } from "@/lib/gsap";
 import { diversification } from "@/data/content";
 import AnimatedTitle from "@/components/ui/AnimatedTitle";
 import { PlaceholderVideo } from "@/components/ui/Media";
@@ -12,6 +12,7 @@ export default function Diversification() {
 
   useGSAP(
     () => {
+      if (prefersReducedMotion()) return;
       const cards = gsap.utils.toArray<HTMLElement>("[data-div-card]");
       const mm = gsap.matchMedia();
 

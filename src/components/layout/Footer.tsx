@@ -7,7 +7,7 @@ import {
   FaLinkedinIn,
   FaYoutube,
 } from "react-icons/fa";
-import { gsap, useGSAP } from "@/lib/gsap";
+import { gsap, useGSAP, prefersReducedMotion } from "@/lib/gsap";
 import { navLinks, affiliatedCompanies, site, contact } from "@/data/content";
 
 const socials = [
@@ -23,6 +23,7 @@ export default function Footer() {
 
   useGSAP(
     () => {
+      if (prefersReducedMotion()) return;
       // Oversized text: word-by-word mask reveal.
       gsap.from(bigRef.current?.querySelectorAll("[data-fword]") ?? [], {
         yPercent: 120,
@@ -157,7 +158,7 @@ export default function Footer() {
 
         {/* Copyright */}
         <div className="flex flex-col items-center justify-between gap-3 border-t border-white/10 py-8 text-sm text-muted md:flex-row">
-          <p>
+          <p suppressHydrationWarning>
             © {new Date().getFullYear()} {site.name}. All rights reserved.
           </p>
           <p className="tracking-wide">{site.tagline}</p>

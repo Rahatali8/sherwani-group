@@ -32,8 +32,12 @@ IMAGES  (/public/images/)
   clients/
     1.png ... 44.png             transparent client logos
 
-NOTES
------
-- Videos: H.264 MP4, muted, web-optimized (faststart), keep file sizes small.
-- Images: prefer .jpg for photos, transparent .png for logos.
-- This list is updated in the Phase 10 polish pass with final specs.
+NOTES (final — Phase 10)
+------------------------
+- Videos: H.264 MP4, muted, web-optimized with faststart. Target < 4 MB each;
+  hero clips 5-8s, diversification 3-5s. Offscreen videos auto-pause (perf).
+- Images: .jpg for photos (sRGB, ~80% quality), transparent .png for logos.
+  next/image is used with `sizes`, so just drop files at the exact paths.
+- Everything degrades gracefully: missing files show a gold gradient + label,
+  so the site never looks broken while assets are pending.
+- Currently present: videos/hero-1.mp4. Everything else still placeholder.

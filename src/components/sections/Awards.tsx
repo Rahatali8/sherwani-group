@@ -2,7 +2,7 @@
 
 import { useRef } from "react";
 import { FaTrophy } from "react-icons/fa";
-import { gsap, useGSAP } from "@/lib/gsap";
+import { gsap, useGSAP, prefersReducedMotion } from "@/lib/gsap";
 import { awards } from "@/data/content";
 import AnimatedTitle from "@/components/ui/AnimatedTitle";
 import CountUp from "@/components/ui/CountUp";
@@ -12,6 +12,7 @@ export default function Awards() {
 
   useGSAP(
     () => {
+      if (prefersReducedMotion()) return;
       gsap.from("[data-award]", {
         opacity: 0,
         y: 50,

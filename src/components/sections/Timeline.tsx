@@ -1,7 +1,7 @@
 "use client";
 
 import { useRef } from "react";
-import { gsap, useGSAP } from "@/lib/gsap";
+import { gsap, useGSAP, prefersReducedMotion } from "@/lib/gsap";
 import { timeline } from "@/data/content";
 import AnimatedTitle from "@/components/ui/AnimatedTitle";
 
@@ -14,6 +14,13 @@ export default function Timeline() {
     () => {
       const track = trackRef.current;
       if (!track) return;
+
+      // Reduced motion: skip pin/scrub; let the desktop track scroll natively
+      // so every card stays reachable.
+      if (prefersReducedMotion()) {
+        if (sectionRef.current) sectionRef.current.style.overflowX = "auto";
+        return;
+      }
 
       const mm = gsap.matchMedia();
 
