@@ -6,15 +6,19 @@ import { clients } from "@/data/content";
 import AnimatedTitle from "@/components/ui/AnimatedTitle";
 import { PlaceholderImage } from "@/components/ui/Media";
 
-function LogoTile({ src }: { src: string }) {
+function LogoTile({ src, caption }: { src: string; caption: string }) {
   return (
-    <div className="relative h-24 w-40 shrink-0 overflow-hidden rounded-xl border border-white/10 bg-surface grayscale transition-all duration-500 hover:grayscale-0 hover:border-gold/40">
+    <div className="group relative h-24 w-40 shrink-0 overflow-hidden rounded-xl border border-white/10 bg-surface transition-all duration-500 hover:border-gold/50">
       <PlaceholderImage
         src={src}
-        alt="Client logo"
+        alt={caption}
         sizes="160px"
-        className="h-full w-full"
+        className="h-full w-full transition-transform duration-500 group-hover:scale-105"
       />
+      {/* Faint description appears on hover */}
+      <div className="pointer-events-none absolute inset-x-0 bottom-0 translate-y-full bg-gradient-to-t from-black/80 via-black/40 to-transparent px-2 pb-1.5 pt-4 text-center text-[10px] font-medium uppercase tracking-[0.2em] text-gold-soft opacity-0 transition-all duration-300 group-hover:translate-y-0 group-hover:opacity-100">
+        {caption}
+      </div>
     </div>
   );
 }
@@ -54,7 +58,7 @@ function MarqueeRow({
     >
       <div ref={trackRef} className="flex w-max gap-5 pr-5 will-change-transform">
         {[...items, ...items].map((src, i) => (
-          <LogoTile key={`${src}-${i}`} src={src} />
+          <LogoTile key={`${src}-${i}`} src={src} caption="Trusted Partner" />
         ))}
       </div>
     </div>
