@@ -6,14 +6,13 @@ import { clients } from "@/data/content";
 import AnimatedTitle from "@/components/ui/AnimatedTitle";
 import { PlaceholderImage } from "@/components/ui/Media";
 
-function LogoTile({ n }: { n: number }) {
+function LogoTile({ src }: { src: string }) {
   return (
     <div className="relative h-24 w-40 shrink-0 overflow-hidden rounded-xl border border-white/10 bg-surface grayscale transition-all duration-500 hover:grayscale-0 hover:border-gold/40">
       <PlaceholderImage
-        src={`/images/clients/${n}.png`}
-        alt={`Client ${n}`}
+        src={src}
+        alt="Client logo"
         sizes="160px"
-        label={`logo-${n}`}
         className="h-full w-full"
       />
     </div>
@@ -25,7 +24,7 @@ function MarqueeRow({
   reverse = false,
   speed = 40,
 }: {
-  items: number[];
+  items: string[];
   reverse?: boolean;
   speed?: number;
 }) {
@@ -54,8 +53,8 @@ function MarqueeRow({
       onMouseLeave={() => tweenRef.current?.resume()}
     >
       <div ref={trackRef} className="flex w-max gap-5 pr-5 will-change-transform">
-        {[...items, ...items].map((n, i) => (
-          <LogoTile key={`${n}-${i}`} n={n} />
+        {[...items, ...items].map((src, i) => (
+          <LogoTile key={`${src}-${i}`} src={src} />
         ))}
       </div>
     </div>
@@ -64,7 +63,7 @@ function MarqueeRow({
 
 export default function Clientele() {
   const rootRef = useRef<HTMLElement>(null);
-  const all = Array.from({ length: clients.count }, (_, i) => i + 1);
+  const all = clients.logos;
   const half = Math.ceil(all.length / 2);
   const row1 = all.slice(0, half);
   const row2 = all.slice(half);

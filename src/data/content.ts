@@ -200,10 +200,18 @@ export const awards = {
   }[],
 };
 
+// Actual logo files present in /public/images/clients (testimonials-N.jpg).
+// Note: number 19 is absent; everything else from 1..44 exists.
+const clientNumbers = [
+  1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 20, 21, 22, 23,
+  24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43,
+  44,
+];
+
 export const clients = {
   overline: "Trusted By",
   heading: "Our Clientele",
-  count: 44,
+  logos: clientNumbers.map((n) => `/images/clients/testimonials-${n}.jpg`),
 };
 
 export const contact = {
