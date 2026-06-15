@@ -156,8 +156,7 @@ export const projects = {
       name: "Sherwani Royal Suites",
       location: "Karachi",
       desc: "Shops, showrooms and 4–5 room apartments complete with a gym and clubhouse.",
-      // No image supplied yet — falls back to gradient placeholder.
-      image: "/images/projects/royal-suites.jpg",
+      image: "/images/projects/Sherwani-Royal-Suites.jpg",
     },
     {
       slug: "hub-valley",
