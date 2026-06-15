@@ -85,6 +85,61 @@ export const timeline = {
   ],
 };
 
+export const diversification = {
+  overline: "Diversification",
+  heading: "Customer trust empowers us to expand into diverse ventures",
+  companies: [
+    {
+      slug: "toyota-highway",
+      title: "Toyota Highway Motors",
+      tag: "Automobiles",
+      desc: "A Toyota 3S Gold Dealership — sales, service and spare parts held to the highest global standards.",
+    },
+    {
+      slug: "builders",
+      title: "Sherwani Builders & Developers",
+      tag: "Real Estate",
+      desc: "Crafting premium residential and commercial developments that redefine modern living.",
+    },
+    {
+      slug: "trv",
+      title: "TRV Pakistan",
+      tag: "Special Vehicles",
+      desc: "The Response Vehicle — ambulances, fire vehicles and bespoke custom fabrication.",
+    },
+    {
+      slug: "trims",
+      title: "Trims.pk",
+      tag: "E-Commerce",
+      desc: "Automotive e-commerce — genuine parts and accessories delivered across Pakistan.",
+    },
+    {
+      slug: "engineering",
+      title: "Sherwani Engineering",
+      tag: "Engineering",
+      desc: "Vehicle bodies, generators and industrial machinery engineered for durability.",
+    },
+    {
+      slug: "hub-motors",
+      title: "Toyota Hub Motors",
+      tag: "Automobiles",
+      desc: "A new Toyota dealership extending world-class service to Balochistan.",
+    },
+    {
+      slug: "hub-rally",
+      title: "Hub Rally",
+      tag: "Motorsports",
+      desc: "A motorsports legacy — 11 years and running, fuelling the spirit of competition.",
+    },
+    {
+      slug: "farms",
+      title: "Sherwani Farms",
+      tag: "Leisure",
+      desc: "Serene farmhouses and a children's park — leisure and lifestyle reimagined.",
+    },
+  ],
+};
+
 export const navLinks = [
   { label: "Home", href: "#home" },
   { label: "About", href: "#about" },
