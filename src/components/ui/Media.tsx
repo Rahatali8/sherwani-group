@@ -91,6 +91,9 @@ export function PlaceholderImage({
           fill
           sizes={sizes ?? "100vw"}
           priority={priority}
+          // Placeholder assets may be missing; skip optimization so a 404 just
+          // triggers onError (gradient fallback) instead of a server image error.
+          unoptimized
           className="object-cover"
           onError={() => setFailed(true)}
         />

@@ -24,7 +24,8 @@ export default function Navbar() {
         duration: 0.4,
         ease: "power3.out",
       });
-      const fadeTo = gsap.quickTo(el, "autoAlpha", {
+      // Use opacity (not autoAlpha) — quickTo can't reset the composite autoAlpha.
+      const fadeTo = gsap.quickTo(el, "opacity", {
         duration: 0.4,
         ease: "power3.out",
       });
