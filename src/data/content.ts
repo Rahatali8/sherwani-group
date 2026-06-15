@@ -35,7 +35,7 @@ export const about = {
     title: "CEO, Sherwani Group",
     image: "/images/ceo.jpg",
   },
-  featureImage: "/images/about-feature.jpg",
+  featureVideo: "/videos/about-feature.mp4",
 };
 
 export const timeline = {

@@ -4,7 +4,7 @@ import { useRef } from "react";
 import { gsap, useGSAP, prefersReducedMotion } from "@/lib/gsap";
 import { about } from "@/data/content";
 import AnimatedTitle from "@/components/ui/AnimatedTitle";
-import { PlaceholderImage } from "@/components/ui/Media";
+import { PlaceholderImage, PlaceholderVideo } from "@/components/ui/Media";
 
 export default function About() {
   const rootRef = useRef<HTMLElement>(null);
@@ -114,11 +114,9 @@ export default function About() {
           ref={mediaInnerRef}
           className="placeholder-gradient relative h-full w-full overflow-hidden"
         >
-          <PlaceholderImage
-            src={about.featureImage}
-            alt="Sherwani Group headquarters"
-            sizes="100vw"
-            label="about-feature.jpg"
+          <PlaceholderVideo
+            src={about.featureVideo}
+            label="about-feature.mp4"
             className="h-full w-full"
           />
           <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />

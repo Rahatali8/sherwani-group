@@ -8,6 +8,7 @@ VIDEOS  (/public/videos/)
 -------------------------
   placeholder.mp4                generic fallback clip (optional)
   hero-1.mp4 ... hero-4.mp4      hero switcher — 5-8s, 1080p, muted, loop
+  about-feature.mp4             About section central reveal — 5-8s, 1080p 16:9, loop
   diversification/
     toyota-highway.mp4           3-5s each, muted, loop
     builders.mp4
@@ -21,7 +22,6 @@ VIDEOS  (/public/videos/)
 IMAGES  (/public/images/)
 -------------------------
   ceo.jpg                        Shujaat Sherwani (portrait, ~1200x1500)
-  about-feature.jpg              About section hero/feature image (~1920x1080)
   logo.svg                       group logo (swaps the text logo)
   textures/dark-gold-bg.jpg      optional section background
   projects/
