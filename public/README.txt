@@ -21,6 +21,7 @@ VIDEOS  (/public/videos/)
 IMAGES  (/public/images/)
 -------------------------
   ceo.jpg                        Shujaat Sherwani (portrait, ~1200x1500)
+  about-feature.jpg              About section hero/feature image (~1920x1080)
   logo.svg                       group logo (swaps the text logo)
   textures/dark-gold-bg.jpg      optional section background
   projects/

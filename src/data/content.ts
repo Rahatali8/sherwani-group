@@ -21,6 +21,23 @@ export const hero = {
   ],
 };
 
+export const about = {
+  overline: "About the Group",
+  heading: "Unity in Diversity, Strength in Community",
+  intro:
+    "What began in 1984 as Sherwani Motors — a single venture in quality vehicle trading — has grown over four decades into one of Pakistan's most trusted conglomerates, spanning automobile dealerships, real estate, engineering, e-commerce and motorsports.",
+  vision:
+    "To be a benchmark of trust and excellence across every industry we enter — building enduring value for our customers, partners and communities while setting new standards in quality and service.",
+  mission:
+    "To deliver world-class products and experiences through innovation, integrity and relentless customer focus, empowering growth that uplifts the people and the nation we serve.",
+  ceo: {
+    name: "Shujaat Sherwani",
+    title: "CEO, Sherwani Group",
+    image: "/images/ceo.jpg",
+  },
+  featureImage: "/images/about-feature.jpg",
+};
+
 export const navLinks = [
   { label: "Home", href: "#home" },
   { label: "About", href: "#about" },
