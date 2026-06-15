@@ -206,6 +206,16 @@ export const clients = {
   count: 44,
 };
 
+export const contact = {
+  overline: "Contact",
+  heading: "Get in Touch",
+  email: "info@sherwanigroup.com",
+  address: "Sherwani Group, Main National Highway, Karachi, Pakistan",
+  // Placeholder Google Maps embed (Toyota Highway Motors) — swap exact src later.
+  mapEmbed:
+    "https://www.google.com/maps?q=Toyota%20Highway%20Motors%20Karachi&output=embed",
+};
+
 export const navLinks = [
   { label: "Home", href: "#home" },
   { label: "About", href: "#about" },

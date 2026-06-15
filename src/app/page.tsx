@@ -1,5 +1,6 @@
 // Home page — sections are added one build phase at a time.
 import Navbar from "@/components/layout/Navbar";
+import Footer from "@/components/layout/Footer";
 import Hero from "@/components/sections/Hero";
 import About from "@/components/sections/About";
 import Timeline from "@/components/sections/Timeline";
@@ -7,6 +8,7 @@ import Diversification from "@/components/sections/Diversification";
 import Projects from "@/components/sections/Projects";
 import Awards from "@/components/sections/Awards";
 import Clientele from "@/components/sections/Clientele";
+import Contact from "@/components/sections/Contact";
 
 export default function Home() {
   return (
@@ -20,13 +22,9 @@ export default function Home() {
         <Projects />
         <Awards />
         <Clientele />
-        {/* Phase 8+ sections mount here: Contact, Footer. */}
-        <div className="flex h-screen items-center justify-center bg-bg">
-          <p className="font-display text-4xl tracking-wider text-muted/30">
-            CONTACT — PHASE 8
-          </p>
-        </div>
+        <Contact />
       </main>
+      <Footer />
     </>
   );
 }
