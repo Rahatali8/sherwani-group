@@ -187,35 +187,40 @@ export default function Hero() {
         </span>
       </button>
 
-      {/* Heading */}
-      <div className="pointer-events-none absolute inset-0 z-30 flex flex-col items-center justify-center px-5 text-center">
-        <h1
-          ref={headingRef}
-          className="font-display leading-[0.85] tracking-tight"
-        >
+      {/* Heading — zentry-style split to opposite corners */}
+      <div
+        ref={headingRef}
+        className="pointer-events-none absolute inset-0 z-30 font-display leading-[0.85] tracking-tight"
+      >
+        {/* SHERWANI — top-left */}
+        <div className="absolute left-5 top-24 md:left-12 md:top-28">
           <span className="block overflow-hidden">
             <span
               data-word
-              className="block text-[clamp(3rem,13vw,11rem)] text-text drop-shadow-[0_4px_30px_rgba(0,0,0,0.7)]"
+              className="block text-[clamp(2.6rem,11vw,9.5rem)] text-text drop-shadow-[0_4px_30px_rgba(0,0,0,0.7)]"
             >
               {hero.titleLines[0]}
             </span>
           </span>
+          <p
+            data-hero-fade
+            className="mt-3 max-w-xs font-body text-xs font-medium uppercase tracking-[0.3em] text-text/80 sm:text-sm"
+          >
+            {hero.subheading}
+          </p>
+        </div>
+
+        {/* GROUP — bottom-right */}
+        <div className="absolute bottom-24 right-5 text-right md:bottom-28 md:right-12">
           <span className="block overflow-hidden">
             <span
               data-word
-              className="ml-[0.15em] block -skew-x-6 text-[clamp(3rem,13vw,11rem)] text-gold drop-shadow-[0_4px_30px_rgba(0,0,0,0.7)]"
+              className="block -skew-x-6 text-[clamp(2.6rem,11vw,9.5rem)] text-gold drop-shadow-[0_4px_30px_rgba(0,0,0,0.7)]"
             >
               {hero.titleLines[1]}
             </span>
           </span>
-        </h1>
-        <p
-          data-hero-fade
-          className="mt-6 max-w-xl text-balance text-sm font-medium uppercase tracking-[0.3em] text-text/80 sm:text-base"
-        >
-          {hero.subheading}
-        </p>
+        </div>
       </div>
 
       {/* Bottom-left tagline */}
