@@ -140,6 +140,37 @@ export const diversification = {
   ],
 };
 
+export const projects = {
+  overline: "Real Estate",
+  heading: "Signature Developments",
+  items: [
+    {
+      slug: "bloom-gardens",
+      name: "Bloom Gardens",
+      location: "Karachi",
+      desc: "Ultra-luxury 4 & 5 room apartments designed for elevated, modern living.",
+    },
+    {
+      slug: "royal-suites",
+      name: "Sherwani Royal Suites",
+      location: "Karachi",
+      desc: "Shops, showrooms and 4–5 room apartments complete with a gym and clubhouse.",
+    },
+    {
+      slug: "hub-valley",
+      name: "Hub Valley Residency",
+      location: "Hub, Balochistan",
+      desc: "Contemporary comfort and modern living in the heart of Balochistan.",
+    },
+    {
+      slug: "address-one",
+      name: "Address One",
+      location: "Karachi",
+      desc: "A landmark high-rise of 3 & 4 room luxury apartments on easy installments.",
+    },
+  ],
+};
+
 export const navLinks = [
   { label: "Home", href: "#home" },
   { label: "About", href: "#about" },

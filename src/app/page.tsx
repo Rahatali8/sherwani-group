@@ -4,6 +4,7 @@ import Hero from "@/components/sections/Hero";
 import About from "@/components/sections/About";
 import Timeline from "@/components/sections/Timeline";
 import Diversification from "@/components/sections/Diversification";
+import Projects from "@/components/sections/Projects";
 
 export default function Home() {
   return (
@@ -14,11 +15,11 @@ export default function Home() {
         <About />
         <Timeline />
         <Diversification />
-        {/* Phase 6+ sections mount here: Projects, Awards, Clientele,
-            Contact, Footer. */}
-        <div className="flex h-screen items-center justify-center bg-surface">
+        <Projects />
+        {/* Phase 7+ sections mount here: Awards, Clientele, Contact, Footer. */}
+        <div className="flex h-screen items-center justify-center bg-bg">
           <p className="font-display text-4xl tracking-wider text-muted/30">
-            PROJECTS — PHASE 6
+            AWARDS — PHASE 7
           </p>
         </div>
       </main>
