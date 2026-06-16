@@ -2,19 +2,29 @@
 
 import { useRef, useState } from "react";
 import Image from "next/image";
+import Link from "next/link";
+import { usePathname, useRouter } from "next/navigation";
 import clsx from "clsx";
 import { FiMenu, FiX, FiChevronDown, FiPhone } from "react-icons/fi";
 import { gsap, useGSAP } from "@/lib/gsap";
-import { navLinks, affiliatedCompanies, projects, site } from "@/data/content";
+import { navLinks, projects, site } from "@/data/content";
 import { scrollToHash, scrollToTop } from "@/lib/lenis";
 
 export default function Navbar() {
   const navRef = useRef<HTMLElement>(null);
   const overlayRef = useRef<HTMLDivElement>(null);
   const [scrolled, setScrolled] = useState(false);
-  const [dropdownOpen, setDropdownOpen] = useState(false);
   const [projectsOpen, setProjectsOpen] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
+  const pathname = usePathname();
+  const router = useRouter();
+
+  // On the home page anchors smooth-scroll; from other routes we navigate home
+  // (to /#hash) so the link still works.
+  const goSection = (href: string) => {
+    if (pathname === "/") scrollToHash(href);
+    else router.push(`/${href}`);
+  };
 
   // Show / hide on scroll direction + add blurred bg once scrolled past hero top.
   useGSAP(
@@ -98,11 +108,13 @@ export default function Navbar() {
       >
         <div className="flex w-full items-center justify-between px-5 py-4 md:px-10 md:py-5">
           {/* Logo */}
-          <a
-            href="#hero"
+          <Link
+            href="/"
             onClick={(e) => {
-              e.preventDefault();
-              scrollToTop();
+              if (pathname === "/") {
+                e.preventDefault();
+                scrollToTop();
+              }
             }}
             className="flex items-center"
             aria-label="Sherwani Group — Home"
@@ -115,7 +127,7 @@ export default function Navbar() {
               priority
               className="h-9 w-auto object-contain md:h-11"
             />
-          </a>
+          </Link>
 
           {/* Desktop nav */}
           <div className="hidden items-center gap-8 font-ui text-[13px] font-medium uppercase tracking-[0.16em] lg:flex">
@@ -154,10 +166,10 @@ export default function Navbar() {
                       {projects.items.map((p) => (
                         <a
                           key={p.slug}
-                          href={`#project-${p.slug}`}
+                          href={`/#project-${p.slug}`}
                           onClick={(e) => {
                             e.preventDefault();
-                            scrollToHash(`#project-${p.slug}`);
+                            goSection(`#project-${p.slug}`);
                           }}
                           className="block rounded-lg px-3 py-2 normal-case tracking-normal text-text/80 transition-colors hover:bg-white/5 hover:text-gold"
                         >
@@ -170,10 +182,10 @@ export default function Navbar() {
               ) : (
                 <a
                   key={l.href}
-                  href={l.href}
+                  href={`/${l.href}`}
                   onClick={(e) => {
                     e.preventDefault();
-                    scrollToHash(l.href);
+                    goSection(l.href);
                   }}
                   className="group relative text-text/85 transition-colors hover:text-gold"
                 >
@@ -183,49 +195,14 @@ export default function Navbar() {
               ),
             )}
 
-            {/* Affiliated Companies dropdown */}
-            <div
-              className="relative"
-              onMouseEnter={() => setDropdownOpen(true)}
-              onMouseLeave={() => setDropdownOpen(false)}
+            {/* Our Relations — dedicated page */}
+            <Link
+              href="/our-relations"
+              className="group relative text-text/85 transition-colors hover:text-gold"
             >
-              <button
-                className="flex items-center gap-1 uppercase text-text/85 transition-colors hover:text-gold"
-                aria-haspopup="true"
-                aria-expanded={dropdownOpen}
-              >
-                Our Relations
-                <FiChevronDown
-                  className={clsx(
-                    "transition-transform duration-300",
-                    dropdownOpen && "rotate-180",
-                  )}
-                />
-              </button>
-              <div
-                className={clsx(
-                  "absolute right-0 top-full w-60 origin-top pt-3 transition-all duration-300",
-                  dropdownOpen
-                    ? "pointer-events-auto translate-y-0 opacity-100"
-                    : "pointer-events-none -translate-y-2 opacity-0",
-                )}
-              >
-                <div className="overflow-hidden rounded-xl border border-white/10 bg-surface/95 p-2 backdrop-blur-md">
-                  {affiliatedCompanies.map((c) => (
-                    <a
-                      key={c.label}
-                      href={c.href}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="block rounded-lg px-3 py-2 normal-case tracking-normal text-text/80 transition-colors hover:bg-white/5 hover:text-gold"
-                    >
-                      {c.label}
-                    </a>
-                  ))}
-                </div>
-              </div>
-            </div>
-
+              Our Relations
+              <span className="absolute -bottom-1 left-0 h-px w-0 bg-gold transition-all duration-300 group-hover:w-full" />
+            </Link>
           </div>
 
           {/* Mobile hamburger */}
@@ -267,11 +244,11 @@ export default function Navbar() {
               <div key={l.href} className="overflow-hidden">
                 <a
                   data-mobile-link
-                  href={l.href}
+                  href={`/${l.href}`}
                   onClick={(e) => {
                     e.preventDefault();
                     setMenuOpen(false);
-                    scrollToHash(l.href);
+                    goSection(l.href);
                   }}
                   className="block py-2 font-display text-4xl tracking-wide text-text transition-colors hover:text-gold"
                 >
@@ -283,11 +260,11 @@ export default function Navbar() {
                       <a
                         key={p.slug}
                         data-mobile-link
-                        href={`#project-${p.slug}`}
+                        href={`/#project-${p.slug}`}
                         onClick={(e) => {
                           e.preventDefault();
                           setMenuOpen(false);
-                          scrollToHash(`#project-${p.slug}`);
+                          goSection(`#project-${p.slug}`);
                         }}
                         className="block py-1 font-ui text-sm text-text/70 transition-colors hover:text-gold"
                       >
@@ -299,28 +276,15 @@ export default function Navbar() {
               </div>
             ))}
 
-            <div className="mt-6 overflow-hidden">
-              <p
+            <div className="overflow-hidden">
+              <Link
                 data-mobile-link
-                className="mb-2 text-xs uppercase tracking-widest text-muted"
+                href="/our-relations"
+                onClick={() => setMenuOpen(false)}
+                className="block py-2 font-display text-4xl tracking-wide text-text transition-colors hover:text-gold"
               >
                 Our Relations
-              </p>
-            </div>
-            <div className="flex flex-wrap gap-x-4 gap-y-1">
-              {affiliatedCompanies.map((c) => (
-                <div key={c.label} className="overflow-hidden">
-                  <a
-                    data-mobile-link
-                    href={c.href}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="block py-1 text-sm text-text/70 transition-colors hover:text-gold"
-                  >
-                    {c.label}
-                  </a>
-                </div>
-              ))}
+              </Link>
             </div>
 
             <div className="mt-8 overflow-hidden">

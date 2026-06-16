@@ -223,6 +223,65 @@ export const clients = {
   logos: clientNumbers.map((n) => `/images/clients/testimonials-${n}.jpg`),
 };
 
+// "Our Relations" page — Zentry-style scroll-to-select showcase of the group's
+// affiliated companies. Left = names, right = visual that follows the scroll.
+export const relations = {
+  overline: "Our Relations",
+  heading: "The companies that move us forward",
+  hint: "Scroll to explore",
+  items: [
+    {
+      name: "Toyota Highway Motors",
+      sector: "Automobiles",
+      desc: "A Toyota 3S Gold Dealership — sales, service and spare parts held to the highest global standards.",
+      image: "/images/projects/highway.jpg",
+      href: "#",
+    },
+    {
+      name: "Toyota Hub Motors",
+      sector: "Automobiles",
+      desc: "A new Toyota dealership extending world-class service to Balochistan.",
+      image: "/images/projects/hub.jpg",
+      href: "#",
+    },
+    {
+      name: "Sherwani Engineering",
+      sector: "Engineering",
+      desc: "Vehicle bodies, generators and industrial machinery engineered for durability.",
+      image: "/images/projects/event-custom.jpg",
+      href: "#",
+    },
+    {
+      name: "TRV Pakistan",
+      sector: "Special Vehicles",
+      desc: "The Response Vehicle — ambulances, fire vehicles and bespoke custom fabrication.",
+      image: "/images/projects/event-trv.jpg",
+      href: "#",
+    },
+    {
+      name: "Trims.pk",
+      sector: "E-Commerce",
+      desc: "Automotive e-commerce — genuine parts and accessories delivered across Pakistan.",
+      image: "/images/relations/trims.jpg",
+      href: "#",
+    },
+    {
+      name: "Sherwani Builders & Developers",
+      sector: "Real Estate",
+      desc: "Crafting premium residential and commercial developments that redefine modern living.",
+      image: "/images/projects/event-builders.jpg",
+      href: "#",
+    },
+    {
+      name: "Sherwani Farms",
+      sector: "Leisure",
+      desc: "Serene farmhouses and a children's park — leisure and lifestyle reimagined.",
+      image: "/images/relations/farms.jpg",
+      href: "#",
+    },
+  ],
+};
+
 export const contact = {
   overline: "Contact",
   heading: "Get in Touch",

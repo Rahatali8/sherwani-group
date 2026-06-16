@@ -28,6 +28,18 @@ export function scrollToHash(hash: string) {
   document.querySelector(target)?.scrollIntoView({ behavior: "smooth" });
 }
 
+/** Smoothly scroll to an absolute Y pixel offset. */
+export function scrollToY(y: number) {
+  if (lenisInstance) {
+    lenisInstance.scrollTo(y, {
+      duration: 1.2,
+      easing: (t) => 1 - Math.pow(1 - t, 4),
+    });
+    return;
+  }
+  window.scrollTo({ top: y, behavior: "smooth" });
+}
+
 /** Smoothly scroll back to the very top (logo / home). */
 export function scrollToTop() {
   if (lenisInstance) {
