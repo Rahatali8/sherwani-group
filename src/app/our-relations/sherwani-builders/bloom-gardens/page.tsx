@@ -23,17 +23,18 @@ export const metadata: Metadata = {
   description: d.about.body.slice(0, 155),
 };
 
-// Varied bento spans (cycled across the amenities; dense flow fills gaps).
+// Varied bento spans for 9 tiles that perfectly tile a 4-col grid (16 cells).
+// Mobile stays a clean 2-col grid (last tile spans full width).
 const amenitySpan = [
-  "col-span-2 row-span-2 md:col-span-2 md:row-span-2",
+  "md:col-span-2 md:row-span-2",
+  "md:col-span-1",
+  "md:col-span-1",
+  "md:col-span-2",
+  "md:col-span-1 md:row-span-2",
+  "md:col-span-1",
+  "md:col-span-2",
+  "md:col-span-1",
   "col-span-2 md:col-span-2",
-  "col-span-1 md:col-span-1 md:row-span-2",
-  "col-span-1",
-  "col-span-2 md:col-span-1",
-  "col-span-2 md:col-span-2 md:row-span-2",
-  "col-span-1",
-  "col-span-1 md:col-span-2",
-  "col-span-2 md:col-span-1",
 ];
 
 export default function BloomGardensPage() {
@@ -137,7 +138,7 @@ export default function BloomGardensPage() {
             className="max-w-3xl text-[clamp(2rem,5vw,3.6rem)] text-text"
           />
           {/* Bento — varied tile sizes (dense flow fills the gaps) */}
-          <div className="mt-12 grid auto-rows-[8rem] grid-cols-2 grid-flow-dense gap-3 md:mt-16 md:auto-rows-[11rem] md:grid-cols-4 md:gap-4">
+          <div className="mt-12 grid auto-rows-[8rem] grid-cols-2 gap-3 md:mt-16 md:auto-rows-[11rem] md:grid-cols-4 md:gap-4">
             {d.amenities.map((src, i) => (
               <div
                 key={src}
