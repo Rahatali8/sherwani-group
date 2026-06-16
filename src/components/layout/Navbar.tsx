@@ -5,16 +5,15 @@ import Image from "next/image";
 import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
 import clsx from "clsx";
-import { FiMenu, FiX, FiChevronDown, FiPhone } from "react-icons/fi";
+import { FiMenu, FiX, FiPhone } from "react-icons/fi";
 import { gsap, useGSAP } from "@/lib/gsap";
-import { navLinks, projects, site } from "@/data/content";
+import { navLinks, site } from "@/data/content";
 import { scrollToHash, scrollToTop } from "@/lib/lenis";
 
 export default function Navbar() {
   const navRef = useRef<HTMLElement>(null);
   const overlayRef = useRef<HTMLDivElement>(null);
   const [scrolled, setScrolled] = useState(false);
-  const [projectsOpen, setProjectsOpen] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
   const pathname = usePathname();
   const router = useRouter();
@@ -131,69 +130,20 @@ export default function Navbar() {
 
           {/* Desktop nav */}
           <div className="hidden items-center gap-8 font-ui text-[13px] font-medium uppercase tracking-[0.16em] lg:flex">
-            {navLinks.map((l) =>
-              l.label === "Projects" ? (
-                // Projects dropdown — jump to a specific development
-                <div
-                  key={l.href}
-                  className="relative"
-                  onMouseEnter={() => setProjectsOpen(true)}
-                  onMouseLeave={() => setProjectsOpen(false)}
-                >
-                  <button
-                    onClick={() => setProjectsOpen((v) => !v)}
-                    className="flex items-center gap-1 uppercase text-text/85 transition-colors hover:text-gold"
-                    aria-haspopup="true"
-                    aria-expanded={projectsOpen}
-                  >
-                    {l.label}
-                    <FiChevronDown
-                      className={clsx(
-                        "transition-transform duration-300",
-                        projectsOpen && "rotate-180",
-                      )}
-                    />
-                  </button>
-                  <div
-                    className={clsx(
-                      "absolute left-1/2 top-full w-64 origin-top -translate-x-1/2 pt-3 transition-all duration-300",
-                      projectsOpen
-                        ? "pointer-events-auto translate-y-0 opacity-100"
-                        : "pointer-events-none -translate-y-2 opacity-0",
-                    )}
-                  >
-                    <div className="overflow-hidden rounded-xl border border-white/10 bg-surface/95 p-2 backdrop-blur-md">
-                      {projects.items.map((p) => (
-                        <a
-                          key={p.slug}
-                          href={`/#project-${p.slug}`}
-                          onClick={(e) => {
-                            e.preventDefault();
-                            goSection(`#project-${p.slug}`);
-                          }}
-                          className="block rounded-lg px-3 py-2 normal-case tracking-normal text-text/80 transition-colors hover:bg-white/5 hover:text-gold"
-                        >
-                          {p.name}
-                        </a>
-                      ))}
-                    </div>
-                  </div>
-                </div>
-              ) : (
-                <a
-                  key={l.href}
-                  href={`/${l.href}`}
-                  onClick={(e) => {
-                    e.preventDefault();
-                    goSection(l.href);
-                  }}
-                  className="group relative text-text/85 transition-colors hover:text-gold"
-                >
-                  {l.label}
-                  <span className="absolute -bottom-1 left-0 h-px w-0 bg-gold transition-all duration-300 group-hover:w-full" />
-                </a>
-              ),
-            )}
+            {navLinks.map((l) => (
+              <a
+                key={l.href}
+                href={`/${l.href}`}
+                onClick={(e) => {
+                  e.preventDefault();
+                  goSection(l.href);
+                }}
+                className="group relative text-text/85 transition-colors hover:text-gold"
+              >
+                {l.label}
+                <span className="absolute -bottom-1 left-0 h-px w-0 bg-gold transition-all duration-300 group-hover:w-full" />
+              </a>
+            ))}
 
             {/* Our Relations — dedicated page */}
             <Link
@@ -254,25 +204,6 @@ export default function Navbar() {
                 >
                   {l.label}
                 </a>
-                {l.label === "Projects" && (
-                  <div className="mb-1 flex flex-wrap gap-x-4 gap-y-1 pl-1">
-                    {projects.items.map((p) => (
-                      <a
-                        key={p.slug}
-                        data-mobile-link
-                        href={`/#project-${p.slug}`}
-                        onClick={(e) => {
-                          e.preventDefault();
-                          setMenuOpen(false);
-                          goSection(`#project-${p.slug}`);
-                        }}
-                        className="block py-1 font-ui text-sm text-text/70 transition-colors hover:text-gold"
-                      >
-                        {p.name}
-                      </a>
-                    ))}
-                  </div>
-                )}
               </div>
             ))}
 

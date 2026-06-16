@@ -20,7 +20,7 @@ export default function SherwaniBuildersPage() {
       <Navbar />
       <main className="bg-bg">
         {/* HERO */}
-        <section className="relative flex h-screen min-h-[600px] w-full flex-col justify-end overflow-hidden">
+        <section className="relative flex h-screen min-h-[600px] w-full flex-col justify-center overflow-hidden">
           <div className="absolute inset-0">
             <PlaceholderImage
               src={data.heroImage}
@@ -33,7 +33,7 @@ export default function SherwaniBuildersPage() {
             <div className="absolute inset-x-0 top-0 h-40 bg-gradient-to-b from-black/70 to-transparent" />
           </div>
 
-          <div className="relative mx-auto w-full max-w-7xl px-5 pb-16 md:px-10 md:pb-24">
+          <div className="relative mx-auto w-full max-w-7xl px-5 pt-24 md:px-10">
             <Link
               href="/our-relations"
               className="mb-6 inline-flex items-center gap-2 font-ui text-xs uppercase tracking-[0.25em] text-text/70 transition-colors hover:text-gold"

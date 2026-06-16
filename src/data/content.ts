@@ -339,7 +339,6 @@ export const navLinks = [
   { label: "About", href: "#about" },
   { label: "Awards", href: "#awards" },
   { label: "Diversification", href: "#diversification" },
-  { label: "Projects", href: "#projects" },
   { label: "Contact", href: "#contact" },
 ] as const;
 
