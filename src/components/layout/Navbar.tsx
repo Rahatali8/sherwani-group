@@ -2,6 +2,7 @@
 
 import { useRef, useState } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import clsx from "clsx";
 import { FiMenu, FiX, FiChevronDown, FiPhone } from "react-icons/fi";
 import { gsap, useGSAP } from "@/lib/gsap";
@@ -98,8 +99,16 @@ export default function Navbar() {
           {/* Logo */}
           <Link
             href="#home"
-            className="font-display text-xl tracking-wider md:text-2xl"
+            className="flex items-center gap-2.5 font-display text-xl tracking-wider md:text-2xl"
           >
+            <Image
+              src="/images/textures/favicon.png"
+              alt="Sherwani Group"
+              width={40}
+              height={40}
+              priority
+              className="h-8 w-8 object-contain md:h-9 md:w-9"
+            />
             SHERWANI <span className="text-gold">GROUP</span>
           </Link>
 
@@ -187,7 +196,14 @@ export default function Navbar() {
           className="fixed inset-0 z-[60] flex flex-col bg-bg/98 backdrop-blur-xl lg:hidden"
         >
           <div className="flex items-center justify-between px-5 py-4">
-            <span className="font-display text-xl tracking-wider">
+            <span className="flex items-center gap-2.5 font-display text-xl tracking-wider">
+              <Image
+                src="/images/textures/favicon.png"
+                alt="Sherwani Group"
+                width={36}
+                height={36}
+                className="h-8 w-8 object-contain"
+              />
               SHERWANI <span className="text-gold">GROUP</span>
             </span>
             <button

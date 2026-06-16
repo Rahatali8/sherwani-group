@@ -21,6 +21,11 @@ export const metadata: Metadata = {
   title: "Sherwani Group — Driven by Vision, Defined by Excellence",
   description:
     "Sherwani Group — a 40-year Pakistani conglomerate spanning automobiles, real estate, engineering, e-commerce and motorsports.",
+  icons: {
+    icon: "/images/textures/favicon.png",
+    shortcut: "/images/textures/favicon.png",
+    apple: "/images/textures/favicon.png",
+  },
 };
 
 export default function RootLayout({
