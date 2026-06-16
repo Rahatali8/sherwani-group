@@ -249,7 +249,7 @@ export default function About() {
               <span key={line} className="block overflow-hidden">
                 <span
                   data-tw
-                  className="block text-[clamp(2.4rem,8vw,7rem)] drop-shadow-[0_4px_30px_rgba(0,0,0,0.8)]"
+                  className="block text-[clamp(2.4rem,8vw,7rem)]"
                 >
                   {line}
                 </span>
