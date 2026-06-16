@@ -26,8 +26,8 @@ function SplitWord({ text, className }: { text: string; className?: string }) {
   return (
     <span className="inline-flex">
       {[...text].map((ch, i) => (
-        <span key={i} className="block overflow-hidden">
-          <span data-word className={clsx("block", className)}>
+        <span key={i} className="block overflow-hidden py-[0.14em]">
+          <span data-word className={clsx("block leading-none", className)}>
             {ch}
           </span>
         </span>
@@ -147,10 +147,10 @@ export default function Hero() {
               data-hero-line
               className="h-px w-8 origin-right bg-gradient-to-l from-gold to-transparent md:w-24"
             />
-            <span className="block overflow-hidden">
+            <span className="block overflow-hidden py-[0.12em]">
               <span
                 data-word
-                className="gold-shimmer block text-[clamp(1.2rem,5vw,3.6rem)] tracking-[0.28em] drop-shadow-[0_4px_24px_rgba(0,0,0,0.6)] md:tracking-[0.45em]"
+                className="gold-shimmer block leading-none text-[clamp(1.2rem,5vw,3.6rem)] tracking-[0.28em] drop-shadow-[0_4px_24px_rgba(0,0,0,0.6)] md:tracking-[0.45em]"
               >
                 {hero.titleLines[1]}
               </span>
