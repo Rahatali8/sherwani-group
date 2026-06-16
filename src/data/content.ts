@@ -288,7 +288,7 @@ export const buildersPage = {
   name: "Sherwani Builders & Developers",
   overline: "Real Estate · Est. 2008",
   tagline: "Pioneering Excellence in Real Estate",
-  heroImage: "/images/projects/event-builders.jpg",
+  heroImage: "/images/projects/Bloom-Gardens.jpg",
   intro:
     "In 2008, the Sherwani Group carried four decades of trust into real estate — founding Sherwani Builders & Developers to build not just structures, but communities designed for generations.",
   about: [

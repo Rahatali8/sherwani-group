@@ -1,12 +1,13 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { FiArrowLeft, FiArrowUpRight, FiPhone, FiClock } from "react-icons/fi";
+import { FiArrowLeft, FiPhone, FiClock } from "react-icons/fi";
 import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
+import Projects from "@/components/sections/Projects";
 import AnimatedTitle from "@/components/ui/AnimatedTitle";
 import CountUp from "@/components/ui/CountUp";
 import { PlaceholderImage } from "@/components/ui/Media";
-import { buildersPage as data, projects } from "@/data/content";
+import { buildersPage as data } from "@/data/content";
 
 export const metadata: Metadata = {
   title: `${data.name} — Sherwani Group`,
@@ -19,7 +20,7 @@ export default function SherwaniBuildersPage() {
       <Navbar />
       <main className="bg-bg">
         {/* HERO */}
-        <section className="relative flex h-[88vh] min-h-[560px] w-full flex-col justify-end overflow-hidden">
+        <section className="relative flex h-screen min-h-[600px] w-full flex-col justify-end overflow-hidden">
           <div className="absolute inset-0">
             <PlaceholderImage
               src={data.heroImage}
@@ -114,42 +115,8 @@ export default function SherwaniBuildersPage() {
           </div>
         </section>
 
-        {/* PROJECTS */}
-        <section className="mx-auto max-w-7xl px-5 pb-24 md:px-10 md:pb-32">
-          <p className="mb-4 font-ui text-[11px] font-semibold uppercase tracking-[0.4em] text-gold-soft">
-            Signature Developments
-          </p>
-          <AnimatedTitle
-            text="Landmark addresses we've delivered"
-            className="max-w-3xl text-[clamp(2rem,5vw,3.6rem)] text-text"
-          />
-          <div className="mt-14 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
-            {projects.items.map((p) => (
-              <Link
-                key={p.slug}
-                href={`/#project-${p.slug}`}
-                className="group relative aspect-[3/4] overflow-hidden rounded-3xl border border-white/10"
-              >
-                <PlaceholderImage
-                  src={p.image}
-                  alt={p.name}
-                  sizes="(max-width: 640px) 100vw, 25vw"
-                  className="h-full w-full transition-transform duration-700 group-hover:scale-105"
-                />
-                <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/85 via-black/10 to-transparent" />
-                <div className="absolute inset-x-0 bottom-0 p-5">
-                  <h3 className="font-display text-xl uppercase tracking-wide text-text">
-                    {p.name}
-                  </h3>
-                  <p className="mt-1 text-sm text-gold-soft">{p.location}</p>
-                </div>
-                <span className="absolute right-4 top-4 flex h-9 w-9 translate-y-2 items-center justify-center rounded-full border border-gold/60 text-gold opacity-0 transition-all duration-500 group-hover:translate-y-0 group-hover:opacity-100">
-                  <FiArrowUpRight />
-                </span>
-              </Link>
-            ))}
-          </div>
-        </section>
+        {/* SIGNATURE DEVELOPMENTS — reuse the home bento Projects section */}
+        <Projects />
 
         {/* CTA */}
         <section className="border-t border-white/10 bg-surface/40">
