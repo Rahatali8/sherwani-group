@@ -163,6 +163,7 @@ export const projects = {
       location: "Karachi",
       desc: "Shops, showrooms and 4–5 room apartments complete with a gym and clubhouse.",
       image: "/images/projects/Sherwani-Royal-Suites.jpg",
+      page: "/our-relations/sherwani-builders/sherwani-royal-suites",
     },
     {
       slug: "hub-valley",
@@ -333,10 +334,39 @@ export const buildersPage = {
   },
 };
 
+// Shared shape for a Sherwani Builders project page (Bloom Gardens, Royal Suites…)
+export type ProjectData = {
+  slug: string;
+  name: string;
+  overline: string;
+  heroSubtitle: string;
+  heroImage: string;
+  youtubeId: string;
+  paymentHref: string;
+  about: { overline: string; heading: string; body: string; image: string };
+  interiors: { title: string; tagline: string; image: string }[];
+  amenities: string[];
+  payment: {
+    note: string;
+    units: string[];
+    rows: { phase: string; detail: string }[];
+    pricingImage?: string;
+    sizeImage?: string;
+  };
+  contact: {
+    phone: string;
+    hours: string;
+    address: string;
+    mapEmbed: string;
+    interestedOptions: string[];
+  };
+};
+
 // Dedicated project page: Bloom Gardens (a Sherwani Builders development).
 const BG = "/images/projects/blomegarden-assets";
-export const bloomGardens = {
+export const bloomGardens: ProjectData = {
   slug: "bloom-gardens",
+  paymentHref: "/our-relations/sherwani-builders/bloom-gardens/payment-schedule",
   name: "Bloom Gardens",
   overline: "Sherwani Builders · Karachi",
   heroSubtitle: "Discover your home, where dreams unfold.",
@@ -405,6 +435,91 @@ export const bloomGardens = {
       "Falaknaz Bloom Gardens, Sector 8-B, Gulzar-e-Hijri, Scheme 33, Karachi",
     mapEmbed:
       "https://www.google.com/maps?q=Falaknaz%20Bloom%20Gardens%20Karachi&output=embed",
+    interestedOptions: [
+      "4 Room Apartment",
+      "5 Room Apartment",
+      "Shops",
+      "Showrooms",
+    ],
+  },
+};
+
+// Dedicated project page: Sherwani Royal Suites.
+const RS = "/images/projects/royal-suite";
+export const royalSuites: ProjectData = {
+  slug: "royal-suites",
+  name: "Sherwani Royal Suites",
+  overline: "Sherwani Builders · Karachi",
+  heroSubtitle: "A sanctuary of sophistication and comfort.",
+  heroImage: "/images/projects/Sherwani-Royal-Suites.jpg",
+  youtubeId: "sWnivNopcvE",
+  paymentHref:
+    "/our-relations/sherwani-builders/sherwani-royal-suites/payment-schedule",
+  about: {
+    overline: "Elevate Living & Commerce — Your Ideal Spaces, Reimagined",
+    heading: "Introducing Sherwani Royal Suites",
+    body: "Sherwani Royal Suites is a distinguished real estate project that seamlessly blends luxury with functionality. Rising as a ground-plus-11 development, it brings together shops, showrooms and thoughtfully designed 4 and 5-room air-conditioned apartments — complete with ample parking, a well-equipped gym and an exclusive clubhouse. Every detail is meticulously crafted to redefine your living experience.",
+    image: `${RS}/gallery-1.jpg`,
+  },
+  interiors: [
+    {
+      title: "Drawing Room",
+      tagline: "An artistic retreat, styled to impress.",
+      image: `${RS}/Drawing.jpg`,
+    },
+    {
+      title: "Bedroom",
+      tagline: "Indulge in opulence and restful calm.",
+      image: `${RS}/Bedroom.jpg`,
+    },
+    {
+      title: "Bathroom",
+      tagline: "Unwind in luxury, your private sanctuary.",
+      image: `${RS}/Bathroom.jpg`,
+    },
+    {
+      title: "Kitchen",
+      tagline: "Culinary elegance, made for the everyday.",
+      image: `${RS}/Kitchen.jpg`,
+    },
+    {
+      title: "Dining",
+      tagline: "Elevate every meal, together in style.",
+      image: `${RS}/Dining.jpg`,
+    },
+    {
+      title: "Terrace",
+      tagline: "Serenity with a view above the city.",
+      image: `${RS}/Terrace.jpg`,
+    },
+  ],
+  amenities: [
+    "gallery-1",
+    "gallery-2",
+    "gallery-3",
+    "gallery-4",
+    "gallery-5",
+    "gallery-6",
+    "gallery-7",
+    "gallery-8",
+  ].map((n) => `${RS}/${n}.jpg`),
+  payment: {
+    note: "Flexible, easy-installment plans across apartments, shops and showrooms. Contact our team for the latest pricing, unit layouts and availability.",
+    units: ["4 Room Apartments", "5 Room Apartments", "Shops", "Showrooms"],
+    rows: [
+      { phase: "Booking", detail: "At the time of application" },
+      { phase: "Down Payment", detail: "On confirmation of allotment" },
+      { phase: "Monthly Installments", detail: "Spread over the construction period" },
+      { phase: "On Possession", detail: "Final payment at handover" },
+    ],
+  },
+  contact: {
+    phone: "+92 346 008 9565",
+    hours: "Mon–Sun · 11AM – 8PM",
+    address:
+      "Sherwani Royal Suites, PAEC Society, Sector 52-A, Scheme 33, Karachi",
+    mapEmbed:
+      "https://www.google.com/maps?q=Sherwani%20Royal%20Suites%20Karachi&output=embed",
     interestedOptions: [
       "4 Room Apartment",
       "5 Room Apartment",
