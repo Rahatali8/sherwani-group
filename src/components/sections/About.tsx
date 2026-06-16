@@ -181,7 +181,7 @@ export default function About() {
               <g ref={maskGroupRef}>
                 <text
                   x="500"
-                  y="300"
+                  y="225"
                   textAnchor="middle"
                   dominantBaseline="central"
                   fill="black"
@@ -193,7 +193,23 @@ export default function About() {
                     letterSpacing: "0.01em",
                   }}
                 >
-                  {about.revealWord}
+                  {about.revealLines[0]}
+                </text>
+                <text
+                  x="500"
+                  y="400"
+                  textAnchor="middle"
+                  dominantBaseline="central"
+                  fill="black"
+                  textLength="560"
+                  lengthAdjust="spacingAndGlyphs"
+                  style={{
+                    fontFamily: "var(--font-anton), sans-serif",
+                    fontSize: "150px",
+                    letterSpacing: "0.04em",
+                  }}
+                >
+                  {about.revealLines[1]}
                 </text>
               </g>
             </mask>
