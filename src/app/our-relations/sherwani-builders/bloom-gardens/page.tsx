@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import clsx from "clsx";
 import {
   FiArrowLeft,
   FiPlay,
@@ -12,6 +13,7 @@ import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
 import AnimatedTitle from "@/components/ui/AnimatedTitle";
 import WalkthroughVideo from "@/components/ui/WalkthroughVideo";
+import InteriorCarousel from "@/components/ui/InteriorCarousel";
 import EnquiryForm from "@/components/ui/EnquiryForm";
 import { PlaceholderImage } from "@/components/ui/Media";
 import { bloomGardens as d } from "@/data/content";
@@ -20,6 +22,19 @@ export const metadata: Metadata = {
   title: `${d.name} — Sherwani Builders`,
   description: d.about.body.slice(0, 155),
 };
+
+// Varied bento spans (cycled across the amenities; dense flow fills gaps).
+const amenitySpan = [
+  "col-span-2 row-span-2 md:col-span-2 md:row-span-2",
+  "col-span-2 md:col-span-2",
+  "col-span-1 md:col-span-1 md:row-span-2",
+  "col-span-1",
+  "col-span-2 md:col-span-1",
+  "col-span-2 md:col-span-2 md:row-span-2",
+  "col-span-1",
+  "col-span-1 md:col-span-2",
+  "col-span-2 md:col-span-1",
+];
 
 export default function BloomGardensPage() {
   return (
@@ -107,29 +122,8 @@ export default function BloomGardensPage() {
               className="text-[clamp(2rem,5vw,3.6rem)] text-text"
             />
           </div>
-          <div className="mt-12 flex snap-x snap-mandatory gap-5 overflow-x-auto px-5 pb-6 md:mt-16 md:px-10 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
-            {d.interiors.map((it) => (
-              <article
-                key={it.title}
-                className="group relative aspect-[3/4] w-[78%] flex-none snap-center overflow-hidden rounded-3xl border border-white/10 sm:w-[48%] lg:w-[31%]"
-              >
-                <PlaceholderImage
-                  src={it.image}
-                  alt={it.title}
-                  sizes="(max-width: 640px) 78vw, 31vw"
-                  className="h-full w-full transition-transform duration-700 group-hover:scale-105"
-                />
-                <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/85 via-black/15 to-transparent" />
-                <div className="absolute inset-x-0 bottom-0 p-6">
-                  <p className="font-ui text-[11px] uppercase tracking-[0.3em] text-gold">
-                    {it.title}
-                  </p>
-                  <p className="mt-2 font-display text-xl uppercase leading-tight tracking-wide text-text">
-                    {it.tagline}
-                  </p>
-                </div>
-              </article>
-            ))}
+          <div className="mt-12 md:mt-16">
+            <InteriorCarousel items={d.interiors} />
           </div>
         </section>
 
@@ -142,11 +136,15 @@ export default function BloomGardensPage() {
             text="Amenities Beyond Expectation"
             className="max-w-3xl text-[clamp(2rem,5vw,3.6rem)] text-text"
           />
-          <div className="mt-12 grid grid-cols-2 gap-3 md:mt-16 md:grid-cols-3 md:gap-4">
+          {/* Bento — varied tile sizes (dense flow fills the gaps) */}
+          <div className="mt-12 grid auto-rows-[8rem] grid-cols-2 grid-flow-dense gap-3 md:mt-16 md:auto-rows-[11rem] md:grid-cols-4 md:gap-4">
             {d.amenities.map((src, i) => (
               <div
                 key={src}
-                className="group relative aspect-[4/3] overflow-hidden rounded-2xl border border-white/10"
+                className={clsx(
+                  "group relative overflow-hidden rounded-2xl border border-white/10",
+                  amenitySpan[i % amenitySpan.length],
+                )}
               >
                 <PlaceholderImage
                   src={src}
