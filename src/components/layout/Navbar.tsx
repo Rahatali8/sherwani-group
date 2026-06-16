@@ -129,8 +129,8 @@ export default function Navbar() {
                   onMouseLeave={() => setProjectsOpen(false)}
                 >
                   <button
-                    onClick={() => scrollToHash(l.href)}
-                    className="flex items-center gap-1 text-text/85 transition-colors hover:text-gold"
+                    onClick={() => setProjectsOpen((v) => !v)}
+                    className="flex items-center gap-1 uppercase text-text/85 transition-colors hover:text-gold"
                     aria-haspopup="true"
                     aria-expanded={projectsOpen}
                   >
@@ -190,7 +190,7 @@ export default function Navbar() {
               onMouseLeave={() => setDropdownOpen(false)}
             >
               <button
-                className="flex items-center gap-1 text-text/85 transition-colors hover:text-gold"
+                className="flex items-center gap-1 uppercase text-text/85 transition-colors hover:text-gold"
                 aria-haspopup="true"
                 aria-expanded={dropdownOpen}
               >
