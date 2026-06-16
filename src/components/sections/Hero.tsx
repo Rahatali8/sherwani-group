@@ -138,7 +138,7 @@ export default function Hero() {
           {/* SHERWANI — per-letter mask reveal */}
           <SplitWord
             text={hero.titleLines[0]}
-            className="text-[clamp(3rem,13vw,11rem)] text-text drop-shadow-[0_6px_40px_rgba(0,0,0,0.75)]"
+            className="text-[clamp(3rem,13vw,11rem)] text-text"
           />
 
           {/* GROUP — gold shimmer wordmark flanked by gold rules */}
@@ -150,7 +150,7 @@ export default function Hero() {
             <span className="block overflow-hidden py-[0.12em]">
               <span
                 data-word
-                className="gold-shimmer block leading-none text-[clamp(1.2rem,5vw,3.6rem)] tracking-[0.28em] drop-shadow-[0_4px_24px_rgba(0,0,0,0.6)] md:tracking-[0.45em]"
+                className="gold-shimmer block leading-none text-[clamp(1.2rem,5vw,3.6rem)] tracking-[0.28em] md:tracking-[0.45em]"
               >
                 {hero.titleLines[1]}
               </span>
