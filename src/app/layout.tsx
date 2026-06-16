@@ -3,6 +3,7 @@ import { Anton, Inter } from "next/font/google";
 import "./globals.css";
 import SmoothScrollProvider from "@/components/providers/SmoothScrollProvider";
 import Preloader from "@/components/providers/Preloader";
+import CursorGlow from "@/components/ui/CursorGlow";
 
 const inter = Inter({
   variable: "--font-inter",
@@ -41,6 +42,7 @@ export default function RootLayout({
       <body className="bg-bg text-text font-body">
         <SmoothScrollProvider>
           <Preloader />
+          <CursorGlow />
           {children}
         </SmoothScrollProvider>
       </body>
