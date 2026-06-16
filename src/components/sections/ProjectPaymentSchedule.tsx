@@ -1,4 +1,5 @@
 import Link from "next/link";
+import clsx from "clsx";
 import { FiArrowLeft, FiPhone, FiClock } from "react-icons/fi";
 import AnimatedTitle from "@/components/ui/AnimatedTitle";
 import ZoomImage from "@/components/ui/ZoomImage";
@@ -11,7 +12,20 @@ export default function ProjectPaymentSchedule({
   project: ProjectData;
   projectHref: string;
 }) {
-  const hasDocs = d.payment.pricingImage || d.payment.sizeImage;
+  // Prefer an explicit docs list; otherwise fall back to pricing/size images.
+  const docs =
+    d.payment.docs ??
+    [
+      d.payment.pricingImage && {
+        src: d.payment.pricingImage,
+        label: "Payment Plan",
+      },
+      d.payment.sizeImage && {
+        src: d.payment.sizeImage,
+        label: "Unit Layouts & Sizes",
+      },
+    ].filter(Boolean as unknown as (x: unknown) => x is { src: string; label: string });
+  const hasDocs = docs.length > 0;
 
   return (
     <main className="bg-bg">
@@ -47,31 +61,24 @@ export default function ProjectPaymentSchedule({
 
         {/* Project-specific documents (when provided) */}
         {hasDocs ? (
-          <div className="mt-12 grid gap-6 md:grid-cols-2 md:gap-8">
-            {d.payment.pricingImage && (
-              <div>
+          <div
+            className={clsx(
+              "mt-12 grid gap-6 md:gap-8",
+              docs.length > 1 ? "md:grid-cols-2" : "mx-auto max-w-2xl",
+            )}
+          >
+            {docs.map((doc) => (
+              <div key={doc.src}>
                 <h3 className="mb-3 font-ui text-xs uppercase tracking-[0.3em] text-gold-soft">
-                  Payment Plan
+                  {doc.label}
                 </h3>
                 <ZoomImage
-                  src={d.payment.pricingImage}
-                  alt={`${d.name} payment plan`}
-                  caption="Payment Plan"
+                  src={doc.src}
+                  alt={`${d.name} — ${doc.label}`}
+                  caption={doc.label}
                 />
               </div>
-            )}
-            {d.payment.sizeImage && (
-              <div>
-                <h3 className="mb-3 font-ui text-xs uppercase tracking-[0.3em] text-gold-soft">
-                  Unit Layouts &amp; Sizes
-                </h3>
-                <ZoomImage
-                  src={d.payment.sizeImage}
-                  alt={`${d.name} unit layouts and sizes`}
-                  caption="Floor Plans"
-                />
-              </div>
-            )}
+            ))}
           </div>
         ) : (
           <ol className="mt-10 flex flex-col divide-y divide-white/10 overflow-hidden rounded-3xl border border-white/10">

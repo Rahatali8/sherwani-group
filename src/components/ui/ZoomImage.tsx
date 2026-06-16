@@ -35,16 +35,16 @@ export default function ZoomImage({
     <>
       <button
         onClick={() => setOpen(true)}
-        className="group relative block w-full overflow-hidden rounded-2xl border border-white/10 bg-white"
+        className="group relative block aspect-[4/5] w-full overflow-hidden rounded-2xl border border-white/10 bg-black/50"
         aria-label={`View ${alt} fullscreen`}
       >
         <Image
           src={src}
           alt={alt}
-          width={1000}
-          height={1414}
+          fill
           unoptimized
-          className="h-auto w-full"
+          sizes="(max-width: 768px) 100vw, 45vw"
+          className="object-contain"
         />
         <span className="pointer-events-none absolute inset-0 bg-black/0 transition-colors duration-300 group-hover:bg-black/20" />
         <span className="pointer-events-none absolute bottom-4 right-4 flex items-center gap-2 rounded-full border border-gold/60 bg-black/55 px-4 py-2 font-ui text-[11px] uppercase tracking-widest text-gold opacity-0 backdrop-blur-sm transition-opacity duration-300 group-hover:opacity-100">

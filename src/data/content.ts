@@ -352,6 +352,8 @@ export type ProjectData = {
     rows: { phase: string; detail: string }[];
     pricingImage?: string;
     sizeImage?: string;
+    /** Extra labelled documents (overrides pricing/size when provided). */
+    docs?: { src: string; label: string }[];
   };
   contact: {
     phone: string;
@@ -511,6 +513,10 @@ export const royalSuites: ProjectData = {
       { phase: "Down Payment", detail: "On confirmation of allotment" },
       { phase: "Monthly Installments", detail: "Spread over the construction period" },
       { phase: "On Possession", detail: "Final payment at handover" },
+    ],
+    docs: [
+      { src: `${RS}/pricing.png`, label: "Payment Plan" },
+      { src: `${RS}/pricing2.png`, label: "Lease & Pricing" },
     ],
   },
   contact: {
