@@ -97,19 +97,15 @@ export default function Navbar() {
       >
         <div className="mx-auto flex max-w-7xl items-center justify-between px-5 py-4 md:px-8 md:py-5">
           {/* Logo */}
-          <Link
-            href="#home"
-            className="flex items-center gap-2.5 font-display text-xl tracking-wider md:text-2xl"
-          >
+          <Link href="#home" className="flex items-center" aria-label="Sherwani Group — Home">
             <Image
-              src="/images/textures/favicon.png"
+              src="/images/textures/logo.png"
               alt="Sherwani Group"
-              width={40}
-              height={40}
+              width={488}
+              height={120}
               priority
-              className="h-8 w-8 object-contain md:h-9 md:w-9"
+              className="h-9 w-auto object-contain md:h-11"
             />
-            SHERWANI <span className="text-gold">GROUP</span>
           </Link>
 
           {/* Desktop nav */}
@@ -196,16 +192,13 @@ export default function Navbar() {
           className="fixed inset-0 z-[60] flex flex-col bg-bg/98 backdrop-blur-xl lg:hidden"
         >
           <div className="flex items-center justify-between px-5 py-4">
-            <span className="flex items-center gap-2.5 font-display text-xl tracking-wider">
-              <Image
-                src="/images/textures/favicon.png"
-                alt="Sherwani Group"
-                width={36}
-                height={36}
-                className="h-8 w-8 object-contain"
-              />
-              SHERWANI <span className="text-gold">GROUP</span>
-            </span>
+            <Image
+              src="/images/textures/logo.png"
+              alt="Sherwani Group"
+              width={488}
+              height={120}
+              className="h-9 w-auto object-contain"
+            />
             <button
               className="text-3xl text-text"
               onClick={() => setMenuOpen(false)}
