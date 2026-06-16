@@ -1,8 +1,9 @@
 "use client";
 
 import { useRef, useState } from "react";
+import Link from "next/link";
 import clsx from "clsx";
-import { FiArrowUpRight } from "react-icons/fi";
+import { FiArrowUpRight, FiArrowRight } from "react-icons/fi";
 import { gsap, ScrollTrigger, useGSAP, prefersReducedMotion } from "@/lib/gsap";
 import { relations } from "@/data/content";
 import { PlaceholderImage } from "@/components/ui/Media";
@@ -156,17 +157,9 @@ export default function RelationsShowcase() {
               >
                 {items.map((it, i) => {
                   const t = cardTransform(i - active);
-                  return (
-                    <div
-                      key={it.name}
-                      className="absolute left-0 top-0 aspect-[3/4] h-full overflow-hidden rounded-[1.75rem] border border-white/10 shadow-[0_40px_80px_-20px_rgba(0,0,0,0.7)] transition-all duration-[800ms] ease-out"
-                      style={{
-                        transform: t.transform,
-                        opacity: t.opacity,
-                        zIndex: t.zIndex,
-                        transformStyle: "preserve-3d",
-                      }}
-                    >
+                  const isActive = i === active;
+                  const inner = (
+                    <>
                       <PlaceholderImage
                         src={it.image}
                         alt={it.name}
@@ -176,6 +169,33 @@ export default function RelationsShowcase() {
                       <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/80 via-black/15 to-transparent" />
                       {/* glossy gold edge sheen */}
                       <div className="pointer-events-none absolute inset-0 rounded-[1.75rem] ring-1 ring-inset ring-gold/10" />
+                      {isActive && it.page && (
+                        <span className="absolute right-4 top-4 flex h-11 w-11 items-center justify-center rounded-full border border-gold/60 bg-black/40 text-gold backdrop-blur-sm">
+                          <FiArrowUpRight />
+                        </span>
+                      )}
+                    </>
+                  );
+                  const cardCls =
+                    "absolute left-0 top-0 aspect-[3/4] h-full overflow-hidden rounded-[1.75rem] border border-white/10 shadow-[0_40px_80px_-20px_rgba(0,0,0,0.7)] transition-all duration-[800ms] ease-out";
+                  const style = {
+                    transform: t.transform,
+                    opacity: t.opacity,
+                    zIndex: t.zIndex,
+                    transformStyle: "preserve-3d" as const,
+                  };
+                  return isActive && it.page ? (
+                    <Link
+                      key={it.name}
+                      href={it.page}
+                      className={clsx(cardCls, "group cursor-pointer")}
+                      style={style}
+                    >
+                      {inner}
+                    </Link>
+                  ) : (
+                    <div key={it.name} className={cardCls} style={style}>
+                      {inner}
                     </div>
                   );
                 })}
@@ -193,15 +213,17 @@ export default function RelationsShowcase() {
               <p className="mt-3 text-sm leading-relaxed text-text/75">
                 {activeItem.desc}
               </p>
-              {activeItem.href !== "#" && (
-                <a
-                  href={activeItem.href}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="mt-5 inline-flex items-center gap-2 rounded-full border border-gold/50 px-4 py-2 font-ui text-xs uppercase tracking-widest text-gold transition-colors hover:bg-gold hover:text-bg"
+              {activeItem.page ? (
+                <Link
+                  href={activeItem.page}
+                  className="mt-5 inline-flex items-center gap-2 rounded-full border border-gold/50 px-5 py-2.5 font-ui text-xs uppercase tracking-widest text-gold transition-colors hover:bg-gold hover:text-bg md:ml-auto"
                 >
-                  Visit Site <FiArrowUpRight />
-                </a>
+                  Explore Company <FiArrowRight />
+                </Link>
+              ) : (
+                <span className="mt-5 inline-flex items-center gap-2 font-ui text-xs uppercase tracking-widest text-muted/60">
+                  Page coming soon
+                </span>
               )}
             </div>
           </div>

@@ -271,6 +271,7 @@ export const relations = {
       desc: "Crafting premium residential and commercial developments that redefine modern living.",
       image: "/images/projects/event-builders.jpg",
       href: "#",
+      page: "/our-relations/sherwani-builders",
     },
     {
       name: "Sherwani Farms",
@@ -280,6 +281,48 @@ export const relations = {
       href: "#",
     },
   ],
+};
+
+// Dedicated company page: Sherwani Builders & Developers (real estate arm).
+export const buildersPage = {
+  name: "Sherwani Builders & Developers",
+  overline: "Real Estate · Est. 2008",
+  tagline: "Pioneering Excellence in Real Estate",
+  heroImage: "/images/projects/event-builders.jpg",
+  intro:
+    "In 2008, the Sherwani Group carried four decades of trust into real estate — founding Sherwani Builders & Developers to build not just structures, but communities designed for generations.",
+  about: [
+    "Sherwani Builders & Developers designs and constructs residential communities and luxury housing projects that blend striking architecture with the comforts of modern urban living. Every development is shaped around how families actually live — light, space, security and shared amenities at its heart.",
+    "Backed by the renowned Sherwani Group's reputation for fair dealing and uncompromising quality, the company has delivered landmark addresses across Karachi and Balochistan — from green, low-rise enclaves to high-rise luxury suites with clubhouses, gyms and ample parking.",
+  ],
+  stats: [
+    { value: 2008, suffix: "", label: "Established" },
+    { value: 4, suffix: "+", label: "Signature Projects" },
+    { value: 11, suffix: "", label: "Floors at Royal Suites" },
+    { value: 100, suffix: "%", label: "Commitment to Quality" },
+  ],
+  services: [
+    {
+      title: "Residential Development",
+      desc: "Master-planned communities and apartment projects engineered for comfortable, secure family living.",
+    },
+    {
+      title: "Luxury High-Rises",
+      desc: "Air-conditioned 4 & 5 room suites with clubhouses, gyms and structured parking — turnkey luxury.",
+    },
+    {
+      title: "Architecture & Design",
+      desc: "Distinctive façades and thoughtful interiors with high-end finishes and modern conveniences.",
+    },
+    {
+      title: "Community Planning",
+      desc: "Green spaces, landscaping and shared amenities that build a sense of belonging, not just buildings.",
+    },
+  ],
+  contact: {
+    phone: "+92 346 008 9565",
+    hours: "Mon–Sun · 11AM – 8PM",
+  },
 };
 
 export const contact = {
