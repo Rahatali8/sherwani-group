@@ -32,7 +32,7 @@ export const about = {
   ceo: {
     name: "Shujaat Sherwani",
     title: "CEO, Sherwani Group",
-    image: "/images/ceo.jpg",
+    image: "/images/textures/ceo.jpg",
   },
   featureVideo: "/videos/about-feature.mp4",
   // Cinematic text-mask reveal: footage shows through this wordmark, then the
