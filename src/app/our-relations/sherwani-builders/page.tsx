@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { FiArrowLeft, FiPhone, FiClock } from "react-icons/fi";
+import { FiArrowLeft } from "react-icons/fi";
 import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
 import Projects from "@/components/sections/Projects";
@@ -38,7 +38,7 @@ export default function SherwaniBuildersPage() {
               href="/our-relations"
               className="mb-6 inline-flex items-center gap-2 font-ui text-xs uppercase tracking-[0.25em] text-text/70 transition-colors hover:text-gold"
             >
-              <FiArrowLeft /> Our Relations
+              <FiArrowLeft /> Our Milestones
             </Link>
             <p className="mb-4 flex items-center gap-3 font-ui text-[11px] font-semibold uppercase tracking-[0.4em] text-gold-soft">
               <span className="h-px w-10 bg-gold/60" />
@@ -117,31 +117,6 @@ export default function SherwaniBuildersPage() {
 
         {/* SIGNATURE DEVELOPMENTS — reuse the home bento Projects section */}
         <Projects />
-
-        {/* CTA */}
-        <section className="border-t border-white/10 bg-surface/40">
-          <div className="mx-auto flex max-w-7xl flex-col items-start justify-between gap-8 px-5 py-16 md:flex-row md:items-center md:px-10">
-            <div>
-              <h2 className="font-display text-[clamp(1.8rem,4vw,3rem)] uppercase tracking-tight text-text">
-                Build your future with us
-              </h2>
-              <p className="mt-3 text-muted">
-                Talk to our team about availability, plans and easy installments.
-              </p>
-            </div>
-            <div className="flex flex-col gap-3 font-ui text-sm">
-              <a
-                href={`tel:${data.contact.phone.replace(/\s/g, "")}`}
-                className="inline-flex items-center gap-3 rounded-full border border-gold/50 px-6 py-3 uppercase tracking-widest text-gold transition-colors hover:bg-gold hover:text-bg"
-              >
-                <FiPhone /> {data.contact.phone}
-              </a>
-              <span className="inline-flex items-center gap-3 px-2 text-muted">
-                <FiClock /> {data.contact.hours}
-              </span>
-            </div>
-          </div>
-        </section>
       </main>
       <Footer />
     </>

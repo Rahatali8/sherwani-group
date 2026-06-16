@@ -155,6 +155,7 @@ export const projects = {
       location: "Karachi",
       desc: "Ultra-luxury 4 & 5 room apartments designed for elevated, modern living.",
       image: "/images/projects/Bloom-Gardens.jpg",
+      page: "/our-relations/sherwani-builders/bloom-gardens",
     },
     {
       slug: "royal-suites",
@@ -177,7 +178,14 @@ export const projects = {
       desc: "A landmark high-rise of 3 & 4 room luxury apartments on easy installments.",
       image: "/images/projects/Address-One.jpg",
     },
-  ],
+  ] as {
+    slug: string;
+    name: string;
+    location: string;
+    desc: string;
+    image: string;
+    page?: string;
+  }[],
 };
 
 export const awards = {
@@ -226,7 +234,7 @@ export const clients = {
 // "Our Relations" page — Zentry-style scroll-to-select showcase of the group's
 // affiliated companies. Left = names, right = visual that follows the scroll.
 export const relations = {
-  overline: "Our Relations",
+  overline: "Our Milestones",
   heading: "The companies that move us forward",
   hint: "Scroll to explore",
   items: [
@@ -325,6 +333,85 @@ export const buildersPage = {
   },
 };
 
+// Dedicated project page: Bloom Gardens (a Sherwani Builders development).
+const BG = "/images/projects/blomegarden-assets";
+export const bloomGardens = {
+  slug: "bloom-gardens",
+  name: "Bloom Gardens",
+  overline: "Sherwani Builders · Karachi",
+  heroSubtitle: "Discover your home, where dreams unfold.",
+  heroImage: "/images/projects/Bloom-Gardens.jpg",
+  youtubeId: "hK04MBDIK-0",
+  about: {
+    overline: "Welcome to Your Oasis of Comfort",
+    heading: "Introducing Bloom Gardens",
+    body: "Bloom Gardens, an epitome of luxury living, unveils its stunning collection of 4 and 5-room ultra-luxurious apartments tailored exclusively for the discerning community. Nestled within lush greenery and meticulously designed landscapes, this prestigious project redefines upscale living with its exquisite attention to detail and unparalleled amenities. Each apartment is crafted to perfection, boasting spacious interiors adorned with high-end finishes and modern conveniences — offering residents the ultimate blend of comfort and sophistication.",
+    image: `${BG}/gallery-1.jpg`,
+  },
+  interiors: [
+    {
+      title: "Drawing Room",
+      tagline: "Welcome to your elegant haven of comfort and style.",
+      image: `${BG}/Drawing.jpg`,
+    },
+    {
+      title: "Living Room",
+      tagline: "Where urban sophistication meets cozy relaxation.",
+      image: `${BG}/Living.jpg`,
+    },
+    {
+      title: "Bedroom",
+      tagline: "Escape to urban elegance — where comfort meets sophistication.",
+      image: `${BG}/Bedroom.jpg`,
+    },
+    {
+      title: "Dining",
+      tagline: "Savor moments of elegance and togetherness in style.",
+      image: `${BG}/Dining.jpg`,
+    },
+    {
+      title: "Bathroom",
+      tagline: "Indulge in luxury and tranquility in your private sanctuary.",
+      image: `${BG}/Bathroom.jpg`,
+    },
+  ],
+  amenities: [
+    "gallery-1",
+    "gallery-2",
+    "gallery-3",
+    "gallery-4",
+    "gallery-5",
+    "gallery-6",
+    "gallery-7",
+    "gallery-9",
+    "gallery-12",
+  ].map((n) => `${BG}/${n}.jpg`),
+  payment: {
+    note: "Flexible, easy-installment plans tailored to you. Contact our team for the latest pricing and unit availability.",
+    units: ["4 Room Apartments", "5 Room Apartments", "Shops", "Showrooms"],
+    rows: [
+      { phase: "Booking", detail: "At the time of application" },
+      { phase: "Down Payment", detail: "On confirmation of allotment" },
+      { phase: "Monthly Installments", detail: "Spread over the construction period" },
+      { phase: "On Possession", detail: "Final payment at handover" },
+    ],
+  },
+  contact: {
+    phone: "+92 346 008 9565",
+    hours: "Mon–Sun · 11AM – 8PM",
+    address:
+      "Falaknaz Bloom Gardens, Sector 8-B, Gulzar-e-Hijri, Scheme 33, Karachi",
+    mapEmbed:
+      "https://www.google.com/maps?q=Falaknaz%20Bloom%20Gardens%20Karachi&output=embed",
+    interestedOptions: [
+      "4 Room Apartment",
+      "5 Room Apartment",
+      "Shops",
+      "Showrooms",
+    ],
+  },
+};
+
 export const contact = {
   overline: "Contact",
   heading: "Get in Touch",
@@ -339,7 +426,6 @@ export const navLinks = [
   { label: "About", href: "#about" },
   { label: "Awards", href: "#awards" },
   { label: "Diversification", href: "#diversification" },
-  { label: "Contact", href: "#contact" },
 ] as const;
 
 export const affiliatedCompanies = [

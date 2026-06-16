@@ -24,6 +24,7 @@ export default function Navbar() {
     if (pathname === "/") scrollToHash(href);
     else router.push(`/${href}`);
   };
+  const contactHash = "#contact";
 
   // Show / hide on scroll direction + add blurred bg once scrolled past hero top.
   useGSAP(
@@ -145,14 +146,27 @@ export default function Navbar() {
               </a>
             ))}
 
-            {/* Our Relations — dedicated page */}
+            {/* Our Milestones — dedicated page */}
             <Link
               href="/our-relations"
               className="group relative text-text/85 transition-colors hover:text-gold"
             >
-              Our Relations
+              Our Milestones
               <span className="absolute -bottom-1 left-0 h-px w-0 bg-gold transition-all duration-300 group-hover:w-full" />
             </Link>
+
+            {/* Contact — last */}
+            <a
+              href={`/${contactHash}`}
+              onClick={(e) => {
+                e.preventDefault();
+                goSection(contactHash);
+              }}
+              className="group relative text-text/85 transition-colors hover:text-gold"
+            >
+              Contact
+              <span className="absolute -bottom-1 left-0 h-px w-0 bg-gold transition-all duration-300 group-hover:w-full" />
+            </a>
           </div>
 
           {/* Mobile hamburger */}
@@ -214,8 +228,23 @@ export default function Navbar() {
                 onClick={() => setMenuOpen(false)}
                 className="block py-2 font-display text-4xl tracking-wide text-text transition-colors hover:text-gold"
               >
-                Our Relations
+                Our Milestones
               </Link>
+            </div>
+
+            <div className="overflow-hidden">
+              <a
+                data-mobile-link
+                href={`/${contactHash}`}
+                onClick={(e) => {
+                  e.preventDefault();
+                  setMenuOpen(false);
+                  goSection(contactHash);
+                }}
+                className="block py-2 font-display text-4xl tracking-wide text-text transition-colors hover:text-gold"
+              >
+                Contact
+              </a>
             </div>
 
             <div className="mt-8 overflow-hidden">

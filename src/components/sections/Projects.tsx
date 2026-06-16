@@ -1,8 +1,9 @@
 "use client";
 
 import { useRef } from "react";
+import Link from "next/link";
 import clsx from "clsx";
-import { FiMapPin } from "react-icons/fi";
+import { FiMapPin, FiArrowUpRight } from "react-icons/fi";
 import { gsap, useGSAP, prefersReducedMotion } from "@/lib/gsap";
 import { projects } from "@/data/content";
 import AnimatedTitle from "@/components/ui/AnimatedTitle";
@@ -99,7 +100,21 @@ export default function Projects() {
               {/* Gold overlay on hover */}
               <div className="pointer-events-none absolute inset-0 bg-gold/0 transition-colors duration-500 group-hover:bg-gold/15" />
 
-              <div className="absolute inset-x-0 bottom-0 p-6 md:p-7">
+              {/* Whole-card link to the project page (when one exists) */}
+              {p.page && (
+                <Link
+                  href={p.page}
+                  aria-label={p.name}
+                  className="absolute inset-0 z-10"
+                />
+              )}
+              {p.page && (
+                <span className="pointer-events-none absolute right-5 top-5 z-10 flex h-10 w-10 translate-y-2 items-center justify-center rounded-full border border-gold/60 bg-black/40 text-gold opacity-0 backdrop-blur-sm transition-all duration-500 group-hover:translate-y-0 group-hover:opacity-100">
+                  <FiArrowUpRight />
+                </span>
+              )}
+
+              <div className="pointer-events-none absolute inset-x-0 bottom-0 p-6 md:p-7">
                 <h3 className="font-display text-2xl tracking-wide text-text md:text-3xl">
                   {p.name}
                 </h3>
