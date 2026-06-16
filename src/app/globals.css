@@ -109,6 +109,12 @@ body {
     linear-gradient(160deg, #121008 0%, #0a0a0a 60%, #050505 100%);
 }
 
+/* Hide the native cursor while the custom gold cursor is active (fine pointers) */
+.custom-cursor-active,
+.custom-cursor-active * {
+  cursor: none !important;
+}
+
 /* Utility: animated gold gradient sweep for premium display text */
 .gold-shimmer {
   background: linear-gradient(
