@@ -387,7 +387,7 @@ export const bloomGardens = {
     "gallery-12",
   ].map((n) => `${BG}/${n}.jpg`),
   payment: {
-    note: "Flexible, easy-installment plans tailored to you. Contact our team for the latest pricing and unit availability.",
+    note: "Flexible, easy-installment plans tailored to you. Explore the full payment plan and unit layouts below, or contact our team for the latest availability.",
     units: ["4 Room Apartments", "5 Room Apartments", "Shops", "Showrooms"],
     rows: [
       { phase: "Booking", detail: "At the time of application" },
@@ -395,6 +395,8 @@ export const bloomGardens = {
       { phase: "Monthly Installments", detail: "Spread over the construction period" },
       { phase: "On Possession", detail: "Final payment at handover" },
     ],
+    pricingImage: `${BG}/pricing.png`,
+    sizeImage: `${BG}/size.png`,
   },
   contact: {
     phone: "+92 346 008 9565",
