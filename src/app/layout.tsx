@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Anton, Inter } from "next/font/google";
+import { Anton, Inter, Outfit } from "next/font/google";
 import "./globals.css";
 import SmoothScrollProvider from "@/components/providers/SmoothScrollProvider";
 import Preloader from "@/components/providers/Preloader";
@@ -14,6 +14,12 @@ const inter = Inter({
 const anton = Anton({
   variable: "--font-anton",
   weight: "400", // Anton is a single-weight display font
+  subsets: ["latin"],
+  display: "swap",
+});
+
+const outfit = Outfit({
+  variable: "--font-outfit",
   subsets: ["latin"],
   display: "swap",
 });
@@ -37,7 +43,7 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${inter.variable} ${anton.variable} antialiased`}
+      className={`${inter.variable} ${anton.variable} ${outfit.variable} antialiased`}
     >
       <body className="bg-bg text-text font-body">
         <SmoothScrollProvider>

@@ -73,9 +73,10 @@ export default function Projects() {
           {projects.items.map((p, i) => (
             <article
               key={p.slug}
+              id={`project-${p.slug}`}
               data-project
               className={clsx(
-                "group relative overflow-hidden rounded-3xl border border-white/10",
+                "group relative scroll-mt-28 overflow-hidden rounded-3xl border border-white/10",
                 span[i],
               )}
             >
