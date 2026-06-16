@@ -176,14 +176,6 @@ export default function Navbar() {
               </div>
             </div>
 
-            {/* Contact pill */}
-            <a
-              href={`tel:${site.phone.replace(/\s/g, "")}`}
-              className="flex items-center gap-2 rounded-full border border-gold/50 px-4 py-2 text-sm font-medium text-gold transition-colors hover:bg-gold hover:text-bg"
-            >
-              <FiPhone className="text-base" />
-              {site.phone}
-            </a>
           </div>
 
           {/* Mobile hamburger */}
