@@ -57,19 +57,6 @@ export default function Hero() {
         delay: 0.9,
       });
 
-      // Animated gold frame corners on load.
-      gsap.fromTo(
-        "[data-hero-frame]",
-        { clipPath: "inset(50% 50% 50% 50%)", opacity: 0 },
-        {
-          clipPath: "inset(0% 0% 0% 0%)",
-          opacity: 1,
-          duration: 1.4,
-          ease: "expo.out",
-          delay: 0.5,
-        },
-      );
-
       // Scroll: zoom bg + parallax heading. Desktop only (heavy effect).
       const mm = gsap.matchMedia();
       mm.add("(min-width: 768px)", () => {
@@ -107,21 +94,17 @@ export default function Hero() {
         {/* Dark + gold tint overlay for legibility */}
         <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/30 to-black/80" />
         <div className="absolute inset-0 bg-[radial-gradient(120%_120%_at_50%_30%,transparent_40%,rgba(0,0,0,0.55)_100%)]" />
+        {/* Top scrim so the navbar always reads cleanly over the footage */}
+        <div className="absolute inset-x-0 top-0 h-40 bg-gradient-to-b from-black/70 to-transparent" />
       </div>
 
-      {/* Animated gold frame accent */}
-      <div
-        data-hero-frame
-        className="pointer-events-none absolute inset-5 z-10 rounded-2xl border border-gold/25 md:inset-8"
-      />
-
-      {/* Heading — zentry-style split to opposite corners */}
+      {/* Heading — vertically-centered diagonal cascade (clear of the navbar) */}
       <div
         ref={headingRef}
-        className="pointer-events-none absolute inset-0 z-30 font-display leading-[0.85] tracking-tight"
+        className="pointer-events-none absolute inset-0 z-30 flex flex-col justify-center px-5 font-display leading-[0.82] tracking-tight md:px-12"
       >
-        {/* SHERWANI — top-left */}
-        <div className="absolute left-5 top-24 md:left-12 md:top-28">
+        {/* SHERWANI — center-left */}
+        <div className="self-start">
           <span className="block overflow-hidden">
             <span
               data-word
@@ -132,14 +115,14 @@ export default function Hero() {
           </span>
           <p
             data-hero-fade
-            className="mt-3 max-w-xs font-body text-xs font-medium uppercase tracking-[0.3em] text-text/80 sm:text-sm"
+            className="mt-4 max-w-xs font-body text-xs font-medium uppercase tracking-[0.3em] text-text/80 sm:text-sm"
           >
             {hero.subheading}
           </p>
         </div>
 
-        {/* GROUP — bottom-right */}
-        <div className="absolute bottom-24 right-5 text-right md:bottom-28 md:right-12">
+        {/* GROUP — offset lower-right */}
+        <div className="mt-3 self-end text-right md:mt-6">
           <span className="block overflow-hidden">
             <span
               data-word
