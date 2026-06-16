@@ -238,7 +238,6 @@ export const navLinks = [
   { label: "Awards", href: "#awards" },
   { label: "Diversification", href: "#diversification" },
   { label: "Projects", href: "#projects" },
-  { label: "Clientele", href: "#clientele" },
   { label: "Contact", href: "#contact" },
 ] as const;
 

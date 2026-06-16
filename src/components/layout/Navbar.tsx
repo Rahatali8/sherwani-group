@@ -194,7 +194,7 @@ export default function Navbar() {
                 aria-haspopup="true"
                 aria-expanded={dropdownOpen}
               >
-                Affiliated Companies
+                Our Relations
                 <FiChevronDown
                   className={clsx(
                     "transition-transform duration-300",
@@ -304,7 +304,7 @@ export default function Navbar() {
                 data-mobile-link
                 className="mb-2 text-xs uppercase tracking-widest text-muted"
               >
-                Affiliated Companies
+                Our Relations
               </p>
             </div>
             <div className="flex flex-wrap gap-x-4 gap-y-1">
