@@ -1,12 +1,12 @@
 "use client";
 
 import { useRef, useState } from "react";
-import Link from "next/link";
 import Image from "next/image";
 import clsx from "clsx";
 import { FiMenu, FiX, FiChevronDown, FiPhone } from "react-icons/fi";
 import { gsap, useGSAP } from "@/lib/gsap";
 import { navLinks, affiliatedCompanies, site } from "@/data/content";
+import { scrollToHash, scrollToTop } from "@/lib/lenis";
 
 export default function Navbar() {
   const navRef = useRef<HTMLElement>(null);
@@ -97,7 +97,15 @@ export default function Navbar() {
       >
         <div className="mx-auto flex max-w-7xl items-center justify-between px-5 py-4 md:px-8 md:py-5">
           {/* Logo */}
-          <Link href="#home" className="flex items-center" aria-label="Sherwani Group — Home">
+          <a
+            href="#hero"
+            onClick={(e) => {
+              e.preventDefault();
+              scrollToTop();
+            }}
+            className="flex items-center"
+            aria-label="Sherwani Group — Home"
+          >
             <Image
               src="/images/textures/logo.png"
               alt="Sherwani Group"
@@ -106,19 +114,23 @@ export default function Navbar() {
               priority
               className="h-9 w-auto object-contain md:h-11"
             />
-          </Link>
+          </a>
 
           {/* Desktop nav */}
           <div className="hidden items-center gap-7 lg:flex">
             {navLinks.map((l) => (
-              <Link
+              <a
                 key={l.href}
                 href={l.href}
+                onClick={(e) => {
+                  e.preventDefault();
+                  scrollToHash(l.href);
+                }}
                 className="group relative text-sm font-medium text-text/85 transition-colors hover:text-gold"
               >
                 {l.label}
                 <span className="absolute -bottom-1 left-0 h-px w-0 bg-gold transition-all duration-300 group-hover:w-full" />
-              </Link>
+              </a>
             ))}
 
             {/* Affiliated Companies dropdown */}
@@ -211,14 +223,18 @@ export default function Navbar() {
           <div className="flex flex-1 flex-col justify-center gap-1 px-6">
             {navLinks.map((l) => (
               <div key={l.href} className="overflow-hidden">
-                <Link
+                <a
                   data-mobile-link
                   href={l.href}
-                  onClick={() => setMenuOpen(false)}
+                  onClick={(e) => {
+                    e.preventDefault();
+                    setMenuOpen(false);
+                    scrollToHash(l.href);
+                  }}
                   className="block py-2 font-display text-4xl tracking-wide text-text transition-colors hover:text-gold"
                 >
                   {l.label}
-                </Link>
+                </a>
               </div>
             ))}
 

@@ -11,6 +11,7 @@ export const site = {
 
 export const hero = {
   titleLines: ["SHERWANI", "GROUP"] as const,
+  overline: "Est. 1984 · Karachi, Pakistan",
   subheading: "Driven by Vision, Defined by Excellence",
   bottomTagline: "40 Years of Trust • Automobiles · Real Estate · Engineering",
   videos: [
@@ -233,7 +234,6 @@ export const contact = {
 };
 
 export const navLinks = [
-  { label: "Home", href: "#home" },
   { label: "About", href: "#about" },
   { label: "Awards", href: "#awards" },
   { label: "Diversification", href: "#diversification" },

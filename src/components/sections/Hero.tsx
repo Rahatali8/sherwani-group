@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
+import clsx from "clsx";
 import { gsap, useGSAP, prefersReducedMotion } from "@/lib/gsap";
 import { hero } from "@/data/content";
 
@@ -17,6 +18,21 @@ function BgVideo({ src }: { src: string }) {
       playsInline
       preload="metadata"
     />
+  );
+}
+
+/** Split a word into per-letter spans for staggered mask reveals. */
+function SplitWord({ text, className }: { text: string; className?: string }) {
+  return (
+    <span className="inline-flex">
+      {[...text].map((ch, i) => (
+        <span key={i} className="block overflow-hidden">
+          <span data-word className={clsx("block", className)}>
+            {ch}
+          </span>
+        </span>
+      ))}
+    </span>
   );
 }
 
@@ -46,6 +62,14 @@ export default function Hero() {
         ease: "power4.out",
         stagger: 0.12,
         delay: 0.2,
+      });
+
+      // Gold flank rules draw outward.
+      gsap.from("[data-hero-line]", {
+        scaleX: 0,
+        duration: 1,
+        ease: "power3.out",
+        delay: 0.9,
       });
 
       gsap.from("[data-hero-fade]", {
@@ -98,40 +122,52 @@ export default function Hero() {
         <div className="absolute inset-x-0 top-0 h-40 bg-gradient-to-b from-black/70 to-transparent" />
       </div>
 
-      {/* Heading — vertically-centered diagonal cascade (clear of the navbar) */}
+      {/* Heading — one cohesive, centered SHERWANI / GROUP lockup */}
       <div
         ref={headingRef}
-        className="pointer-events-none absolute inset-0 z-30 flex flex-col justify-center px-5 font-display leading-[0.82] tracking-tight md:px-12"
+        className="pointer-events-none absolute inset-0 z-30 flex flex-col items-center justify-center px-5 text-center font-display"
       >
-        {/* SHERWANI — center-left */}
-        <div className="self-start">
-          <span className="block overflow-hidden">
-            <span
-              data-word
-              className="block text-[clamp(2.6rem,11vw,9.5rem)] text-text drop-shadow-[0_4px_30px_rgba(0,0,0,0.7)]"
-            >
-              {hero.titleLines[0]}
-            </span>
-          </span>
-          <p
-            data-hero-fade
-            className="mt-4 max-w-xs font-body text-xs font-medium uppercase tracking-[0.3em] text-text/80 sm:text-sm"
-          >
-            {hero.subheading}
-          </p>
-        </div>
+        <p
+          data-hero-fade
+          className="mb-5 text-[10px] font-semibold uppercase tracking-[0.5em] text-gold-soft md:mb-7 md:text-sm"
+        >
+          {hero.overline}
+        </p>
 
-        {/* GROUP — offset lower-right */}
-        <div className="mt-3 self-end text-right md:mt-6">
-          <span className="block overflow-hidden">
+        <h1 className="leading-[0.82] tracking-tight">
+          {/* SHERWANI — per-letter mask reveal */}
+          <SplitWord
+            text={hero.titleLines[0]}
+            className="text-[clamp(3rem,13vw,11rem)] text-text drop-shadow-[0_6px_40px_rgba(0,0,0,0.75)]"
+          />
+
+          {/* GROUP — gold shimmer wordmark flanked by gold rules */}
+          <span className="mt-3 flex items-center justify-center gap-4 md:mt-5 md:gap-6">
             <span
-              data-word
-              className="block -skew-x-6 text-[clamp(2.6rem,11vw,9.5rem)] text-gold drop-shadow-[0_4px_30px_rgba(0,0,0,0.7)]"
-            >
-              {hero.titleLines[1]}
+              data-hero-line
+              className="h-px w-8 origin-right bg-gradient-to-l from-gold to-transparent md:w-24"
+            />
+            <span className="block overflow-hidden">
+              <span
+                data-word
+                className="gold-shimmer block text-[clamp(1.2rem,5vw,3.6rem)] tracking-[0.28em] drop-shadow-[0_4px_24px_rgba(0,0,0,0.6)] md:tracking-[0.45em]"
+              >
+                {hero.titleLines[1]}
+              </span>
             </span>
+            <span
+              data-hero-line
+              className="h-px w-8 origin-left bg-gradient-to-r from-gold to-transparent md:w-24"
+            />
           </span>
-        </div>
+        </h1>
+
+        <p
+          data-hero-fade
+          className="mt-7 max-w-md font-body text-xs font-medium uppercase tracking-[0.32em] text-text/85 md:mt-9 md:text-sm"
+        >
+          {hero.subheading}
+        </p>
       </div>
 
       {/* Bottom-left tagline */}
