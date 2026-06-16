@@ -1,7 +1,6 @@
 "use client";
 
 import { useRef, useState } from "react";
-import Image from "next/image";
 import { gsap, useGSAP } from "@/lib/gsap";
 
 /**
@@ -82,34 +81,12 @@ export default function Preloader() {
         ))}
       </div>
 
-      {/* Cinematic loader footage behind the brand */}
-      <div data-pre-content className="absolute inset-0">
-        <Image
-          src="/images/textures/loader.gif"
-          alt=""
-          fill
-          priority
-          unoptimized
-          sizes="100vw"
-          className="object-cover opacity-50"
-        />
-        <div className="absolute inset-0 bg-gradient-to-b from-black/70 via-black/55 to-black/80" />
-      </div>
-
       {/* Centered brand + counter */}
       <div
         data-pre-content
         className="absolute inset-0 grid place-items-center"
       >
         <div className="text-center">
-          <Image
-            src="/images/textures/favicon.png"
-            alt="Sherwani Group"
-            width={72}
-            height={72}
-            priority
-            className="mx-auto mb-6 h-14 w-14 object-contain md:h-16 md:w-16"
-          />
           <p className="font-display text-3xl tracking-[0.2em] text-text md:text-5xl">
             SHERWANI <span className="text-gold">GROUP</span>
           </p>
