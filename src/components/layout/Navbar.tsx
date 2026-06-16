@@ -95,7 +95,7 @@ export default function Navbar() {
             : "bg-transparent",
         )}
       >
-        <div className="mx-auto flex max-w-7xl items-center justify-between px-5 py-4 md:px-8 md:py-5">
+        <div className="flex w-full items-center justify-between px-5 py-4 md:px-10 md:py-5">
           {/* Logo */}
           <a
             href="#hero"

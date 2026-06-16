@@ -177,19 +177,6 @@ export default function Hero() {
       >
         {hero.bottomTagline}
       </p>
-
-      {/* Scroll-down indicator */}
-      <div
-        data-hero-fade
-        className="absolute bottom-8 left-1/2 z-30 hidden -translate-x-1/2 flex-col items-center gap-2 md:flex"
-      >
-        <span className="text-[10px] uppercase tracking-[0.3em] text-text/60">
-          Scroll
-        </span>
-        <span className="relative flex h-9 w-5 justify-center rounded-full border border-text/40">
-          <span className="mt-1.5 h-2 w-1 animate-bounce rounded-full bg-gold" />
-        </span>
-      </div>
     </section>
   );
 }
