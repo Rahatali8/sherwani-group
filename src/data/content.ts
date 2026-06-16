@@ -35,6 +35,11 @@ export const about = {
     image: "/images/ceo.jpg",
   },
   featureVideo: "/videos/about-feature.mp4",
+  // Cinematic text-mask reveal: footage shows through this wordmark, then the
+  // surround dissolves to full video and the tagline reveals.
+  revealWord: "SHERWANI",
+  revealTagline: ["Four Decades.", "One Vision."] as const,
+  revealEst: "Est. 1984 · Karachi, Pakistan",
 };
 
 export const timeline = {
