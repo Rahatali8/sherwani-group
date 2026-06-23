@@ -8,6 +8,7 @@ import AnimatedTitle from "@/components/ui/AnimatedTitle";
 import CountUp from "@/components/ui/CountUp";
 import { PlaceholderImage } from "@/components/ui/Media";
 import { buildersPage as data } from "@/data/content";
+import RelationsShowcase from "@/components/sections/RelationsShowcase";
 
 export const metadata: Metadata = {
   title: `${data.name} — Sherwani Group`,
@@ -116,7 +117,8 @@ export default function SherwaniBuildersPage() {
         </section>
 
         {/* SIGNATURE DEVELOPMENTS — reuse the home bento Projects section */}
-        <Projects />
+        {/* <Projects /> */}
+        <RelationsShowcase />
       </main>
       <Footer />
     </>

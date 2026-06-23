@@ -7,7 +7,7 @@ import { usePathname, useRouter } from "next/navigation";
 import clsx from "clsx";
 import { FiMenu, FiX, FiPhone } from "react-icons/fi";
 import { gsap, useGSAP } from "@/lib/gsap";
-import { navLinks, site } from "@/data/content";
+import { navLinks, projects, site } from "@/data/content";
 import { scrollToHash, scrollToTop } from "@/lib/lenis";
 
 export default function Navbar() {
@@ -146,14 +146,32 @@ export default function Navbar() {
               </a>
             ))}
 
-            {/* Our Milestones — dedicated page */}
-            <Link
-              href="/our-relations"
-              className="group relative text-text/85 transition-colors hover:text-gold"
-            >
-              Our Milestones
-              <span className="absolute -bottom-1 left-0 h-px w-0 bg-gold transition-all duration-300 group-hover:w-full" />
-            </Link>
+            {/* Sherwani Builders — dedicated page */}
+            <div className="group relative">
+              <Link
+                href="/our-relations/sherwani-builders"
+                className="group relative text-text/85 transition-colors hover:text-gold"
+              >
+                Sherwani Builders
+                <span className="absolute -bottom-1 left-0 h-px w-0 bg-gold transition-all duration-300 group-hover:w-full" />
+              </Link>
+
+              <div className="absolute left-0 top-full mt-2 hidden min-w-55 rounded-3xl border border-white/10 bg-bg/95 p-3 shadow-[0_30px_80px_-30px_rgba(0,0,0,0.8)] backdrop-blur-xl transition duration-300 group-hover:block">
+                <div className="flex flex-col gap-1">
+                  {projects.items
+                    .filter((item) => item.page)
+                    .map((item) => (
+                      <Link
+                        key={item.slug}
+                        href={item.page!}
+                        className="block rounded-2xl px-4 py-3 text-sm uppercase tracking-[0.2em] text-text/85 transition-colors hover:bg-white/5 hover:text-gold"
+                      >
+                        {item.name}
+                      </Link>
+                    ))}
+                </div>
+              </div>
+            </div>
 
             {/* Contact — last */}
             <a
@@ -184,7 +202,7 @@ export default function Navbar() {
       {menuOpen && (
         <div
           ref={overlayRef}
-          className="fixed inset-0 z-[60] flex flex-col bg-bg/98 backdrop-blur-xl lg:hidden"
+          className="fixed inset-0 z-60 flex flex-col bg-bg/98 backdrop-blur-xl lg:hidden"
         >
           <div className="flex items-center justify-between px-5 py-4">
             <Image
@@ -224,11 +242,11 @@ export default function Navbar() {
             <div className="overflow-hidden">
               <Link
                 data-mobile-link
-                href="/our-relations"
+                href="/our-relations/sherwani-builders"
                 onClick={() => setMenuOpen(false)}
                 className="block py-2 font-display text-4xl tracking-wide text-text transition-colors hover:text-gold"
               >
-                Our Milestones
+                Sherwani Builders
               </Link>
             </div>
 

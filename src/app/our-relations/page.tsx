@@ -5,7 +5,7 @@ import RelationsShowcase from "@/components/sections/RelationsShowcase";
 import { relations } from "@/data/content";
 
 export const metadata: Metadata = {
-  title: "Our Milestones — Sherwani Group",
+  title: "Sherwani Builders — Sherwani Group",
   description:
     "The affiliated companies that power the Sherwani Group — automobiles, engineering, real estate, e-commerce and more.",
 };

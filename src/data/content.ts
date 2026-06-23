@@ -171,6 +171,7 @@ export const projects = {
       location: "Hub, Balochistan",
       desc: "Contemporary comfort and modern living in the heart of Balochistan.",
       image: "/images/projects/Hub-Valley-Residency.jpg",
+      page: "/our-relations/sherwani-builders/hub-valley",
     },
     {
       slug: "address-one",
@@ -178,6 +179,7 @@ export const projects = {
       location: "Karachi",
       desc: "A landmark high-rise of 3 & 4 room luxury apartments on easy installments.",
       image: "/images/projects/Address-One.jpg",
+      page: "/our-relations/sherwani-builders/address-one",
     },
   ] as {
     slug: string;
@@ -235,60 +237,64 @@ export const clients = {
 // "Our Relations" page — Zentry-style scroll-to-select showcase of the group's
 // affiliated companies. Left = names, right = visual that follows the scroll.
 export const relations = {
-  overline: "Our Milestones",
+  overline: "Sherwani Builders",
   heading: "The companies that move us forward",
   hint: "Scroll to explore",
   items: [
     {
-      name: "Toyota Highway Motors",
-      sector: "Automobiles",
-      desc: "A Toyota 3S Gold Dealership — sales, service and spare parts held to the highest global standards.",
-      image: "/images/projects/highway.jpg",
+      name: "Bloom Gardens",
+      sector: "Sherwani Builders",
+      desc: "Ultra-luxury 4 & 5 room apartments designed for elevated, modern living.",
+      image: "/images/projects/Bloom-Gardens.jpg",
       href: "#",
+      page:"/our-relations/sherwani-builders/bloom-gardens",
     },
     {
-      name: "Toyota Hub Motors",
-      sector: "Automobiles",
-      desc: "A new Toyota dealership extending world-class service to Balochistan.",
-      image: "/images/projects/hub.jpg",
+      name: "Sherwani Royal Suites",
+      sector: "Sherwani Builders",
+      desc: "Shop ,showrooms and 4–5 room apartments complete with a gym and clubhouse.",
+      image: "/images/projects/Sherwani-Royal-Suites.jpg",
       href: "#",
+      page:"/our-relations/sherwani-builders/sherwani-royal-suites",
     },
     {
-      name: "Sherwani Engineering",
-      sector: "Engineering",
-      desc: "Vehicle bodies, generators and industrial machinery engineered for durability.",
-      image: "/images/projects/event-custom.jpg",
+      name: "Hub Valley Residency",
+      sector: "Sherwani Builders",
+      desc: "Contemporary comfrot and modern living in the heart of Balochistan.",
+      image: "/images/projects/Hub-Valley-Residency.jpg",
       href: "#",
+      page:"/our-relations/sherwani-builders/hub-valley-residency",
     },
-    {
-      name: "TRV Pakistan",
-      sector: "Special Vehicles",
-      desc: "The Response Vehicle — ambulances, fire vehicles and bespoke custom fabrication.",
-      image: "/images/projects/event-trv.jpg",
-      href: "#",
-    },
-    {
-      name: "Trims.pk",
-      sector: "E-Commerce",
-      desc: "Automotive e-commerce — genuine parts and accessories delivered across Pakistan.",
-      image: "/images/relations/trims.jpg",
-      href: "#",
-    },
-    {
-      name: "Sherwani Builders & Developers",
-      sector: "Real Estate",
-      desc: "Crafting premium residential and commercial developments that redefine modern living.",
-      image: "/images/projects/event-builders.jpg",
-      href: "#",
-      page: "/our-relations/sherwani-builders",
-    },
-    {
-      name: "Sherwani Farms",
-      sector: "Leisure",
-      desc: "Serene farmhouses and a children's park — leisure and lifestyle reimagined.",
-      image: "/images/relations/farms.jpg",
-      href: "#",
-    },
+     {
+       name: "Address One",
+       sector: "Sherwani Builders",
+       desc: "A landmark high-rise of 3 & 4 room luxury apartments on easy installments.",
+       image: "/images/projects/Address-One.jpg",
+       href: "#",
+       page:"/our-relations/sherwani-builders/address-one",
+     },
+    // {
+    //   name: "Trims.pk",
+    //   sector: "E-Commerce",
+    //   desc: "Automotive e-commerce — genuine parts and accessories delivered across Pakistan.",
+    //   image: "/images/relations/trims.jpg",
+    //   href: "#",
+    // },
+    // {
+    //   name: "Sherwani Builders & Developers",
+    //   sector: "Real Estate",
+    //   desc: "Crafting premium residential and commercial developments that redefine modern living.",
+    //   image: "/images/projects/event-builders.jpg",
+    //   href: "#",
+    //   page: "/our-relations/sherwani-builders",
+    // },
+    // {
+    //   name: "Sherwani Farms",
+    //   sector: "Leisure",
+    //   desc: "Serene farmhouses and a children's park — leisure and lifestyle reimagined.",
+    //   image: "/images/relations/farms.jpg",
+    //   href: "#",
+    // },
   ],
 };
 
@@ -532,6 +538,108 @@ export const royalSuites: ProjectData = {
       "Shops",
       "Showrooms",
     ],
+  },
+};
+
+const HV = "/images/projects/hubvalley-residency";
+export const hubValley: ProjectData = {
+  slug: "hub-valley",
+  name: "Hub Valley Residency",
+  overline: "Sherwani Builders · Hub Valley",
+  heroSubtitle: "Contemporary comfort in Balochistan's newest residency.",
+  heroImage: "/images/projects/Hub-Valley-Residency.jpg",
+  youtubeId: "hK04MBDIK-0",
+  paymentHref: "/our-relations/sherwani-builders/hub-valley/payment-schedule",
+  about: {
+    overline: "A new residential landmark",
+    heading: "Introducing Hub Valley Residency",
+    body: "Hub Valley Residency brings contemporary apartment living to Hub with elegant finishes, modern amenities and a strong focus on community comfort. The project blends premium residences with thoughtful landscaping and smart design for families seeking a tranquil yet connected lifestyle.",
+    image: `${HV}/about.jpg`,
+  },
+  interiors: [
+    { title: "Lounge", tagline: "A welcoming lounge crafted for relaxation and entertaining.", image: `${HV}/Lounge.jpg` },
+    { title: "Dining", tagline: "Dining spaces designed for memorable family gatherings.", image: `${HV}/Dining.jpg` },
+    { title: "Kitchen", tagline: "A modern kitchen built for comfort and convenience.", image: `${HV}/Kitchen.jpg` },
+    { title: "Bathroom", tagline: "A refined bathroom with premium finishes.", image: `${HV}/Bathroom.jpg` },
+    { title: "Drawing Room", tagline: "Elegant drawing rooms framed by natural light and premium details.", image: `${HV}/Drawing.jpg` },
+  ],
+  amenities: [
+    "gallery-1",
+    "gallery-2",
+    "gallery-3",
+    "gallery-4",
+    "gallery-5",
+    "gallery-6",
+    "gallery-7",
+    "hero-bg",
+  ].map((n) => `${HV}/${n}.jpg`),
+  payment: {
+    note: "Flexible installments designed to make premium living accessible. Contact us for the latest availability and unit plans.",
+    units: ["3 Room Apartments", "4 Room Apartments", "Shops", "Showrooms"],
+    rows: [
+      { phase: "Booking", detail: "At the time of application" },
+      { phase: "Down Payment", detail: "On confirmation of allotment" },
+      { phase: "Monthly Installments", detail: "Spread over the construction period" },
+      { phase: "On Possession", detail: "Final payment at handover" },
+    ],
+  },
+  contact: {
+    phone: "+92 346 008 9565",
+    hours: "Mon–Sun · 11AM – 8PM",
+    address: "Hub Valley Residency, Hub, Balochistan",
+    mapEmbed: "https://www.google.com/maps?q=Hub%20Valley%20Residency&output=embed",
+    interestedOptions: ["3 Room Apartment", "4 Room Apartment", "Shops", "Showrooms"],
+  },
+};
+
+const AO = "/images/projects/address one";
+export const addressOne: ProjectData = {
+  slug: "address-one",
+  name: "Address One",
+  overline: "Sherwani Builders · Karachi",
+  heroSubtitle: "A landmark living experience in the city.",
+  heroImage: "/images/projects/Address-One.jpg",
+  youtubeId: "sWnivNopcvE",
+  paymentHref: "/our-relations/sherwani-builders/address-one/payment-schedule",
+  about: {
+    overline: "City living redefined",
+    heading: "Introducing Address One",
+    body: "Address One is a distinctive high-rise project offering luxury 3 and 4 room apartments in a prime Karachi location. The development features modern amenities, premium finishes and a focus on seamless urban living for families and professionals.",
+    image: `${AO}/about (1).jpg`,
+  },
+  interiors: [
+    { title: "Drawing Room", tagline: "Elegant living designed for comfort and style.", image: `${AO}/Drawing (1).jpg` },
+    { title: "Bedroom", tagline: "Restful interiors with refined finishes.", image: `${AO}/Bedroom.jpg` },
+    { title: "Dining", tagline: "Dining areas made for modern family living.", image: `${AO}/Dining (1).jpg` },
+    { title: "Kitchen", tagline: "A sleek, functional kitchen for contemporary homes.", image: `${AO}/Kitchen (1).jpg` },
+    { title: "Terrace", tagline: "A private terrace with city views.", image: `${AO}/Terrace.jpg` },
+  ],
+  amenities: [
+    "gallery-1 (2)",
+    "gallery-2 (1)",
+    "gallery-3 (1)",
+    "gallery-4 (1)",
+    "gallery-5 (1)",
+    "gallery-6 (1)",
+    "gallery-7 (1)",
+    "gallery-8",
+  ].map((n) => `${AO}/${n}.jpg`),
+  payment: {
+    note: "Structured payment plans with easy installments for modern apartment living.",
+    units: ["3 Room Apartments", "4 Room Apartments", "Shops"],
+    rows: [
+      { phase: "Booking", detail: "At the time of application" },
+      { phase: "Down Payment", detail: "On confirmation of allotment" },
+      { phase: "Monthly Installments", detail: "Spread over the construction period" },
+      { phase: "On Possession", detail: "Final payment at handover" },
+    ],
+  },
+  contact: {
+    phone: "+92 346 008 9565",
+    hours: "Mon–Sun · 11AM – 8PM",
+    address: "Address One, Karachi, Pakistan",
+    mapEmbed: "https://www.google.com/maps?q=Address%20One%20Karachi&output=embed",
+    interestedOptions: ["3 Room Apartment", "4 Room Apartment", "Shops"],
   },
 };
 

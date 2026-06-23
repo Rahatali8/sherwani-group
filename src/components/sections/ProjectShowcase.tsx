@@ -48,7 +48,7 @@ export default function ProjectShowcase({ project: d }: { project: ProjectData }
   return (
     <main className="bg-bg">
       {/* HERO */}
-      <section className="relative flex h-screen min-h-[600px] w-full flex-col justify-center overflow-hidden">
+      <section className="relative flex h-screen min-h-150 w-full flex-col justify-center overflow-hidden">
         <div className="absolute inset-0">
           <PlaceholderImage
             src={d.heroImage}
@@ -57,8 +57,8 @@ export default function ProjectShowcase({ project: d }: { project: ProjectData }
             sizes="100vw"
             className="h-full w-full"
           />
-          <div className="absolute inset-0 bg-gradient-to-t from-bg via-black/45 to-black/60" />
-          <div className="absolute inset-x-0 top-0 h-40 bg-gradient-to-b from-black/70 to-transparent" />
+          <div className="absolute inset-0 bg-linear-to-t from-bg via-black/45 to-black/60" />
+          <div className="absolute inset-x-0 top-0 h-40 bg-linear-to-b from-black/70 to-transparent" />
         </div>
 
         <div className="relative mx-auto flex w-full max-w-7xl flex-col items-start gap-6 px-5 pt-24 md:px-10 md:pt-28">
