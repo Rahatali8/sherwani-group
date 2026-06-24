@@ -43,6 +43,56 @@ export const about = {
   revealEst: "Est. 1984 · Karachi, Pakistan",
 };
 
+export const diversification = {
+  overline: "Diversification",
+  heading: "Customer trust empowers us to expand into diverse ventures",
+  companies: [
+    {
+      slug: "toyota-highway",
+      title: "Toyota Highway Motors",
+      tag: "Automobiles",
+      desc: "A Toyota 3S Gold Dealership — sales, service and spare parts held to the highest global standards.",
+    },
+    {
+      slug: "builders",
+      title: "Sherwani Builders & Developers",
+      tag: "Real Estate",
+      desc: "Crafting premium residential and commercial developments that redefine modern living.",
+    },
+    {
+      slug: "trv",
+      title: "TRV Pakistan",
+      tag: "Special Vehicles",
+      desc: "The Response Vehicle — ambulances, fire vehicles and bespoke custom fabrication.",
+    },
+  
+    {
+      slug: "engineering",
+      title: "Sherwani Engineering",
+      tag: "Engineering",
+      desc: "Vehicle bodies, generators and industrial machinery engineered for durability.",
+    },
+    {
+      slug: "hub-motors",
+      title: "Toyota Hub Motors",
+      tag: "Automobiles",
+      desc: "A new Toyota dealership extending world-class service to Balochistan.",
+    },
+    {
+      slug: "hub-rally",
+      title: "Hub Rally",
+      tag: "Motorsports",
+      desc: "A motorsports legacy — 11 years and running, fuelling the spirit of competition.",
+    },
+   
+  ] as {
+    slug: string;
+    title: string;
+    tag: string;
+    desc: string;
+  }[],
+};
+
 export const timeline = {
   overline: "Our Journey",
   heading: "Four Decades of Growth",
