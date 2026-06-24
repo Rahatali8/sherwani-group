@@ -7,7 +7,7 @@ import { diversification } from "@/data/content";
 import AnimatedTitle from "@/components/ui/AnimatedTitle";
 import { PlaceholderVideo } from "@/components/ui/Media";
 
-export default function Diversification() {
+ export default function Diversification() {
   const rootRef = useRef<HTMLElement>(null);
 
   useGSAP(
