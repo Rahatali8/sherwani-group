@@ -7,7 +7,7 @@ import { usePathname, useRouter } from "next/navigation";
 import clsx from "clsx";
 import { FiMenu, FiX, FiPhone } from "react-icons/fi";
 import { gsap, useGSAP } from "@/lib/gsap";
-import { navLinks, site, Automobile } from "@/data/content";
+import { navLinks, site, Automobile, projects } from "@/data/content";
 import { scrollToHash, scrollToTop } from "@/lib/lenis";
 
 export default function Navbar() {
