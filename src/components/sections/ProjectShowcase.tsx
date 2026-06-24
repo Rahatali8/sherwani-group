@@ -167,24 +167,6 @@ export default function ProjectShowcase({ project: d }: { project: ProjectData }
         </div>
       </section>
 
-      {/* WALKTHROUGH */}
-      <section id="walkthrough" className="bg-surface/40 py-20 md:py-28">
-        <div className="mx-auto max-w-6xl px-5 md:px-10">
-          <p className="mb-4 text-center font-ui text-[11px] font-semibold uppercase tracking-[0.4em] text-gold-soft">
-            Cinematic Walkthrough
-          </p>
-          <AnimatedTitle
-            text={`Step inside ${d.name}`}
-            className="mx-auto mb-12 max-w-3xl text-center text-[clamp(2rem,5vw,3.6rem)] text-text"
-          />
-          <WalkthroughVideo
-            youtubeId={d.youtubeId}
-            poster={d.heroImage}
-            title={d.name}
-          />
-        </div>
-      </section>
-
       {/* PAYMENT SCHEDULE */}
       <section className="mx-auto max-w-7xl px-5 py-20 md:px-10 md:py-28">
         <div className="grid gap-12 md:grid-cols-2 md:gap-16">

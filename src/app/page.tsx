@@ -4,7 +4,6 @@ import Footer from "@/components/layout/Footer";
 import Hero from "@/components/sections/Hero";
 import About from "@/components/sections/About";
 import Timeline from "@/components/sections/Timeline";
-import Diversification from "@/components/sections/Diversification";
 import Projects from "@/components/sections/Projects";
 import Awards from "@/components/sections/Awards";
 import Clientele from "@/components/sections/Clientele";
@@ -18,7 +17,6 @@ export default function Home() {
         <Hero />
         <About />
         <Timeline />
-        <Diversification />
         <Projects />
         <Awards />
         <Clientele />

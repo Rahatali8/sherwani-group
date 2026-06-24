@@ -90,8 +90,9 @@ export const timeline = {
   ],
 };
 
-export const diversification = {
-  overline: "Diversification",
+
+export const Automobile = {
+  overline: "Automobile",
   heading: "Customer trust empowers us to expand into diverse ventures",
   companies: [
     {
@@ -99,48 +100,69 @@ export const diversification = {
       title: "Toyota Highway Motors",
       tag: "Automobiles",
       desc: "A Toyota 3S Gold Dealership — sales, service and spare parts held to the highest global standards.",
-    },
-    {
-      slug: "builders",
-      title: "Sherwani Builders & Developers",
-      tag: "Real Estate",
-      desc: "Crafting premium residential and commercial developments that redefine modern living.",
+      image: "/images/projects/highway.jpg",
+      page: "/automobile/toyota-highway",
     },
     {
       slug: "trv",
       title: "TRV Pakistan",
       tag: "Special Vehicles",
       desc: "The Response Vehicle — ambulances, fire vehicles and bespoke custom fabrication.",
-    },
-    {
-      slug: "trims",
-      title: "Trims.pk",
-      tag: "E-Commerce",
-      desc: "Automotive e-commerce — genuine parts and accessories delivered across Pakistan.",
-    },
-    {
-      slug: "engineering",
-      title: "Sherwani Engineering",
-      tag: "Engineering",
-      desc: "Vehicle bodies, generators and industrial machinery engineered for durability.",
+      image: "/images/projects/event-trv.jpg",
+      page: "/automobile/trv",
     },
     {
       slug: "hub-motors",
       title: "Toyota Hub Motors",
       tag: "Automobiles",
       desc: "A new Toyota dealership extending world-class service to Balochistan.",
+      image: "/images/projects/hub.jpg",
+      page: "/automobile/hub-motors",
     },
     {
       slug: "hub-rally",
-      title: "Hub Rally",
-      tag: "Motorsports",
-      desc: "A motorsports legacy — 11 years and running, fuelling the spirit of competition.",
+      title: "Hub Rally Cross",
+      tag: "Motor Sports",
+      desc: "Pakistan's premier off-road motorsport event, pioneered by the Sherwani Group to inject a new wave of excitement.",
+      image: "/images/projects/hubrally.jpg",
+      page: "/automobile/hub-rally",
+    },
+  ],
+};
+
+export const automobilePage = {
+  name: "Automobile Division",
+  overline: "Automobiles · Est. 1984",
+  tagline: "Driven by Vision, Defined by Excellence",
+  heroImage: "/images/projects/heroauto.avif",
+  intro:
+    "The Sherwani Group's automobile division began in 1984 with Sherwani Motors — a single venture in quality vehicle trading that has grown into one of Pakistan's most trusted automotive networks, spanning dealerships, special vehicles and motorsports.",
+  about: [
+    "Today, the automobile division operates Toyota Highway Motors (a 3S Gold Dealership), Toyota Hub Motors serving Balochistan, TRV Pakistan for emergency and special vehicles, and Hub Rally Cross — Pakistan's premier off-road motorsport event. Each venture reflects the group's commitment to quality, trust and customer satisfaction.",
+    "With decades of experience and partnerships with world-class automotive brands, the Sherwani Group continues to set new standards in the Pakistani automotive industry — from sales and service to custom fabrication and motorsport entertainment.",
+  ],
+  stats: [
+    { value: 1984, suffix: "", label: "Established" },
+    { value: 4, suffix: "+", label: "Automotive Ventures" },
+    { value: 40, suffix: "+", label: "Years of Trust" },
+    { value: 100, suffix: "%", label: "Commitment to Quality" },
+  ],
+  services: [
+    {
+      title: "Vehicle Sales & Dealerships",
+      desc: "Authorized dealerships for Toyota and other world-class brands — new vehicles, test drives and expert guidance.",
     },
     {
-      slug: "farms",
-      title: "Sherwani Farms",
-      tag: "Leisure",
-      desc: "Serene farmhouses and a children's park — leisure and lifestyle reimagined.",
+      title: "Service & Maintenance",
+      desc: "State-of-the-art 3S service centers with trained technicians and genuine OEM spare parts.",
+    },
+    {
+      title: "Custom Vehicle Fabrication",
+      desc: "Bespoke design and fabrication of emergency response vehicles, ambulances, fire trucks and specialized units.",
+    },
+    {
+      title: "Motorsports Events",
+      desc: "Organizing and hosting Pakistan's premier off-road motorsport event — Hub Rally Cross.",
     },
   ],
 };
@@ -220,8 +242,6 @@ export const awards = {
   }[],
 };
 
-// Actual logo files present in /public/images/clients (testimonials-N.jpg).
-// Note: number 19 is absent; everything else from 1..44 exists.
 const clientNumbers = [
   1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 20, 21, 22, 23,
   24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43,
@@ -234,8 +254,7 @@ export const clients = {
   logos: clientNumbers.map((n) => `/images/clients/testimonials-${n}.jpg`),
 };
 
-// "Our Relations" page — Zentry-style scroll-to-select showcase of the group's
-// affiliated companies. Left = names, right = visual that follows the scroll.
+
 export const relations = {
   overline: "Sherwani Builders",
   heading: "The companies that move us forward",
@@ -298,7 +317,6 @@ export const relations = {
   ],
 };
 
-// Dedicated company page: Sherwani Builders & Developers (real estate arm).
 export const buildersPage = {
   name: "Sherwani Builders & Developers",
   overline: "Real Estate · Est. 2008",
@@ -340,7 +358,6 @@ export const buildersPage = {
   },
 };
 
-// Shared shape for a Sherwani Builders project page (Bloom Gardens, Royal Suites…)
 export type ProjectData = {
   slug: string;
   name: string;
@@ -358,7 +375,6 @@ export type ProjectData = {
     rows: { phase: string; detail: string }[];
     pricingImage?: string;
     sizeImage?: string;
-    /** Extra labelled documents (overrides pricing/size when provided). */
     docs?: { src: string; label: string }[];
   };
   contact: {
@@ -368,6 +384,151 @@ export type ProjectData = {
     mapEmbed: string;
     interestedOptions: string[];
   };
+};
+
+// Fixed and Fully Typed Toyota Highway Object matching ProjectData structure
+export const toyotaHighway: ProjectData = {
+  slug: "toyota-highway",
+  name: "Toyota Highway Motor",
+  overline: "Automobile Dealership · Karachi",
+  heroSubtitle: "Sales, Service and Genuine Spare Parts",
+  heroImage: "/images/projects/highway.jpg",
+  youtubeId: "hK04MBDIK-0", 
+  paymentHref: "/automobile/toyota-highway/payment-schedule",
+  about: {
+    overline: "A Toyota 3S Gold Dealership",
+    heading: "Driven by Vision, Defined by Excellence",
+    body: "Toyota Highway Motors is Sherwani Group's flagship Toyota 3S Gold dealership. We deliver authorized vehicle sales, state-of-the-art service facility, and genuine spare parts held to the highest global industrial standards with a strict customer-first approach.",
+    image: "/images/projects/highway.jpg",
+  },
+  interiors: [],
+  amenities: [],
+  payment: {
+    note: "Flexible, easy-installment plans tailored to you. Explore the full breakdown below or reach out to our dealership representatives.",
+    units: ["4 Room Apartments", "5 Room Apartments", "Shops", "Showrooms"],
+    rows: [
+      { phase: "BOOKING", detail: "At the time of application" },
+      { phase: "DOWN PAYMENT", detail: "On confirmation of allotment" },
+      { phase: "MONTHLY INSTALLMENTS", detail: "Spread over the construction period" },
+      { phase: "ON POSSESSION", detail: "Final payment at handover" },
+    ],
+    docs: []
+  },
+  contact: {
+    phone: "+92 346 008 9565",
+    hours: "Mon–Sun · 11AM – 8PM",
+    address: "Toyota Highway Motors, Main National Highway, Karachi, Pakistan",
+    mapEmbed: "https://www.google.com/maps?q=Toyota%20Highway%20Motors%20Karachi&output=embed",
+    interestedOptions: ["Vehicle Sales", "Maintenance Service", "Spare Parts"]
+  }
+};
+
+export const hubMotors: ProjectData = {
+  slug: "hub-motors",
+  name: "Toyota Hub Motors",
+  overline: "Automobiles · Balochistan",
+  heroSubtitle: "World-Class Toyota Service Extending to Balochistan",
+  heroImage: "/images/projects/hub.jpg",
+  youtubeId: "hK04MBDIK-0",
+  paymentHref: "/automobile/hub-motors/payment-schedule",
+  about: {
+    overline: "A New Toyota Dealership",
+    heading: "World-Class Service in Balochistan",
+    body: "Toyota Hub Motors brings world-class automotive service to Balochistan. As an authorised Toyota dealership, we provide comprehensive sales, service and parts support with the same commitment to excellence that defines all Sherwani operations.",
+    image: "/images/projects/hub.jpg",
+  },
+  interiors: [],
+  amenities: [],
+  payment: {
+    note: "Flexible, easy-installment plans tailored to you. Explore the full breakdown below or reach out to our dealership representatives.",
+    units: ["Vehicle Sales", "Service Plans", "Spare Parts"],
+    rows: [
+      { phase: "BOOKING", detail: "At the time of application" },
+      { phase: "DOWN PAYMENT", detail: "On confirmation of allotment" },
+      { phase: "MONTHLY INSTALLMENTS", detail: "Spread over the construction period" },
+      { phase: "ON POSSESSION", detail: "Final payment at handover" },
+    ],
+    docs: []
+  },
+  contact: {
+    phone: "+92 346 008 9565",
+    hours: "Mon–Sun · 11AM – 8PM",
+    address: "Toyota Hub Motors, Hub, Balochistan, Pakistan",
+    mapEmbed: "https://www.google.com/maps?q=Toyota%20Hub%20Motors%20Hub%20Balochistan&output=embed",
+    interestedOptions: ["Vehicle Sales", "Maintenance Service", "Spare Parts"]
+  }
+};
+
+export const trv: ProjectData = {
+  slug: "trv",
+  name: "TRV Pakistan",
+  overline: "Special Vehicles · Karachi",
+  heroSubtitle: "Emergency Response & Specialised Vehicles",
+  heroImage: "/images/projects/event-trv.jpg",
+  youtubeId: "hK04MBDIK-0", 
+  paymentHref: "/automobile/trv/payment-schedule",
+  about: {
+    overline: "Specialised Vehicle Fabricators",
+    heading: "Precision Engineering, Uncompromising Reliability",
+    body: "TRV Pakistan specialises in custom vehicle fabrication and emergency response vehicles. We design and build ambulances, fire trucks, and specialised vehicles with precision engineering and reliability at the core.",
+    image: "/images/projects/event-trv.jpg",
+  },
+  interiors: [],
+  amenities: [],
+  payment: {
+    note: "Flexible, easy-installment plans tailored to you. Explore the full breakdown below or reach out to our dealership representatives.",
+    units: ["4 Room Apartments", "5 Room Apartments", "Shops", "Showrooms"],
+    rows: [
+      { phase: "BOOKING", detail: "At the time of application" },
+      { phase: "DOWN PAYMENT", detail: "On confirmation of allotment" },
+      { phase: "MONTHLY INSTALLMENTS", detail: "Spread over the construction period" },
+      { phase: "ON POSSESSION", detail: "Final payment at handover" },
+    ],
+    docs: []
+  },
+  contact: {
+    phone: "+92 346 008 9565",
+    hours: "Mon–Sun · 11AM – 8PM",
+    address: "TRV Pakistan, Main National Highway, Karachi, Pakistan",
+    mapEmbed: "https://www.google.com/maps?q=Toyota%20Highway%20Motors%20Karachi&output=embed",
+    interestedOptions: ["Special Vehicles", "Custom Fabrication", "Emergency Units"]
+  }
+};
+
+export const hubRally: ProjectData = {
+  slug: "hub-rally",
+  name: "Hub Rally Cross",
+  overline: "Motor Sports · Balochistan",
+  heroSubtitle: "Pakistan's Premier Off-Road Motorsport Event",
+  heroImage: "/images/projects/hubrally.jpg",
+  youtubeId: "hK04MBDIK-0", 
+  paymentHref: "/automobile/hub-rally/payment-schedule",
+  about: {
+    overline: "Motor Sports in Pakistan",
+    heading: "Extreme Racing, Built for the Brave",
+    body: "The Hub Rally Cross is Pakistan's premier off-road motorsport event, annually organized across desert and coast, featuring top rally drivers from across the nation.",
+    image: "/images/projects/hubrally.jpg",
+  },
+  interiors: [],
+  amenities: [],
+  payment: {
+    note: "Flexible, easy-installment plans tailored to you. Explore the full breakdown below or reach out to our event representatives.",
+    units: ["4 Room Apartments", "5 Room Apartments", "Shops", "Showrooms"],
+    rows: [
+      { phase: "BOOKING", detail: "At the time of application" },
+      { phase: "DOWN PAYMENT", detail: "On confirmation of allotment" },
+      { phase: "MONTHLY INSTALLMENTS", detail: "Spread over the construction period" },
+      { phase: "ON POSSESSION", detail: "Final payment at handover" },
+    ],
+    docs: []
+  },
+  contact: {
+    phone: "+92 346 008 9565",
+    hours: "Mon–Sun · 11AM – 8PM",
+    address: "Max Dirt Arena, Hub, Balochistan, Pakistan",
+    mapEmbed: "https://www.google.com/maps?q=Toyota%20Highway%20Motors%20Karachi&output=embed",
+    interestedOptions: ["Racer Registration", "Sponsorship Enquiries", "Media Passes"]
+  }
 };
 
 // Dedicated project page: Bloom Gardens (a Sherwani Builders development).
@@ -648,7 +809,6 @@ export const contact = {
   heading: "Get in Touch",
   email: "info@sherwanigroup.com",
   address: "Sherwani Group, Main National Highway, Karachi, Pakistan",
-  // Placeholder Google Maps embed (Toyota Highway Motors) — swap exact src later.
   mapEmbed:
     "https://www.google.com/maps?q=Toyota%20Highway%20Motors%20Karachi&output=embed",
 };
@@ -656,7 +816,7 @@ export const contact = {
 export const navLinks = [
   { label: "About", href: "#about" },
   { label: "Awards", href: "#awards" },
-  { label: "Diversification", href: "#diversification" },
+  { label: "Automobile", href: "/automobile" },
 ] as const;
 
 export const affiliatedCompanies = [

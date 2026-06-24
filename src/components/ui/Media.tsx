@@ -24,13 +24,14 @@ type VideoProps = {
 
 export function PlaceholderVideo({ src, className, label }: VideoProps) {
   const videoRef = useRef<HTMLVideoElement>(null);
+  const [failed, setFailed] = useState(false);
 
   // Only play while on-screen (perf); respect reduced motion.
   useEffect(() => {
     const el = videoRef.current;
     if (!el) return;
     const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-    if (reduce) return;
+    if (reduce || failed) return;
 
     const io = new IntersectionObserver(
       ([entry]) => {
@@ -41,19 +42,26 @@ export function PlaceholderVideo({ src, className, label }: VideoProps) {
     );
     io.observe(el);
     return () => io.disconnect();
-  }, []);
+  }, [failed]);
 
   return (
     <div className={clsx("relative overflow-hidden placeholder-gradient", className)}>
-      <video
-        ref={videoRef}
-        className="absolute inset-0 h-full w-full object-cover"
-        src={src}
-        muted
-        loop
-        playsInline
-        preload="metadata"
-      />
+      {!failed ? (
+        <video
+          ref={videoRef}
+          className="absolute inset-0 h-full w-full object-cover"
+          src={src}
+          muted
+          loop
+          playsInline
+          preload="metadata"
+          onError={() => setFailed(true)}
+        />
+      ) : (
+        <div className="absolute inset-0 flex items-center justify-center px-4 text-center text-sm uppercase tracking-widest text-muted/70">
+          {label ?? "Video unavailable"}
+        </div>
+      )}
       {label && (
         <span className="pointer-events-none absolute bottom-2 left-2 z-10 select-none text-[10px] uppercase tracking-widest text-muted/60">
           {label}
