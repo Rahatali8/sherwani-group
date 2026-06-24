@@ -15,7 +15,7 @@ export default function BloomGardensPaymentPage() {
       <Navbar />
       <ProjectPaymentSchedule
         project={project}
-        projectHref="/our-relations/sherwani-builders/bloom-gardens"
+        projectHref="\app\automobile\toyota-highway"
       />
       <Footer />
     </>

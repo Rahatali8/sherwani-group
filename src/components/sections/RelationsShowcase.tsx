@@ -9,8 +9,21 @@ import { relations } from "@/data/content";
 import { PlaceholderImage } from "@/components/ui/Media";
 import { scrollToY } from "@/lib/lenis";
 
-const items = relations.items;
-const count = items.length;
+const defaultItems = relations.items;
+
+// Define a safe, matching shape type for the showcase items array
+type ShowcaseItem = {
+  name: string;
+  sector: string;
+  desc: string;
+  image: string;
+  href: string;
+  page?: string;
+};
+
+type RelationsShowcaseProps = {
+  items?: ShowcaseItem[];
+};
 
 // 3D transform for each card based on its distance from the active card.
 function cardTransform(delta: number) {
@@ -33,7 +46,8 @@ function cardTransform(delta: number) {
   };
 }
 
-export default function RelationsShowcase() {
+export default function RelationsShowcase({ items = defaultItems }: RelationsShowcaseProps) {
+  const count = items.length;
   const rootRef = useRef<HTMLElement>(null);
   const deckRef = useRef<HTMLDivElement>(null);
   const [active, setActive] = useState(0);
@@ -80,7 +94,7 @@ export default function RelationsShowcase() {
         cleanupTilt?.();
       };
     },
-    { scope: rootRef },
+    { scope: rootRef, dependencies: [count] }, // Safely tracks component instance variations
   );
 
   const onPick = (i: number) => {
@@ -203,29 +217,31 @@ export default function RelationsShowcase() {
             </div>
 
             {/* Caption (active company) */}
-            <div className="mt-8 md:absolute md:bottom-2 md:right-0 md:mt-0 md:max-w-xs md:text-right">
-              <p className="mb-2 font-ui text-[11px] font-semibold uppercase tracking-[0.35em] text-gold">
-                {activeItem.sector}
-              </p>
-              <h3 className="font-display text-2xl uppercase leading-tight tracking-wide text-text md:text-3xl">
-                {activeItem.name}
-              </h3>
-              <p className="mt-3 text-sm leading-relaxed text-text/75">
-                {activeItem.desc}
-              </p>
-              {activeItem.page ? (
-                <Link
-                  href={activeItem.page}
-                  className="mt-5 inline-flex items-center gap-2 rounded-full border border-gold/50 px-5 py-2.5 font-ui text-xs uppercase tracking-widest text-gold transition-colors hover:bg-gold hover:text-bg md:ml-auto"
-                >
-                  Explore Company <FiArrowRight />
-                </Link>
-              ) : (
-                <span className="mt-5 inline-flex items-center gap-2 font-ui text-xs uppercase tracking-widest text-muted/60">
-                  Page coming soon
-                </span>
-              )}
-            </div>
+            {activeItem && (
+              <div className="mt-8 md:absolute md:bottom-2 md:right-0 md:mt-0 md:max-w-xs md:text-right">
+                <p className="mb-2 font-ui text-[11px] font-semibold uppercase tracking-[0.35em] text-gold">
+                  {activeItem.sector}
+                </p>
+                <h3 className="font-display text-2xl uppercase leading-tight tracking-wide text-text md:text-3xl">
+                  {activeItem.name}
+                </h3>
+                <p className="mt-3 text-sm leading-relaxed text-text/75">
+                  {activeItem.desc}
+                </p>
+                {activeItem.page ? (
+                  <Link
+                    href={activeItem.page}
+                    className="mt-5 inline-flex items-center gap-2 rounded-full border border-gold/50 px-5 py-2.5 font-ui text-xs uppercase tracking-widest text-gold transition-colors hover:bg-gold hover:text-bg md:ml-auto"
+                  >
+                    Explore Company <FiArrowRight />
+                  </Link>
+                ) : (
+                  <span className="mt-5 inline-flex items-center gap-2 font-ui text-xs uppercase tracking-widest text-muted/60">
+                    Page coming soon
+                  </span>
+                )}
+              </div>
+            )}
           </div>
         </div>
 
