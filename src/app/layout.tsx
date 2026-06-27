@@ -45,6 +45,7 @@ export default function RootLayout({
       lang="en"
       className={`${inter.variable} ${anton.variable} ${outfit.variable} antialiased`}
     >
+      
       <body className="bg-bg text-text font-body">
         <SmoothScrollProvider>
           <Preloader />

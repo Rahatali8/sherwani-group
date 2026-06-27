@@ -7,7 +7,7 @@ import { usePathname, useRouter } from "next/navigation";
 import clsx from "clsx";
 import { FiMenu, FiX, FiPhone } from "react-icons/fi";
 import { gsap, useGSAP } from "@/lib/gsap";
-import { navLinks, projects, site } from "@/data/content";
+import { navLinks, site, Automobile, projects } from "@/data/content";
 import { scrollToHash, scrollToTop } from "@/lib/lenis";
 
 export default function Navbar() {
@@ -18,11 +18,18 @@ export default function Navbar() {
   const pathname = usePathname();
   const router = useRouter();
 
-  // On the home page anchors smooth-scroll; from other routes we navigate home
-  // (to /#hash) so the link still works.
+  // On the home page hash anchors smooth-scroll; absolute routes navigate normally.
   const goSection = (href: string) => {
-    if (pathname === "/") scrollToHash(href);
-    else router.push(`/${href}`);
+    if (href.startsWith("/")) {
+      router.push(href);
+      return;
+    }
+
+    if (pathname === "/") {
+      scrollToHash(href);
+    } else {
+      router.push(`/${href}`);
+    }
   };
   const contactHash = "#contact";
 
@@ -131,20 +138,44 @@ export default function Navbar() {
 
           {/* Desktop nav */}
           <div className="hidden items-center gap-8 font-ui text-[13px] font-medium uppercase tracking-[0.16em] lg:flex">
-            {navLinks.map((l) => (
-              <a
-                key={l.href}
-                href={`/${l.href}`}
-                onClick={(e) => {
-                  e.preventDefault();
-                  goSection(l.href);
-                }}
-                className="group relative text-text/85 transition-colors hover:text-gold"
+            {navLinks
+              .filter((l) => l.href !== "/automobile")
+              .map((l) => (
+                <a
+                  key={l.href}
+                  href={l.href.startsWith("/") ? l.href : `/${l.href}`}
+                  onClick={(e) => {
+                    e.preventDefault();
+                    goSection(l.href);
+                  }}
+                  className="group relative text-text/85 transition-colors hover:text-gold"
+                >
+                  {l.label}
+                  <span className="absolute -bottom-1 left-0 h-px w-0 bg-gold transition-all duration-300 group-hover:w-full" />
+                </a>
+              ))}
+
+            {/* Automobile dropdown */}
+            <div className="relative group">
+              <Link
+                href="/automobile"
+                className="group relative inline-flex text-text/85 transition-colors hover:text-gold"
               >
-                {l.label}
+                Automobile
                 <span className="absolute -bottom-1 left-0 h-px w-0 bg-gold transition-all duration-300 group-hover:w-full" />
-              </a>
-            ))}
+              </Link>
+              <div className="absolute left-0 top-full z-30 mt-1 hidden min-w-[220px] flex-col rounded-3xl border border-white/10 bg-bg/95 p-4 opacity-0 shadow-[0_40px_80px_-30px_rgba(0,0,0,0.45)] transition duration-200 group-hover:flex group-hover:opacity-100 after:absolute after:left-0 after:right-0 after:-top-3 after:h-3 after:bg-transparent">
+                {Automobile.companies.map((company) => (
+                  <Link
+                    key={company.slug}
+                    href={company.page!}
+                    className="py-3 text-sm uppercase tracking-[0.24em] text-text transition-colors hover:text-gold"
+                  >
+                    {company.title}
+                  </Link>
+                ))}
+              </div>
+            </div>
 
             {/* Sherwani Builders — dedicated page */}
             <div className="group relative">
@@ -226,7 +257,7 @@ export default function Navbar() {
               <div key={l.href} className="overflow-hidden">
                 <a
                   data-mobile-link
-                  href={`/${l.href}`}
+                  href={l.href.startsWith("/") ? l.href : `/${l.href}`}
                   onClick={(e) => {
                     e.preventDefault();
                     setMenuOpen(false);
@@ -242,7 +273,31 @@ export default function Navbar() {
             <div className="overflow-hidden">
               <Link
                 data-mobile-link
-                href="/our-relations/sherwani-builders"
+                href="/automobile"
+                onClick={() => setMenuOpen(false)}
+                className="block py-2 font-display text-4xl tracking-wide text-text transition-colors hover:text-gold"
+              >
+                Automobile
+              </Link>
+            </div>
+
+            {Automobile.companies.map((company) => (
+              <div key={company.slug} className="overflow-hidden">
+                <Link
+                  data-mobile-link
+                  href={company.page!}
+                  onClick={() => setMenuOpen(false)}
+                  className="block py-2 pl-5 font-display text-3xl tracking-wide text-text transition-colors hover:text-gold"
+                >
+                  {company.title}
+                </Link>
+              </div>
+            ))}
+
+            <div className="overflow-hidden">
+              <Link
+                data-mobile-link
+                href="/our-relations"
                 onClick={() => setMenuOpen(false)}
                 className="block py-2 font-display text-4xl tracking-wide text-text transition-colors hover:text-gold"
               >
@@ -280,3 +335,4 @@ export default function Navbar() {
     </>
   );
 }
+

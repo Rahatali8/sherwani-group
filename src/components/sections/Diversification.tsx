@@ -1,6 +1,6 @@
 "use client";
 
-import { useRef } from "react";
+import { useRef, type MouseEvent } from "react";
 import clsx from "clsx";
 import { gsap, useGSAP, prefersReducedMotion } from "@/lib/gsap";
 import { diversification } from "@/data/content";
@@ -54,7 +54,7 @@ import { PlaceholderVideo } from "@/components/ui/Media";
   );
 
   // Subtle 3D tilt following the cursor (desktop only).
-  const handleTilt = (e: React.MouseEvent<HTMLDivElement>) => {
+  const handleTilt = (e: MouseEvent<HTMLDivElement>) => {
     if (window.innerWidth < 768) return;
     const el = e.currentTarget;
     const r = el.getBoundingClientRect();
@@ -68,7 +68,7 @@ import { PlaceholderVideo } from "@/components/ui/Media";
       transformPerspective: 900,
     });
   };
-  const resetTilt = (e: React.MouseEvent<HTMLDivElement>) => {
+  const resetTilt = (e: MouseEvent<HTMLDivElement>) => {
     gsap.to(e.currentTarget, {
       rotateX: 0,
       rotateY: 0,

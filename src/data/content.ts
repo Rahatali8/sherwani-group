@@ -127,28 +127,24 @@ export const diversification = {
       title: "Sherwani Engineering",
       tag: "Engineering",
       desc: "Vehicle bodies, generators and industrial machinery engineered for durability.",
-      img: "/images/projects/event-custom.jpg",
     },
     {
       slug: "hub-motors",
       title: "Toyota Hub Motors",
       tag: "Automobiles",
       desc: "A new Toyota dealership extending world-class service to Balochistan.",
-      img: "/images/projects/hub.jpg",
     },
     {
       slug: "hub-rally",
       title: "Hub Rally",
       tag: "Motorsports",
       desc: "A motorsports legacy — 11 years and running, fuelling the spirit of competition.",
-      img: "/images/projects/hubrally.jpg",
     },
     {
       slug: "farms",
       title: "Sherwani Farms",
       tag: "Leisure",
       desc: "Serene farmhouses and a children's park — leisure and lifestyle reimagined.",
-      img: "/images/projects/event-custom.jpg",
     },
   ],
 };
