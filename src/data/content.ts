@@ -52,44 +52,49 @@ export const diversification = {
       title: "Toyota Highway Motors",
       tag: "Automobiles",
       desc: "A Toyota 3S Gold Dealership — sales, service and spare parts held to the highest global standards.",
+      image: "/images/projects/highway.jpg",
     },
     {
       slug: "builders",
       title: "Sherwani Builders & Developers",
       tag: "Real Estate",
       desc: "Crafting premium residential and commercial developments that redefine modern living.",
+      image: "/images/projects/event-builders.jpg",
     },
     {
       slug: "trv",
       title: "TRV Pakistan",
       tag: "Special Vehicles",
       desc: "The Response Vehicle — ambulances, fire vehicles and bespoke custom fabrication.",
+      image: "/images/projects/event-trv.jpg",
     },
-  
     {
       slug: "engineering",
       title: "Sherwani Engineering",
       tag: "Engineering",
       desc: "Vehicle bodies, generators and industrial machinery engineered for durability.",
+      image: "/images/projects/event-custom.jpg",
     },
     {
       slug: "hub-motors",
       title: "Toyota Hub Motors",
       tag: "Automobiles",
       desc: "A new Toyota dealership extending world-class service to Balochistan.",
+      image: "/images/projects/hub.jpg",
     },
     {
       slug: "hub-rally",
       title: "Hub Rally",
       tag: "Motorsports",
       desc: "A motorsports legacy — 11 years and running, fuelling the spirit of competition.",
+      image: "/images/projects/hubrally.jpg",
     },
-   
   ] as {
     slug: string;
     title: string;
     tag: string;
     desc: string;
+    image: string;
   }[],
 };
 
@@ -332,7 +337,7 @@ export const relations = {
       desc: "Contemporary comfrot and modern living in the heart of Balochistan.",
       image: "/images/projects/Hub-Valley-Residency.jpg",
       href: "#",
-      page:"/our-relations/sherwani-builders/hub-valley-residency",
+      page:"/our-relations/sherwani-builders/hub-valley",
     },
      {
        name: "Address One",
@@ -342,28 +347,28 @@ export const relations = {
        href: "#",
        page:"/our-relations/sherwani-builders/address-one",
      },
-    {
-      name: "Trims.pk",
-      sector: "E-Commerce",
-      desc: "Automotive e-commerce — genuine parts and accessories delivered across Pakistan.",
-      image: "/images/relations/trims.jpg",
-      href: "#",
-    },
-    {
-      name: "Sherwani Builders & Developers",
-      sector: "Real Estate",
-      desc: "Crafting premium residential and commercial developments that redefine modern living.",
-      image: "/images/projects/event-builders.jpg",
-      href: "#",
-      page: "/our-relations/sherwani-builders",
-    },
-    {
-      name: "Sherwani Farms",
-      sector: "Leisure",
-      desc: "Serene farmhouses and a children's park — leisure and lifestyle reimagined.",
-      image: "/images/relations/farms.jpg",
-      href: "#",
-    },
+    // {
+    //   name: "Trims.pk",
+    //   sector: "E-Commerce",
+    //   desc: "Automotive e-commerce — genuine parts and accessories delivered across Pakistan.",
+    //   image: "/images/relations/trims.jpg",
+    //   href: "#",
+    // },
+    // {
+    //   name: "Sherwani Builders & Developers",
+    //   sector: "Real Estate",
+    //   desc: "Crafting premium residential and commercial developments that redefine modern living.",
+    //   image: "/images/projects/event-builders.jpg",
+    //   href: "#",
+    //   page: "/our-relations/sherwani-builders",
+    // },
+    // {
+    //   name: "Sherwani Farms",
+    //   sector: "Leisure",
+    //   desc: "Serene farmhouses and a children's park — leisure and lifestyle reimagined.",
+    //   image: "/images/relations/farms.jpg",
+    //   href: "#",
+    // },
   ],
 };
 
@@ -866,7 +871,6 @@ export const contact = {
 export const navLinks = [
   { label: "About", href: "#about" },
   { label: "Awards", href: "#awards" },
-  { label: "Automobile", href: "/automobile" },
 ] as const;
 
 export const affiliatedCompanies = [

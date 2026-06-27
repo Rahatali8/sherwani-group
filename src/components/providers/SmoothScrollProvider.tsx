@@ -23,9 +23,10 @@ export default function SmoothScrollProvider({
 
     const lenis = new Lenis({
       duration: 1.1,
-      easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)), // expo-out
+      easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
       smoothWheel: !prefersReduced,
-      touchMultiplier: 1.5,
+      touchMultiplier: 2.5,
+      gestureOrientation: "vertical",
     });
 
     lenis.on("scroll", ScrollTrigger.update);

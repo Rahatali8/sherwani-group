@@ -1,11 +1,11 @@
 "use client";
 
-import { useRef, useState } from "react";
+import { useRef, useState, useCallback } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
 import clsx from "clsx";
-import { FiMenu, FiX, FiPhone } from "react-icons/fi";
+import { FiMenu, FiX, FiPhone, FiChevronDown } from "react-icons/fi";
 import { gsap, useGSAP } from "@/lib/gsap";
 import { navLinks, site, Automobile, projects } from "@/data/content";
 import { scrollToHash, scrollToTop } from "@/lib/lenis";
@@ -15,23 +15,24 @@ export default function Navbar() {
   const overlayRef = useRef<HTMLDivElement>(null);
   const [scrolled, setScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
+  const [mobileAutoOpen, setMobileAutoOpen] = useState(true);
+  const [mobileBuildersOpen, setMobileBuildersOpen] = useState(true);
   const pathname = usePathname();
   const router = useRouter();
 
-  // On the home page hash anchors smooth-scroll; absolute routes navigate normally.
+  const contactHash = "#contact";
+
   const goSection = (href: string) => {
     if (href.startsWith("/")) {
       router.push(href);
       return;
     }
-
     if (pathname === "/") {
-      scrollToHash(href);
+      requestAnimationFrame(() => scrollToHash(href));
     } else {
       router.push(`/${href}`);
     }
   };
-  const contactHash = "#contact";
 
   // Show / hide on scroll direction + add blurred bg once scrolled past hero top.
   useGSAP(
@@ -137,9 +138,9 @@ export default function Navbar() {
           </Link>
 
           {/* Desktop nav */}
-          <div className="hidden items-center gap-8 font-ui text-[13px] font-medium uppercase tracking-[0.16em] lg:flex">
+          <div className="hidden items-center gap-8 font-display text-sm uppercase tracking-[0.16em] lg:flex">
             {navLinks
-              .filter((l) => l.href !== "/automobile")
+              
               .map((l) => (
                 <a
                   key={l.href}
@@ -148,7 +149,7 @@ export default function Navbar() {
                     e.preventDefault();
                     goSection(l.href);
                   }}
-                  className="group relative text-text/85 transition-colors hover:text-gold"
+                  className="group relative text-sm uppercase tracking-[0.16em] text-text/85 transition-colors hover:text-gold"
                 >
                   {l.label}
                   <span className="absolute -bottom-1 left-0 h-px w-0 bg-gold transition-all duration-300 group-hover:w-full" />
@@ -156,20 +157,44 @@ export default function Navbar() {
               ))}
 
             {/* Automobile dropdown */}
-            <div className="relative group">
+            <div
+              className="relative group"
+              onMouseEnter={(e) => {
+                const dd = e.currentTarget.querySelector<HTMLElement>("[data-dd]");
+                if (!dd) return;
+                gsap.killTweensOf(dd);
+                gsap.set(dd, { display: "flex" });
+                gsap.fromTo(dd, { opacity: 0, y: -40 }, { opacity: 1, y: 0, duration: 1.45, ease: "power3.out" });
+                gsap.fromTo(
+                  dd.querySelectorAll("[data-dd-item]"),
+                  { opacity: 0, y: -15 },
+                  { opacity: 1, y: 0, duration: 0.35, stagger: 0.08, ease: "power2.out" },
+                );
+              }}
+              onMouseLeave={(e) => {
+                const dd = e.currentTarget.querySelector<HTMLElement>("[data-dd]");
+                if (!dd) return;
+                gsap.killTweensOf(dd);
+                gsap.set(dd, { display: "none", opacity: 0, y: -40 });
+              }}
+            >
               <Link
                 href="/automobile"
-                className="group relative inline-flex text-text/85 transition-colors hover:text-gold"
+                className="relative inline-flex text-sm uppercase tracking-[0.16em] text-text/85 transition-colors hover:text-gold"
               >
                 Automobile
                 <span className="absolute -bottom-1 left-0 h-px w-0 bg-gold transition-all duration-300 group-hover:w-full" />
               </Link>
-              <div className="absolute left-0 top-full z-30 mt-1 hidden min-w-[220px] flex-col rounded-3xl border border-white/10 bg-bg/95 p-4 opacity-0 shadow-[0_40px_80px_-30px_rgba(0,0,0,0.45)] transition duration-200 group-hover:flex group-hover:opacity-100 after:absolute after:left-0 after:right-0 after:-top-3 after:h-3 after:bg-transparent">
+              <div
+                data-dd
+                className="absolute left-0 top-full z-30 mt-1 hidden min-w-[220px] flex-col rounded-3xl border border-white/10 bg-bg/95 p-4 opacity-0 shadow-[0_40px_80px_-30px_rgba(0,0,0,0.45)] after:absolute after:left-0 after:right-0 after:-top-3 after:h-3 after:bg-transparent"
+              >
                 {Automobile.companies.map((company) => (
                   <Link
                     key={company.slug}
+                    data-dd-item
                     href={company.page!}
-                    className="py-3 text-sm uppercase tracking-[0.24em] text-text transition-colors hover:text-gold"
+                    className="whitespace-nowrap py-3 font-ui text-sm uppercase tracking-[0.08em] text-text transition-colors hover:text-gold"
                   >
                     {company.title}
                   </Link>
@@ -178,24 +203,47 @@ export default function Navbar() {
             </div>
 
             {/* Sherwani Builders — dedicated page */}
-            <div className="group relative">
+            <div
+              className="relative group"
+              onMouseEnter={(e) => {
+                const dd = e.currentTarget.querySelector<HTMLElement>("[data-dd]");
+                if (!dd) return;
+                gsap.killTweensOf(dd);
+                gsap.set(dd, { display: "flex" });
+                gsap.fromTo(dd, { opacity: 0, y: -40 }, { opacity: 1, y: 0, duration: 1.45, ease: "power3.out" });
+                gsap.fromTo(
+                  dd.querySelectorAll("[data-dd-item]"),
+                  { opacity: 0, y: -15 },
+                  { opacity: 1, y: 0, duration: 0.35, stagger: 0.08, ease: "power2.out" },
+                );
+              }}
+              onMouseLeave={(e) => {
+                const dd = e.currentTarget.querySelector<HTMLElement>("[data-dd]");
+                if (!dd) return;
+                gsap.killTweensOf(dd);
+                gsap.set(dd, { display: "none", opacity: 0, y: -40 });
+              }}
+            >
               <Link
                 href="/our-relations/sherwani-builders"
-                className="group relative text-text/85 transition-colors hover:text-gold"
+                className="relative text-sm uppercase tracking-[0.16em] text-text/85 transition-colors hover:text-gold"
               >
                 Sherwani Builders
                 <span className="absolute -bottom-1 left-0 h-px w-0 bg-gold transition-all duration-300 group-hover:w-full" />
               </Link>
-
-              <div className="absolute left-0 top-full mt-2 hidden min-w-55 rounded-3xl border border-white/10 bg-bg/95 p-3 shadow-[0_30px_80px_-30px_rgba(0,0,0,0.8)] backdrop-blur-xl transition duration-300 group-hover:block">
+              <div
+                data-dd
+                className="absolute left-0 top-full mt-2 hidden min-w-55 rounded-3xl border border-white/10 bg-bg/95 p-3 opacity-0 shadow-[0_30px_80px_-30px_rgba(0,0,0,0.8)] backdrop-blur-xl"
+              >
                 <div className="flex flex-col gap-1">
                   {projects.items
                     .filter((item) => item.page)
                     .map((item) => (
                       <Link
                         key={item.slug}
+                        data-dd-item
                         href={item.page!}
-                        className="block rounded-2xl px-4 py-3 text-sm uppercase tracking-[0.2em] text-text/85 transition-colors hover:bg-white/5 hover:text-gold"
+                        className="whitespace-nowrap block rounded-2xl px-4 py-3 font-ui text-sm uppercase tracking-[0.08em] text-text/85 transition-colors hover:bg-white/5 hover:text-gold"
                       >
                         {item.name}
                       </Link>
@@ -205,17 +253,17 @@ export default function Navbar() {
             </div>
 
             {/* Contact — last */}
-            <a
-              href={`/${contactHash}`}
-              onClick={(e) => {
-                e.preventDefault();
-                goSection(contactHash);
-              }}
-              className="group relative text-text/85 transition-colors hover:text-gold"
-            >
-              Contact
-              <span className="absolute -bottom-1 left-0 h-px w-0 bg-gold transition-all duration-300 group-hover:w-full" />
-            </a>
+              <a
+                href={`/${contactHash}`}
+                onClick={(e) => {
+                  e.preventDefault();
+                  goSection(contactHash);
+                }}
+                className="group relative text-sm uppercase tracking-[0.16em] text-text/85 transition-colors hover:text-gold"
+              >
+                Contact
+                <span className="absolute -bottom-1 left-0 h-px w-0 bg-gold transition-all duration-300 group-hover:w-full" />
+              </a>
           </div>
 
           {/* Mobile hamburger */}
@@ -233,7 +281,7 @@ export default function Navbar() {
       {menuOpen && (
         <div
           ref={overlayRef}
-          className="fixed inset-0 z-60 flex flex-col bg-bg/98 backdrop-blur-xl lg:hidden"
+          className="fixed inset-0 z-60 flex flex-col overflow-y-auto bg-bg/98 backdrop-blur-xl lg:hidden"
         >
           <div className="flex items-center justify-between px-5 py-4">
             <Image
@@ -263,46 +311,79 @@ export default function Navbar() {
                     setMenuOpen(false);
                     goSection(l.href);
                   }}
-                  className="block py-2 font-display text-4xl tracking-wide text-text transition-colors hover:text-gold"
+                  className="block py-2 font-ui text-4xl tracking-wide text-text transition-colors hover:text-gold"
                 >
                   {l.label}
                 </a>
               </div>
             ))}
 
+            {/* Automobile dropdown */}
             <div className="overflow-hidden">
-              <Link
+              <button
                 data-mobile-link
-                href="/automobile"
-                onClick={() => setMenuOpen(false)}
-                className="block py-2 font-display text-4xl tracking-wide text-text transition-colors hover:text-gold"
+                onClick={() => setMobileAutoOpen(!mobileAutoOpen)}
+                className="flex w-full items-center justify-between py-2 font-ui text-4xl tracking-wide text-text transition-colors hover:text-gold"
               >
                 Automobile
-              </Link>
+                <FiChevronDown className={`text-2xl transition-transform ${mobileAutoOpen ? "rotate-180" : ""}`} />
+              </button>
+              {mobileAutoOpen && (
+                <div className="mt-1 space-y-1 border-l border-white/10 pl-4">
+                  <Link
+                    href="/automobile"
+                    onClick={() => setMenuOpen(false)}
+                    className="block py-2 font-ui text-3xl tracking-wide text-text/80 transition-colors hover:text-gold"
+                  >
+                    Overview
+                  </Link>
+                  {Automobile.companies.map((company) => (
+                    <Link
+                      key={company.slug}
+                      href={company.page!}
+                      onClick={() => setMenuOpen(false)}
+                      className="block py-2 font-ui text-3xl tracking-wide text-text/80 transition-colors hover:text-gold"
+                    >
+                      {company.title}
+                    </Link>
+                  ))}
+                </div>
+              )}
             </div>
 
-            {Automobile.companies.map((company) => (
-              <div key={company.slug} className="overflow-hidden">
-                <Link
-                  data-mobile-link
-                  href={company.page!}
-                  onClick={() => setMenuOpen(false)}
-                  className="block py-2 pl-5 font-display text-3xl tracking-wide text-text transition-colors hover:text-gold"
-                >
-                  {company.title}
-                </Link>
-              </div>
-            ))}
-
+            {/* Sherwani Builders dropdown */}
             <div className="overflow-hidden">
-              <Link
+              <button
                 data-mobile-link
-                href="/our-relations"
-                onClick={() => setMenuOpen(false)}
-                className="block py-2 font-display text-4xl tracking-wide text-text transition-colors hover:text-gold"
+                onClick={() => setMobileBuildersOpen(!mobileBuildersOpen)}
+                className="flex w-full items-center justify-between py-2 font-ui text-4xl tracking-wide text-text transition-colors hover:text-gold"
               >
                 Sherwani Builders
-              </Link>
+                <FiChevronDown className={`text-2xl transition-transform ${mobileBuildersOpen ? "rotate-180" : ""}`} />
+              </button>
+              {mobileBuildersOpen && (
+                <div className="mt-1 space-y-1 border-l border-white/10 pl-4">
+                  <Link
+                    href="/our-relations/sherwani-builders"
+                    onClick={() => setMenuOpen(false)}
+                    className="block py-2 font-ui text-3xl tracking-wide text-text/80 transition-colors hover:text-gold"
+                  >
+                    Overview
+                  </Link>
+                  {projects.items
+                    .filter((item) => item.page)
+                    .map((item) => (
+                      <Link
+                        key={item.slug}
+                        href={item.page!}
+                        onClick={() => setMenuOpen(false)}
+                        className="block py-2 font-ui text-3xl tracking-wide text-text/80 transition-colors hover:text-gold"
+                      >
+                        {item.name}
+                      </Link>
+                    ))}
+                </div>
+              )}
             </div>
 
             <div className="overflow-hidden">
@@ -314,7 +395,7 @@ export default function Navbar() {
                   setMenuOpen(false);
                   goSection(contactHash);
                 }}
-                className="block py-2 font-display text-4xl tracking-wide text-text transition-colors hover:text-gold"
+                className="block py-2 font-ui text-4xl tracking-wide text-text transition-colors hover:text-gold"
               >
                 Contact
               </a>
