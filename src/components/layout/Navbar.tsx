@@ -194,7 +194,7 @@ export default function Navbar() {
                     key={company.slug}
                     data-dd-item
                     href={company.page!}
-                    className="whitespace-nowrap py-3 font-ui text-sm uppercase tracking-[0.08em] text-text transition-colors hover:text-gold"
+                    className="whitespace-nowrap block rounded-2xl px-4 py-3 font-ui text-sm uppercase tracking-[0.08em] text-text/85 transition-colors hover:bg-white/5 hover:text-gold"
                   >
                     {company.title}
                   </Link>
