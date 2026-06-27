@@ -43,6 +43,61 @@ export const about = {
   revealEst: "Est. 1984 · Karachi, Pakistan",
 };
 
+export const diversification = {
+  overline: "Diversification",
+  heading: "Customer trust empowers us to expand into diverse ventures",
+  companies: [
+    {
+      slug: "toyota-highway",
+      title: "Toyota Highway Motors",
+      tag: "Automobiles",
+      desc: "A Toyota 3S Gold Dealership — sales, service and spare parts held to the highest global standards.",
+      image: "/images/projects/highway.jpg",
+    },
+    {
+      slug: "builders",
+      title: "Sherwani Builders & Developers",
+      tag: "Real Estate",
+      desc: "Crafting premium residential and commercial developments that redefine modern living.",
+      image: "/images/projects/event-builders.jpg",
+    },
+    {
+      slug: "trv",
+      title: "TRV Pakistan",
+      tag: "Special Vehicles",
+      desc: "The Response Vehicle — ambulances, fire vehicles and bespoke custom fabrication.",
+      image: "/images/projects/event-trv.jpg",
+    },
+    {
+      slug: "engineering",
+      title: "Sherwani Engineering",
+      tag: "Engineering",
+      desc: "Vehicle bodies, generators and industrial machinery engineered for durability.",
+      image: "/images/projects/event-custom.jpg",
+    },
+    {
+      slug: "hub-motors",
+      title: "Toyota Hub Motors",
+      tag: "Automobiles",
+      desc: "A new Toyota dealership extending world-class service to Balochistan.",
+      image: "/images/projects/hub.jpg",
+    },
+    {
+      slug: "hub-rally",
+      title: "Hub Rally",
+      tag: "Motorsports",
+      desc: "A motorsports legacy — 11 years and running, fuelling the spirit of competition.",
+      image: "/images/projects/hubrally.jpg",
+    },
+  ] as {
+    slug: string;
+    title: string;
+    tag: string;
+    desc: string;
+    image: string;
+  }[],
+};
+
 export const timeline = {
   overline: "Our Journey",
   heading: "Four Decades of Growth",
@@ -267,7 +322,7 @@ export const relations = {
       desc: "Contemporary comfrot and modern living in the heart of Balochistan.",
       image: "/images/projects/Hub-Valley-Residency.jpg",
       href: "#",
-      page:"/our-relations/sherwani-builders/hub-valley-residency",
+      page:"/our-relations/sherwani-builders/hub-valley",
     },
      {
        name: "Address One",
@@ -660,7 +715,10 @@ export const contact = {
 export const navLinks = [
   { label: "About", href: "#about" },
   { label: "Awards", href: "#awards" },
+<<<<<<< HEAD
   { label: "Diversification", href: "#diversification" },
+=======
+>>>>>>> caed557047b06318df39ce33f895e5189cc104b0
 ] as const;
 
 export const affiliatedCompanies = [

@@ -5,7 +5,7 @@ import clsx from "clsx";
 import { gsap, useGSAP, prefersReducedMotion } from "@/lib/gsap";
 import { diversification } from "@/data/content";
 import AnimatedTitle from "@/components/ui/AnimatedTitle";
-import { PlaceholderVideo } from "@/components/ui/Media";
+import { PlaceholderImage } from "@/components/ui/Media";
 
  export default function Diversification() {
   const rootRef = useRef<HTMLElement>(null);
@@ -111,9 +111,9 @@ import { PlaceholderVideo } from "@/components/ui/Media";
               )}
             >
               {/* Media */}
-              <PlaceholderVideo
-                src={`/videos/diversification/${c.slug}.mp4`}
-                label={`${c.slug}.mp4`}
+              <PlaceholderImage
+                src={c.image}
+                alt={c.title}
                 className="aspect-video w-full [direction:ltr] md:aspect-auto md:h-full md:min-h-[22rem]"
               />
 

@@ -36,10 +36,10 @@ export default function SherwaniBuildersPage() {
 
           <div className="relative mx-auto w-full max-w-7xl px-5 pt-24 md:px-10">
             <Link
-              href="/our-relations"
+              href="/"
               className="mb-6 inline-flex items-center gap-2 font-ui text-xs uppercase tracking-[0.25em] text-text/70 transition-colors hover:text-gold"
             >
-              <FiArrowLeft /> Our Milestones
+              <FiArrowLeft /> Home
             </Link>
             <p className="mb-4 flex items-center gap-3 font-ui text-[11px] font-semibold uppercase tracking-[0.4em] text-gold-soft">
               <span className="h-px w-10 bg-gold/60" />
