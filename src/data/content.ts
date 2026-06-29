@@ -321,7 +321,7 @@ export const relations = {
       desc: "Ultra-luxury 4 & 5 room apartments designed for elevated, modern living.",
       image: "/images/projects/Bloom-Gardens.jpg",
       href: "#",
-      page:"/our-relations/sherwani-builders/bloom-gardens",
+      page: "/our-relations/sherwani-builders/bloom-gardens",
     },
     {
       name: "Sherwani Royal Suites",
@@ -329,7 +329,7 @@ export const relations = {
       desc: "Shop ,showrooms and 4–5 room apartments complete with a gym and clubhouse.",
       image: "/images/projects/Sherwani-Royal-Suites.jpg",
       href: "#",
-      page:"/our-relations/sherwani-builders/sherwani-royal-suites",
+      page: "/our-relations/sherwani-builders/sherwani-royal-suites",
     },
     {
       name: "Hub Valley Residency",
@@ -337,16 +337,16 @@ export const relations = {
       desc: "Contemporary comfrot and modern living in the heart of Balochistan.",
       image: "/images/projects/Hub-Valley-Residency.jpg",
       href: "#",
-      page:"/our-relations/sherwani-builders/hub-valley",
+      page: "/our-relations/sherwani-builders/hub-valley",
     },
-     {
-       name: "Address One",
-       sector: "Sherwani Builders",
-       desc: "A landmark high-rise of 3 & 4 room luxury apartments on easy installments.",
-       image: "/images/projects/Address-One.jpg",
-       href: "#",
-       page:"/our-relations/sherwani-builders/address-one",
-     },
+    {
+      name: "Address One",
+      sector: "Sherwani Builders",
+      desc: "A landmark high-rise of 3 & 4 room luxury apartments on easy installments.",
+      image: "/images/projects/Address-One.jpg",
+      href: "#",
+      page: "/our-relations/sherwani-builders/address-one",
+    },
     // {
     //   name: "Trims.pk",
     //   sector: "E-Commerce",
@@ -368,6 +368,7 @@ export const relations = {
     //   desc: "Serene farmhouses and a children's park — leisure and lifestyle reimagined.",
     //   image: "/images/relations/farms.jpg",
     //   href: "#",
+    //   page: "/farms",
     // },
   ],
 };
@@ -413,6 +414,58 @@ export const buildersPage = {
   },
 };
 
+export const farmsPage = {
+  name: "Sherwani Farms",
+  overline: "Leisure · Est. 2000",
+  tagline: "Serene farmhouses and a children's park — leisure and lifestyle reimagined.",
+  heroImage: "/images/projects/sherwani%20frams/sherwani-frams.png",
+  intro:
+    "Sherwani Farms offers a tranquil escape from the city — beautifully maintained farmhouses surrounded by lush greenery, perfect for family gatherings, corporate retreats and weekend getaways.",
+  about: [
+    "Spread across acres of carefully landscaped land, Sherwani Farms is designed to be a sanctuary where families and friends can reconnect with nature. Each farmhouse is thoughtfully positioned to offer privacy and panoramic views, with modern amenities that ensure comfort without compromising the rustic charm.",
+    "The property also features a dedicated children's park, making it an ideal destination for visitors of all ages. Whether you are hosting an event, celebrating a special occasion, or simply unwinding in nature, Sherwani Farms provides a serene environment that rejuvenates mind and body.",
+  ],
+  stats: [
+    { value: 2000, suffix: "", label: "Established" },
+    { value: 5, suffix: "+", label: "Luxury Farmhouses" },
+    { value: 12, suffix: "", label: "Acres of Greenery" },
+    { value: 100, suffix: "%", label: "Natural Escape" },
+  ],
+  services: [
+    {
+      title: "Luxury Farmhouses",
+      desc: "Fully equipped farmhouses with modern interiors, private gardens and outdoor seating — perfect for weekend getaways and family gatherings.",
+    },
+    {
+      title: "Children's Park",
+      desc: "A dedicated, safe and vibrant play area for children with swings, slides and open green spaces to explore and enjoy.",
+    },
+    {
+      title: "Event Hosting",
+      desc: "Spacious lawns and elegant farmhouse settings available for corporate retreats, family reunions, birthday celebrations and private events.",
+    },
+    {
+      title: "Nature & Recreation",
+      desc: "Landscaped walking trails, shaded picnic spots and open fields that let you unwind and reconnect with the outdoors.",
+    },
+  ],
+  gallery: [
+    "/images/projects/sherwani%20frams/sherwani-frams-1.jpg",
+    "/images/projects/sherwani%20frams/sherwani-frams-2.jpg",
+    "/images/projects/sherwani%20frams/sherwani-farms-3.jpg",
+    "/images/projects/sherwani%20frams/sherwani-frams-4.jpg",
+    "/images/projects/sherwani%20frams/sherwani-farms-5.jpg",
+    "/images/projects/sherwani%20frams/sherwani-frams-6.jpg",
+    "/images/projects/sherwani%20frams/sherwani-frams-7.jpg",
+    "/images/projects/sherwani%20frams/sherwani-frams-8.jpg",
+    "/images/projects/sherwani%20frams/sherwani-farms-9.jpg",
+  ],
+  contact: {
+    phone: "+92 346 008 9565",
+    hours: "Mon–Sun · 11AM – 8PM",
+  },
+};
+
 export type ProjectData = {
   slug: string;
   name: string;
@@ -448,7 +501,7 @@ export const toyotaHighway: ProjectData = {
   overline: "Automobile Dealership · Karachi",
   heroSubtitle: "Sales, Service and Genuine Spare Parts",
   heroImage: "/images/projects/highway.jpg",
-  youtubeId: "hK04MBDIK-0", 
+  youtubeId: "hK04MBDIK-0",
   paymentHref: "/automobile/toyota-highway/payment-schedule",
   about: {
     overline: "A Toyota 3S Gold Dealership",
@@ -520,7 +573,7 @@ export const trv: ProjectData = {
   overline: "Special Vehicles · Karachi",
   heroSubtitle: "Emergency Response & Specialised Vehicles",
   heroImage: "/images/projects/event-trv.jpg",
-  youtubeId: "hK04MBDIK-0", 
+  youtubeId: "hK04MBDIK-0",
   paymentHref: "/automobile/trv/payment-schedule",
   about: {
     overline: "Specialised Vehicle Fabricators",
@@ -556,7 +609,7 @@ export const hubRally: ProjectData = {
   overline: "Motor Sports · Balochistan",
   heroSubtitle: "Pakistan's Premier Off-Road Motorsport Event",
   heroImage: "/images/projects/hubrally.jpg",
-  youtubeId: "hK04MBDIK-0", 
+  youtubeId: "hK04MBDIK-0",
   paymentHref: "/automobile/hub-rally/payment-schedule",
   about: {
     overline: "Motor Sports in Pakistan",
@@ -871,7 +924,44 @@ export const contact = {
 export const navLinks = [
   { label: "About", href: "#about" },
   { label: "Awards", href: "#awards" },
+  { label: "Sherwani Engineering", href: "/engineering" },
+  { label: "Sherwani Farms", href: "/farms" },
 ] as const;
+
+export const sherwaniEngineering: ProjectData = {
+  slug: "engineering",
+  name: "Sherwani Engineering",
+  overline: "Engineering · Karachi",
+  heroSubtitle: "Vehicle bodies, generators and industrial machinery",
+  heroImage: "/images/projects/event-custom.jpg",
+  youtubeId: "",
+  paymentHref: "#",
+  about: {
+    overline: "Our Expertise",
+    heading: "Engineering Excellence, Delivered Every Time",
+    body: "Sherwani Engineering is the Sherwani Group's dedicated engineering arm, specializing in custom vehicle body fabrication, generator manufacturing and industrial machinery. With decades of automotive expertise backing every project, we deliver robust, reliable solutions for commercial and industrial clients across Pakistan.",
+    image: "/engimages/our mission.webp",
+  },
+  interiors: [],
+  amenities: [],
+  payment: {
+    note: "Contact our team for customized solutions tailored to your industrial or commercial requirements.",
+    units: ["Vehicle Bodies", "Generators", "Industrial Machinery", "Custom Fabrication"],
+    rows: [
+      { phase: "Consultation", detail: "Understanding your requirements" },
+      { phase: "Design & Planning", detail: "Tailored engineering solutions" },
+      { phase: "Fabrication", detail: "Precision manufacturing" },
+      { phase: "Delivery & Support", detail: "Installation and after-sales service" },
+    ],
+  },
+  contact: {
+    phone: "+92 346 008 9565",
+    hours: "Mon–Sun · 11AM – 8PM",
+    address: "Sherwani Engineering, Main National Highway, Karachi, Pakistan",
+    mapEmbed: "https://www.google.com/maps?q=Toyota%20Highway%20Motors%20Karachi&output=embed",
+    interestedOptions: ["Vehicle Bodies", "Generators", "Industrial Machinery", "Custom Fabrication"],
+  },
+};
 
 export const affiliatedCompanies = [
   { label: "Toyota Highway Motors", href: "#" },

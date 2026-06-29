@@ -1,29 +1,34 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import clsx from "clsx";
 import { FiArrowLeft } from "react-icons/fi";
 import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
-import RelationsShowcase from "@/components/sections/RelationsShowcase";
 import AnimatedTitle from "@/components/ui/AnimatedTitle";
 import CountUp from "@/components/ui/CountUp";
 import { PlaceholderImage } from "@/components/ui/Media";
-import { Automobile, automobilePage as data } from "@/data/content";
+import { farmsPage as data } from "@/data/content";
+
+const BENTO: Record<number, string[]> = {
+  9: [
+    "md:col-span-2 md:row-span-2",
+    "md:col-span-1",
+    "md:col-span-1",
+    "md:col-span-2",
+    "md:col-span-1 md:row-span-2",
+    "md:col-span-1",
+    "md:col-span-2",
+    "md:col-span-1",
+    "md:col-span-2",
+  ],
+};
 
 export const metadata: Metadata = {
   title: `${data.name} — Sherwani Group`,
   description: data.tagline,
 };
 
-export default function AutomobilePage() {
-  const showcaseItems = Automobile.companies.map((c) => ({
-    name: c.title,
-    sector: c.tag,
-    desc: c.desc,
-    image: c.image,
-    href: c.page,
-    page: c.page,
-  }));
-
+export default function FarmsPage() {
   return (
     <>
       <Navbar />
@@ -78,30 +83,30 @@ export default function AutomobilePage() {
         </section>
 
         {/* STATS */}
-        <section className="border-y border-white/10 bg-surface/40">
-          <div className="mx-auto grid max-w-7xl grid-cols-2 gap-y-10 px-5 py-16 md:grid-cols-4 md:px-10">
-            {data.stats.map((s) => (
-              <div key={s.label} className="text-center">
-                <CountUp
-                  end={s.value}
-                  suffix={s.suffix}
-                  className="font-display text-[clamp(2.4rem,5vw,4rem)] text-gold"
-                />
-                <p className="mt-2 font-ui text-xs uppercase tracking-[0.25em] text-muted">
-                  {s.label}
-                </p>
-              </div>
-            ))}
-          </div>
-        </section>
+               <section className="border-y border-white/10 bg-surface/40">
+                 <div className="mx-auto grid max-w-7xl grid-cols-2 gap-y-10 px-5 py-16 md:grid-cols-4 md:px-10">
+                   {data.stats.map((s) => (
+                     <div key={s.label} className="text-center">
+                       <CountUp
+                         end={s.value}
+                         suffix={s.suffix}
+                         className="font-display text-[clamp(2.4rem,5vw,4rem)] text-gold"
+                       />
+                       <p className="mt-2 font-ui text-xs uppercase tracking-[0.25em] text-muted">
+                         {s.label}
+                       </p>
+                     </div>
+                   ))}
+                 </div>
+               </section>
 
         {/* SERVICES */}
         <section className="mx-auto max-w-7xl px-5 py-20 md:px-10 md:py-28">
           <p className="mb-4 font-ui text-[11px] font-semibold uppercase tracking-[0.4em] text-gold-soft">
-            What We Do
+            What We Offer
           </p>
           <AnimatedTitle
-            text="Powering mobility across Pakistan"
+            text="Relax, celebrate, and reconnect with nature"
             className="max-w-3xl text-[clamp(2rem,5vw,3.6rem)] text-text"
           />
           <div className="mt-14 grid gap-px overflow-hidden rounded-3xl border border-white/10 bg-white/10 md:grid-cols-2">
@@ -124,7 +129,40 @@ export default function AutomobilePage() {
           </div>
         </section>
 
-        <RelationsShowcase items={showcaseItems} />
+        {/* GALLERY */}
+        <section className="mx-auto max-w-7xl px-5 py-20 md:px-10 md:py-28">
+          <p className="mb-4 font-ui text-[11px] font-semibold uppercase tracking-[0.4em] text-gold-soft">
+            Gallery
+          </p>
+          <AnimatedTitle
+            text="Scenes from Sherwani Farms"
+            className="max-w-3xl text-[clamp(2rem,5vw,3.6rem)] text-text"
+          />
+          <div className="mt-12 grid auto-rows-[8rem] grid-cols-2 gap-3 md:mt-16 md:auto-rows-[11rem] md:grid-cols-4 md:gap-4">
+            {data.gallery.map((src, i) => {
+              const spans = BENTO[data.gallery.length] ?? [];
+              const mobileFull = data.gallery.length % 2 === 1 && i === data.gallery.length - 1;
+              return (
+                <div
+                  key={src}
+                  className={clsx(
+                    "group relative overflow-hidden rounded-2xl border border-white/10",
+                    mobileFull && "col-span-2",
+                    spans[i],
+                  )}
+                >
+                  <PlaceholderImage
+                    src={src}
+                    alt={`${data.name} gallery ${i + 1}`}
+                    sizes="(max-width: 768px) 50vw, 33vw"
+                    className="h-full w-full transition-transform duration-700 group-hover:scale-110"
+                  />
+                  <div className="pointer-events-none absolute inset-0 bg-gold/0 transition-colors duration-500 group-hover:bg-gold/10" />
+                </div>
+              );
+            })}
+          </div>
+        </section>
       </main>
       <Footer />
     </>
