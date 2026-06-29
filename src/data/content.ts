@@ -923,7 +923,6 @@ export const contact = {
 
 export const navLinks = [
   { label: "About", href: "#about" },
-  { label: "Awards", href: "#awards" },
   { label: "Sherwani Engineering", href: "/engineering" },
   { label: "Sherwani Farms", href: "/farms" },
 ] as const;
@@ -935,7 +934,7 @@ export const sherwaniEngineering: ProjectData = {
   heroSubtitle: "Vehicle bodies, generators and industrial machinery",
   heroImage: "/images/projects/event-custom.jpg",
   youtubeId: "",
-  paymentHref: "#",
+  paymentHref: "/engineering/payment-schedule",
   about: {
     overline: "Our Expertise",
     heading: "Engineering Excellence, Delivered Every Time",
@@ -964,11 +963,11 @@ export const sherwaniEngineering: ProjectData = {
 };
 
 export const affiliatedCompanies = [
-  { label: "Toyota Highway Motors", href: "#" },
-  { label: "Toyota Hub Motors", href: "#" },
-  { label: "Sherwani Engineering", href: "#" },
-  { label: "TRV Pakistan", href: "#" },
-  { label: "Trims.pk", href: "#" },
-  { label: "Sherwani Builders", href: "#" },
-  { label: "Sherwani Farms", href: "#" },
+  { label: "Toyota Highway Motors", href: "/automobile/toyota-highway" },
+  { label: "Toyota Hub Motors", href: "/automobile/hub-motors" },
+  { label: "TRV Pakistan", href: "/automobile/trv" },
+  { label: "Hub Rally Cross", href: "/automobile/hub-rally" },
+  { label: "Sherwani Engineering", href: "/engineering" },
+  { label: "Sherwani Builders", href: "/our-relations/sherwani-builders" },
+  { label: "Sherwani Farms", href: "/farms" },
 ] as const;

@@ -2,20 +2,20 @@ import { Metadata } from "next";
 import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
 import ProjectPaymentSchedule from "@/components/sections/ProjectPaymentSchedule";
-import { toyotaHighway as project } from "@/data/content";
+import { trv as project } from "@/data/content";
 
 export const metadata: Metadata = {
   title: `${project.name} — Payment Schedule`,
   description: `Payment plan and options for ${project.name}.`,
 };
 
-export default function ToyotaHighwayPaymentPage() {
+export default function TRVPaymentPage() {
   return (
     <>
       <Navbar />
       <ProjectPaymentSchedule
         project={project as any}
-        projectHref="/automobile/toyota-highway"
+        projectHref="/automobile/trv"
       />
       <Footer />
     </>
