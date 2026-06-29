@@ -1,6 +1,8 @@
 "use client";
 
-import { useRef } from "react";
+import { useRef, useCallback } from "react";
+import Link from "next/link";
+import { usePathname, useRouter } from "next/navigation";
 import {
   FaFacebookF,
   FaInstagram,
@@ -9,6 +11,7 @@ import {
 } from "react-icons/fa";
 import { gsap, useGSAP, prefersReducedMotion } from "@/lib/gsap";
 import { navLinks, affiliatedCompanies, site, contact } from "@/data/content";
+import { scrollToHash } from "@/lib/lenis";
 
 const socials = [
   { Icon: FaFacebookF, href: "#", label: "Facebook" },
@@ -20,6 +23,23 @@ const socials = [
 export default function Footer() {
   const rootRef = useRef<HTMLElement>(null);
   const bigRef = useRef<HTMLDivElement>(null);
+  const pathname = usePathname();
+  const router = useRouter();
+
+  const goSection = useCallback(
+    (href: string) => {
+      if (href.startsWith("/")) {
+        router.push(href);
+        return;
+      }
+      if (pathname === "/") {
+        requestAnimationFrame(() => scrollToHash(href));
+      } else {
+        router.push(`/${href}`);
+      }
+    },
+    [pathname, router],
+  );
 
   useGSAP(
     () => {
@@ -61,18 +81,22 @@ export default function Footer() {
             <h4 className="mb-4 text-sm font-semibold uppercase tracking-[0.25em] text-gold">
               Explore
             </h4>
-            <ul className="space-y-2">
-              {navLinks.map((l) => (
-                <li key={l.href}>
-                  <a
-                    href={l.href}
-                    className="text-sm text-muted transition-colors hover:text-gold"
-                  >
-                    {l.label}
-                  </a>
-                </li>
-              ))}
-            </ul>
+              <ul className="space-y-2">
+                {navLinks.map((l) => (
+                  <li key={l.href}>
+                    <a
+                      href={l.href.startsWith("/") ? l.href : `/${l.href}`}
+                      onClick={(e) => {
+                        e.preventDefault();
+                        goSection(l.href);
+                      }}
+                      className="cursor-pointer text-sm text-muted transition-colors hover:text-gold"
+                    >
+                      {l.label}
+                    </a>
+                  </li>
+                ))}
+              </ul>
           </div>
 
           <div data-foot-col>
@@ -82,14 +106,12 @@ export default function Footer() {
             <ul className="space-y-2">
               {affiliatedCompanies.map((c) => (
                 <li key={c.label}>
-                  <a
+                  <Link
                     href={c.href}
-                    target="_blank"
-                    rel="noopener noreferrer"
                     className="text-sm text-muted transition-colors hover:text-gold"
                   >
                     {c.label}
-                  </a>
+                  </Link>
                 </li>
               ))}
             </ul>

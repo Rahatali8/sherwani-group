@@ -870,15 +870,51 @@ export const contact = {
 
 export const navLinks = [
   { label: "About", href: "#about" },
-  { label: "Awards", href: "#awards" },
+  { label: "Sherwani Engineering", href: "/engineering" },
+  { label: "Sherwani Farms", href: "/farms" },
 ] as const;
 
+export const sherwaniEngineering: ProjectData = {
+  slug: "engineering",
+  name: "Sherwani Engineering",
+  overline: "Engineering · Karachi",
+  heroSubtitle: "Vehicle bodies, generators and industrial machinery",
+  heroImage: "/images/projects/event-custom.jpg",
+  youtubeId: "",
+  paymentHref: "/engineering/payment-schedule",
+  about: {
+    overline: "Our Expertise",
+    heading: "Engineering Excellence, Delivered Every Time",
+    body: "Sherwani Engineering is the Sherwani Group's dedicated engineering arm, specializing in custom vehicle body fabrication, generator manufacturing and industrial machinery. With decades of automotive expertise backing every project, we deliver robust, reliable solutions for commercial and industrial clients across Pakistan.",
+    image: "/engimages/our mission.webp",
+  },
+  interiors: [],
+  amenities: [],
+  payment: {
+    note: "Contact our team for customized solutions tailored to your industrial or commercial requirements.",
+    units: ["Vehicle Bodies", "Generators", "Industrial Machinery", "Custom Fabrication"],
+    rows: [
+      { phase: "Consultation", detail: "Understanding your requirements" },
+      { phase: "Design & Planning", detail: "Tailored engineering solutions" },
+      { phase: "Fabrication", detail: "Precision manufacturing" },
+      { phase: "Delivery & Support", detail: "Installation and after-sales service" },
+    ],
+  },
+  contact: {
+    phone: "+92 346 008 9565",
+    hours: "Mon–Sun · 11AM – 8PM",
+    address: "Sherwani Engineering, Main National Highway, Karachi, Pakistan",
+    mapEmbed: "https://www.google.com/maps?q=Toyota%20Highway%20Motors%20Karachi&output=embed",
+    interestedOptions: ["Vehicle Bodies", "Generators", "Industrial Machinery", "Custom Fabrication"],
+  },
+};
+
 export const affiliatedCompanies = [
-  { label: "Toyota Highway Motors", href: "#" },
-  { label: "Toyota Hub Motors", href: "#" },
-  { label: "Sherwani Engineering", href: "#" },
-  { label: "TRV Pakistan", href: "#" },
-  { label: "Trims.pk", href: "#" },
-  { label: "Sherwani Builders", href: "#" },
-  { label: "Sherwani Farms", href: "#" },
+  { label: "Toyota Highway Motors", href: "/automobile/toyota-highway" },
+  { label: "Toyota Hub Motors", href: "/automobile/hub-motors" },
+  { label: "TRV Pakistan", href: "/automobile/trv" },
+  { label: "Hub Rally Cross", href: "/automobile/hub-rally" },
+  { label: "Sherwani Engineering", href: "/engineering" },
+  { label: "Sherwani Builders", href: "/our-relations/sherwani-builders" },
+  { label: "Sherwani Farms", href: "/farms" },
 ] as const;
